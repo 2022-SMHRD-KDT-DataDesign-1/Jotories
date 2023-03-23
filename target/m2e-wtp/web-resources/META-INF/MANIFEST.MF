@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: user
 Build-Jdk: 17.0.5
+=======
+Built-By: young
+Build-Jdk: 17.0.3
+>>>>>>> 0707f90643b1f33e408d155716030ab168e15d70
 Created-By: Maven Integration for Eclipse
 
