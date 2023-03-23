@@ -13,7 +13,7 @@ public class SqlSessionManager {
 
 	static {
 		// mybatis 설정파일 경로
-		String resource = "com/smhrd/db/mybatis-config.xml";
+		String resource = "com/dogdog/db/mybatis-config.xml";
 		Reader reader;
 	
 		try {
