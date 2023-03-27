@@ -97,7 +97,7 @@
 
 
     <div class="form signup">
-        <h1 class="dogdog"><a href="gg.html"><img src="./eheh.png"></a></h1>
+        <h1 class="dogdog"><a href="gg.html"><img src="assets/img/dogdogLogo.png"></a></h1>
 
         <div class="form-header">
           <div class="show-signup">회원가입</div>
@@ -125,25 +125,7 @@
 
 
     <script>
-    <%
-        function resetClass(element, classname){
-  element.classList.remove(classname);
-}
-document.getElementsByClassName("show-signup")[0].addEventListener("click",function(){
-  let form = document.getElementsByClassName("form")[0];
-  resetClass(form, "signin");
-  resetClass(form, "reset");
-  form.classList.add("signup");
-  document.getElementById("submit-btn").innerText = "회원가입";
-});
-document.getElementsByClassName("show-signin")[0].addEventListener("click",function(){
-  let form = document.getElementsByClassName("form")[0];
-  resetClass(form, "signup");
-  resetClass(form, "reset");
-  form.classList.add("signin");
-  document.getElementById("submit-btn").innerText = "로그인";
-});
-/%>
+
     </script>
 
 
