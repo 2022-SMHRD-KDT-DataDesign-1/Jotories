@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+	<!-- 강아지 등록 -->
+	<insert id="insertDog" parameterType="DogVO">
+		insert into doginfo
+		values(dog_num.nextval, #{dog_name}, #{dog_gen}, #{dog_neutcheck}
+			 , #{dog_age}, #{dog_month}, #{dog_birth}
+			 , #{dog_enroll}, #{dog_weight}, #{dog_memo}, #{user_id})
+	</insert>
+	<!-- 강아지 정보 조회 -->
+	<select id="selectDog" resultType="DogVO" parameterType="DogVO">
+		select *
+		  from doginfo
+		  where dog_name=#{dog_name} and user_id=#{user_id}
+	</select>
+	<!-- 강아지 전부 조회 -->
+	<select id="selectALLDog" resultType="DogVO" parameterType="String">
+		select *
+		from doginfo
+		where user_id=#{user_id}
+	</select>
+	<!-- 강아지 정보 수정 -->
+	<update id="updateDog" parameterType="DogVO">
+		update doginfo
+		   set dog_name=#{dog_name}
+		     , dog_neutcheck={dog_neutcheck)
+		     , dog_enroll=#{dog_enroll}
+		     , dog_weight=#{dog_weight}
+		     , dog_memo=#{dog_memo}
+	</update>
+	<!-- 강아지 정보 삭제 -->
+	<delete id="deleteDog">
+		delete * from doginfo
+		 where dog_name=#{dog_name}
+		   and user_id=#{user_id}
+	</delete>
+</mapper>

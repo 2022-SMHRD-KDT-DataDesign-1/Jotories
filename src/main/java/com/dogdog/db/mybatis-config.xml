@@ -8,6 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<properties resource="com/dogdog/db/db.properties"/>
 	
 	<typeAliases>
+		<typeAlias type="com.dogdog.model.UserVO" alias="UserVO"/>
+		<typeAlias type="com.dogdog.model.DogVO" alias="DogVO"/>
+		<typeAlias type="com.dogdog.model.StoreBoardVO" alias="StoreBoardVO"/>
+		<typeAlias type="com.dogdog.model.StoreVO" alias="StoreVO"/>
+		<typeAlias type="com.dogdog.model.StoreMemberVO" alias="StoreMemberVO"/>
+		<typeAlias type="com.dogdog.model.StroeReviewVO" alias="StroeReviewVO"/>
 	</typeAliases>
 	
   <environments default="development">
@@ -24,7 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- sql문들을 정의해주는 mapper.xml 의 경로를 지정해주는 태그-->
 	<mappers>
-		<mapper resource="com/dogdog/db/UserMapper.xml"/>
+		<mapper resource="com/dogdog/db/UserInfoMapper.xml"/>
+		<mapper resource="com/dogdog/db/DogInfoMapper.xml"/>
+		<mapper resource="com/dogdog/db/StroeBoardMapper.xml"/>
+		<mapper resource="com/dogdog/db/StroeInfoMapper.xml"/>
+		<mapper resource="com/dogdog/db/StroeMemberMapper.xml"/>
+		<mapper resource="com/dogdog/db/StroeReviewMapper.xml"/>
 	</mappers>
 	
 </configuration>
