@@ -5,5 +5,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper>
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="UserVO">
+		insert into userinfo
+		values(#{user_id}, #{user_pw}, #{user_nick}, #{user_ownercheck}, #{user_phone}, #{user_email}, #{user_addr})
+	</insert>
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="UserVO">
+		update userinfo
+		   set user_pw=#{user_pw}
+			 , user_nick=#{user_nick}
+			 , user_phone=#{user_phone}
+			 , user_email=#{user_email}
+			 , user_addr=#{user_addr}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteUser" parameterType="UserVO">
+		delete from userinfo
+		 where user_id=#{user_id} and user_pw=#{user_pw}
+	</delete>
+	
+	<!-- 로그인 -->
+	<select id="selectUser" resultType="UserVO" parameterType="UserVO">
+		select * from userinfo
+		 where user_id=#{user_id} and user_pw=#{user_pw}
+	</select>
+	
+	
+	
+	
 	
 </mapper>
