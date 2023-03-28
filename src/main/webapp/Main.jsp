@@ -31,11 +31,19 @@
               </div>
           </div>
       </span>
+<<<<<<< HEAD
         <a class href="http://localhost:8080/DogDog/Main.jsp" class="logo"><img src="assets/img/dogdogLogo_n.png"></a>
         <div class="nav-items">
             <a href="#" class="nav-item">예약확인</a>
             <a href="#" class="nav-item">훈련일지</a>
             <a href="http://localhost:8080/DogDog/login.html" class="nav-item">로그인</a>
+=======
+        <a href="gg.html" class="logo"><img src="assets/img/logo_w_r.png"></a>
+        <div class="nav-items">
+            <a href="#" class="nav-item">예약확인</a>
+            <a href="#" class="nav-item">훈련일지</a>
+            <a href="login.html" class="nav-item">로그인</a>
+>>>>>>> d6d440de5d062975d6652f792722e548c8f86d97
         </div>
     </div>
 
