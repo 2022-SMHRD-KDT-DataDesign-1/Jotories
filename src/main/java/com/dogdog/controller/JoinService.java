@@ -36,6 +36,7 @@ public class JoinService implements Service{
 			System.out.println("회원가입 실패");
 		}
 		
+		moveURL = "login.html";
 		
 		return moveURL;
 	}

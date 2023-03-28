@@ -37,56 +37,109 @@
     </li>
   </ul>
   
-  <!-- Form -->
-  <form  action="" method="post">
-    <!-- email input -->
-    <div class="first-input input__block first-input__block">
-       <input type="text" placeholder="아이디" class="input" id="email"   />
-    </div>
-    <!-- password input -->
-    <div class="input__block">
-       <input type="password" placeholder="비밀번호" class="input" id="password"    />
-    </div>
-    <!-- repeat password input -->
-    <div class="input__block">
-       <input type="password" placeholder="비밀번호 재확인" class="input repeat__password"    />
-    </div>
-        <!-- 닉네임 -->
-    
-    <div class="input__block">
-      <input type="text" placeholder="닉네임" class="input repeat__password"     />
-   </div>
-           <!-- 이메일 -->
-   
-   <div class="input__block">
-    <input type="email" placeholder="이메일" class="input repeat__password"     />
- </div>
-         <!-- 주소 -->
- 
- <div class="input__block">
-  <input type="text" placeholder="주소" class="input repeat__password"    />
-</div>
-        <!-- 핸드폰 -->
-
-<div class="input__block">
-  <input type="text" placeholder="핸드폰 번호" class="input repeat__password"    />
-</div>
-    <!-- sign in button -->
-    <button class="signin__btn">
-      로그인
-    </button>
-  </form>
-
-</div>
-
+  
+  <div id="test">
+  
+  
+  
+  </div>
+	 <!--  
+	  
+	  
+	  Form
+	  <form  action="LOSE" method="post">
+	    email input
+	    <div class="first-input input__block first-input__block">
+	       <input type="text" placeholder="아이디" class="input" id="email"   />
+	    </div>
+	    password input
+	    <div class="input__block">
+	       <input type="password" placeholder="비밀번호" class="input" id="password"    />
+	    </div>
+	    repeat password input
+	    <div class="input__block">
+	       <input type="password" placeholder="비밀번호 재확인" class="input repeat__password"    />
+	    </div>
+	        닉네임
+	    
+	    <div class="input__block">
+	      <input type="text" placeholder="닉네임" class="input repeat__password"     />
+	   </div>
+	           이메일
+	   
+	   <div class="input__block">
+	    <input type="email" placeholder="이메일" class="input repeat__password"     />
+	 </div>
+	         주소
+	 
+	 <div class="input__block">
+	  <input type="text" placeholder="주소" class="input repeat__password"    />
+	</div>
+	        핸드폰
+	
+	<div class="input__block">
+	  <input type="text" placeholder="핸드폰 번호" class="input repeat__password"    />
+	</div>
+	    sign in button
+	    <button class="signin__btn">
+	      로그인
+	    </button>
+	  
+	
+	</div>
+	</form> -->
 
 
 
 
 
     <script>
+    
+    
+    
+    
+    
+    $('#signin').click(function(){
+    	// 로그인
+    	var html = "";
+    	html += "<form action='LoginService.do' method='post'>";
+    	html += "ID : <input type='text' name='id'><br>";
+    	html += "PW : <input type='password' name='pw'><br>";
+    	html += "</form>";
+    	$('#test').html(html);
+    	
+    });
+    $('#signup').click(function(){
+    	// 회원가입
+    	var html = "";
+    	html += "<form action='' method='post'>";
+    	html += "ID : <input type='text' name='id'><br>";
+    	html += "PW : <input type='password' name='pw'><br>";
+    	html += "NICK : <input type='text' name='nick'><br>";
+    	html += "PHONE : <input type='text' name='phone'><br>";
+    	html += "ADDR : <input type='text' name='addr'><br>";
+    	html += "</form>";
+    	$('#test').html(html);
+    });
+    
+    
+    
+    
+    
+    
 
     $(document).ready(function(){
+    	
+    	var html = "";
+    	html += "<form action='' method='post'>";
+    	html += "ID : <input type='text' name='id'><br>";
+    	html += "PW : <input type='password' name='pw'><br>";
+    	html += "</form>";
+    	$('#test').html(html);
+    	
+    	
+    	
+    	
    let signup = $(".links").find("li").find("#signup") ; 
    let signin = $(".links").find("li").find("#signin") ;
    let reset  = $(".links").find("li").find("#reset")  ; 
