@@ -316,7 +316,7 @@ align-items: center;
   .prev:hover{
     transform: translateX(-10px);
   }
-  
+   
   .next{
     right: 10px;
   }
