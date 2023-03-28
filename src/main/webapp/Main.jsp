@@ -31,11 +31,11 @@
               </div>
           </div>
       </span>
-        <a href="gg.html" class="logo"><img src="assets/img/dogdogLogo_n.png"></a>
+        <a href="gg.html" class="logo"><img src="assets/img/logo_w_r.png"></a>
         <div class="nav-items">
             <a href="#" class="nav-item">예약확인</a>
             <a href="#" class="nav-item">훈련일지</a>
-            <a href="#" class="nav-item">로그인</a>
+            <a href="login.html" class="nav-item">로그인</a>
         </div>
     </div>
 
