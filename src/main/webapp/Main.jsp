@@ -31,11 +31,11 @@
               </div>
           </div>
       </span>
-        <a href="gg.html" class="logo"><img src="assets/img/dogdogLogo_n.png"></a>
+        <a class href="http://localhost:8080/DogDog/Main.jsp" class="logo"><img src="assets/img/dogdogLogo_n.png"></a>
         <div class="nav-items">
             <a href="#" class="nav-item">예약확인</a>
             <a href="#" class="nav-item">훈련일지</a>
-            <a href="#" class="nav-item">로그인</a>
+            <a href="http://localhost:8080/DogDog/login.html" class="nav-item">로그인</a>
         </div>
     </div>
 
@@ -79,12 +79,16 @@
       </div>
  <div id="slideShow">
     <ul class="slides">
-      <li ><img src="assets/img/pic.jfif" alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif" alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
+      <li ><a href = "#"> <img src="assets/img/pic.jfif" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/dd.png" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/pic.jfif" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/dd.png" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/pic.jfif" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/dd.png" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/pic.jfif" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/dd.png" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/pic.jfif" alt=""></a></li>
+      <li ><a href = "#"> <img src="assets/img/dd.png" alt=""></a></li>
     </ul>  
     <p class="controller">
       

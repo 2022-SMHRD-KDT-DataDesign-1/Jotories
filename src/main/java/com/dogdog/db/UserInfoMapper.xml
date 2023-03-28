@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from userinfo
 		 where user_id=#{user_id} and user_pw=#{user_pw}
 	</delete>
-	
+	 
 	<!-- 로그인 -->
 	<select id="selectUser" resultType="UserVO" parameterType="UserVO">
 		select * from userinfo
