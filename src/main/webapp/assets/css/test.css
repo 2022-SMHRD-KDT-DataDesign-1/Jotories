@@ -9,7 +9,7 @@
 }
 
 .logo{
-	
+   
   margin-left: 400px;
   
 
@@ -326,4 +326,3 @@ align-items: center;
   .next:hover{
     transform: translateX(10px);
   }
-
