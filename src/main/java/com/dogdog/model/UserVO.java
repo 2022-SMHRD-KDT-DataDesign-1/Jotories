@@ -15,4 +15,13 @@ public class UserVO {
 	@NonNull private String user_phone;
 	@NonNull private String user_email;
 	@NonNull private String user_addr;
+	
+	public UserVO(@NonNull String user_id, @NonNull String user_pw) {
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+	}
+	
+	
+	
+	
 }

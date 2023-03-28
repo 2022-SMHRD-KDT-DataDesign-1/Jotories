@@ -5,145 +5,132 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .dogdog{
-            text-align: center;
-        }
-
-       
-       body {
-         font-family:"Raleway";
-       }
-       .form {
-         position:absolute;
-         top:50%;
-         left:50%;
-         transform:translate(-50%,-50%);
-         width:300px;
-         height:600px;
-         padding:10px;
-       }
-       .form .form-header {
-        
-         height:30px;
-         display:flex;
-         align-items:center;
-         text-align:center;
-       }
-       .form .form-header > div {
-         width:calc(100% / 2);
-         color:#ddd;
-         font-size:18px;
-         font-weight:600;
-         cursor:pointer;
-       }
-       .form.signup .form-header div.show-signup {
-         color:rgb(61, 58, 58);
-       }
-       .form.signin .form-header div.show-signin {
-        color:rgb(61, 58, 58);
-       }
-       .form.reset .form-header div.show-reset {
-        color:rgb(61, 58, 58);
-       }
-       .form .form-elements {
-         margin-top:15px;
-       }
-       .form .form-elements .form-element {
-         height:50px;
-         opacity:1;
-         overflow:hidden;
-         transition:all 500ms ease-in-out;
-       }
-       .form .form-elements input {
-         width:100%;
-         padding:10px;
-         font-size:16px;
-         margin:5px 0px;
-         border-radius:10px;
-         box-sizing:border-box;
-         border:1px solid #222;
-         background:#f5f5f5;
-       }
-       .form .form-elements button {
-         width:100%;
-         padding:10px;
-         font-size:16px;
-         font-weight:600;
-         margin-top:5px;
-         border-radius:10px;
-         color:rgb(19, 18, 18);
-         color:rgb(19, 18, 18);
-         cursor:pointer;
-         border:none;
-         outline:none;
-       }
-      
-     
-       .form.signin .form-elements > div:nth-child(3) {
-         height:0px;
-         opacity:0;
-       }
-       .form.reset .form-elements > div:nth-child(2),
-       .form.reset .form-elements > div:nth-child(3) {
-         height:0px;
-         opacity:0;
-       }
-           </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/css/login.css"  type="text/css" />
+  
 </head>
 <body>
    
 
 
-
-    <div class="form signup">
-        <h1 class="dogdog"><a href="gg.html"><img src="./eheh.png"></a></h1>
-
-        <div class="form-header">
-          <div class="show-signup">회원가입</div>
-          <div class="show-signin">로그인</div>
-        </div>
-        <div class="form-elements">
-          <div class="form-element">
-            <input type="text" placeholder="이메일 주소">
-          </div>
-          <div class="form-element">
-            <input type="password" placeholder="비밀번호">
-          </div>
-          <div class="form-element">
-            <input type="password" placeholder="비밀번호 확인">
-          </div>
-          <div class="form-element">
-            <button id="submit-btn">회원가입</button>
-          </div>
-        </div>
-      </div>
+  <div class="logo_c">
+    <a href="Main.jsp"><img src="assets/img/logo_main.png" alt=""></a>
+  </div>
 
 
+
+<div class="container">
+  
+  <!-- Heading -->
+  <h3>로그인</h3>
+  
+  <!-- Links -->
+  <ul class="links">
+    <li>
+      <a href="#" id="signin">로그인</a>
+    </li>
+    <li>
+      <a href="#" id="signup">회원가입</a>
+    </li>
+    <li>
+      <a href="#" id="reset">RESET</a>
+    </li>
+  </ul>
+  
+  <!-- Form -->
+  <form  action="" method="post">
+    <!-- email input -->
+    <div class="first-input input__block first-input__block">
+       <input type="text" placeholder="아이디" class="input" id="email"   />
     </div>
+    <!-- password input -->
+    <div class="input__block">
+       <input type="password" placeholder="비밀번호" class="input" id="password"    />
+    </div>
+    <!-- repeat password input -->
+    <div class="input__block">
+       <input type="password" placeholder="비밀번호 재확인" class="input repeat__password"    />
+    </div>
+        <!-- 닉네임 -->
+    
+    <div class="input__block">
+      <input type="text" placeholder="닉네임" class="input repeat__password"     />
+   </div>
+           <!-- 이메일 -->
+   
+   <div class="input__block">
+    <input type="email" placeholder="이메일" class="input repeat__password"     />
+ </div>
+         <!-- 주소 -->
+ 
+ <div class="input__block">
+  <input type="text" placeholder="주소" class="input repeat__password"    />
+</div>
+        <!-- 핸드폰 -->
+
+<div class="input__block">
+  <input type="text" placeholder="핸드폰 번호" class="input repeat__password"    />
+</div>
+    <!-- sign in button -->
+    <button class="signin__btn">
+      로그인
+    </button>
+  </form>
+
+</div>
+
+
+
 
 
 
     <script>
-    <%
-        function resetClass(element, classname){
-  element.classList.remove(classname);
-}
-document.getElementsByClassName("show-signup")[0].addEventListener("click",function(){
-  let form = document.getElementsByClassName("form")[0];
-  resetClass(form, "signin");
-  resetClass(form, "reset");
-  form.classList.add("signup");
-  document.getElementById("submit-btn").innerText = "회원가입";
+
+    $(document).ready(function(){
+   let signup = $(".links").find("li").find("#signup") ; 
+   let signin = $(".links").find("li").find("#signin") ;
+   let reset  = $(".links").find("li").find("#reset")  ; 
+   let first_input = $("form").find(".first-input");
+   let hidden_input = $("form").find(".input__block").find(".repeat__password");
+   let signin_btn  = $("form").find(".signin__btn");
+ 
+   //----------- sign up ---------------------
+   signup.on("click",function(e){
+     e.preventDefault();
+     $(this).parent().parent().siblings("h3").text("회원가입");
+     $(this).parent().css("opacity","1");
+     $(this).parent().siblings().css("opacity",".6");
+     first_input.removeClass("first-input__block").addClass("signup-input__block");
+     hidden_input.css({
+       "opacity" : "1",
+       "display" : "block"
+     });
+     signin_btn.text("회원가입");
+   });
+   
+ 
+  //----------- sign in ---------------------
+  signin.on("click",function(e){
+     e.preventDefault();
+     $(this).parent().parent().siblings("h3").text("로그인");
+     $(this).parent().css("opacity","1");
+     $(this).parent().siblings().css("opacity",".6");
+     first_input.addClass("first-input__block")
+       .removeClass("signup-input__block");
+     hidden_input.css({
+       "opacity" : "0",
+       "display" : "none"
+     });
+     signin_btn.text("로그인");
+   });
+  
+  //----------- reset ---------------------
+  reset.on("click",function(e){
+    e.preventDefault();
+    $(this).parent().parent().siblings("form")
+    .find(".input__block").find(".input").val("");
+  })
 });
-document.getElementsByClassName("show-signin")[0].addEventListener("click",function(){
-  let form = document.getElementsByClassName("form")[0];
-  resetClass(form, "signup");
-  resetClass(form, "reset");
-  form.classList.add("signin");
-  document.getElementById("submit-btn").innerText = "로그인";
-});
-/%>
     </script>
 
 
