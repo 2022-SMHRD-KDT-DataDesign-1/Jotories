@@ -39,10 +39,7 @@
         </div>
     </div>
 
-    <div>
-    <img class="hide_logo" src="assets/img/dogdogLogo_n.png"></img>
 
-    </div>
 
     <div class="outer">
         <div class="inner-list">
