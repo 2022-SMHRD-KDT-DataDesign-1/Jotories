@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class StroeReviewVO {
+public class StoreReviewVO {
 	private int review_no;
 	@NonNull private String user_id;
 	@NonNull private int store_id;
