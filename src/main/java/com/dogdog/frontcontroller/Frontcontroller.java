@@ -44,8 +44,10 @@ public class Frontcontroller extends HttpServlet {
 		// 요청한 값만 출력하기(substring 메소드 사용)
 		// substring(start) : start 부터 끝까지 문자열 자르기
 		// substring(start, end) : start to end -1 까지 문자열 자르기
-		String result = reqURI.substring(contextPath.length() +1 );
+		String result = reqURI.substring(contextPath.length() + 1);
 		System.out.println(result);
+		System.out.println(result);
+		
 		
 		if(result.equals("LoginService.do")) {
 			// 로그인 기능
@@ -55,38 +57,39 @@ public class Frontcontroller extends HttpServlet {
 			// 회원가입 기능
 			service = new JoinService();
 			
-//		} else if(result.equals("LogoutService.do")) {
-//			// 로그아웃 기능
-//			
-//			service = new LogoutService();
-//			
-//			
-//		} else if(result.equals("BoardService.do")) {
-//			// 게시판 조회
-//			service = new BoardService();
-//			
-//		} else if(result.equals("DeleteBoardService.do")) {
-//			// 게시물 삭제
-//			service = new DeleteBoardService();
-//			
-//		} else if(result.equals("DeleteService.do")) {
-//			// 회원 삭제
-//			service = new DeleteService();
-//			
-//		} else if(result.equals("UpdateService.do")) {
-//			service = new UpdateService();
-//			
-//		} else if(result.equals("MessageService.do")) {
-//			service = new MessageService();
-//		}
-//		else {
-//			moveURL = "Main.jsp";
-//		}
-		
-		moveURL = service.execute(request, response);
-		response.sendRedirect(moveURL);
+		//		} else if(result.equals("LogoutService.do")) {
+		//			// 로그아웃 기능
+		//			
+		//			service = new LogoutService();
+		//			
+		//			
+		//		} else if(result.equals("BoardService.do")) {
+		//			// 게시판 조회
+		//			service = new BoardService();
+		//			
+		//		} else if(result.equals("DeleteBoardService.do")) {
+		//			// 게시물 삭제
+		//			service = new DeleteBoardService();
+		//			
+		//		} else if(result.equals("DeleteService.do")) {
+		//			// 회원 삭제
+		//			service = new DeleteService();
+		//			
+		//		} else if(result.equals("UpdateService.do")) {
+		//			service = new UpdateService();
+		//			
+		//		} else if(result.equals("MessageService.do")) {
+		//			service = new MessageService();
+		//		}
+		//		else {
+		//			moveURL = "Main.jsp";
+		//		}
+			
+			
 	
 		}
+		moveURL = service.execute(request, response);
+		response.sendRedirect(moveURL);
 
 	}
 }

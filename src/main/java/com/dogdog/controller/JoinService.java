@@ -17,15 +17,13 @@ public class JoinService implements Service{
 		String user_id = request.getParameter("user_id");
 		String user_pw = request.getParameter("user_pw");
 		String user_nick = request.getParameter("user_nick");
-		String user_ownercheck = request.getParameter("user_ownercheck");
 		String user_phone = request.getParameter("user_phone");
 		String user_email = request.getParameter("user_email");
 		String user_addr = request.getParameter("user_addr");
 		
 		System.out.println(user_id + user_pw);
 		
-		UserVO vo = new UserVO(user_id, user_pw, user_nick
-							 , user_ownercheck, user_phone, user_email, user_addr);
+		UserVO vo = new UserVO(user_id, user_pw, user_nick , user_phone, user_email, user_addr);
 		UserDAO dao = new UserDAO();
 		
 		int cnt = dao.insertUser(vo);
