@@ -39,10 +39,7 @@
         </div>
     </div>
 
-    <div>
-    <img class="hide_logo" src="assets/img/dogdogLogo_n.png"></img>
 
-    </div>
 
     <div class="outer">
         <div class="inner-list">
@@ -66,10 +63,10 @@
 
      <div class="main_link">
         <ul class="main_link_items">
-          <li><a href="https://www.goodchoice.kr/product/home/1" menu-link="1"><span class="ico_01">&nbsp;</span><p>강아지 유치원</p></a></li>
-          <li><a href="https://www.goodchoice.kr/product/search/2" menu-link="2"><span class="ico_02">&nbsp;</span><p>강아지 호텔</p></a></li>
-          <li><a href="https://www.goodchoice.kr/product/search/3" menu-link="3"><span class="ico_03">&nbsp;</span><p>강아지 병원</p></a></li>
-          <li><a href="https://www.goodchoice.kr/product/search/6" menu-link="6"><span class="ico_04">&nbsp;</span><p>강이지 미용실</p></a></li>
+          <li><a href="listPage.jsp" menu-link="1"><span class="ico_01">&nbsp;</span><p>강아지 유치원</p></a></li>
+          <li><a href="listPage.jsp" menu-link="2"><span class="ico_02">&nbsp;</span><p>강아지 호텔</p></a></li>
+          <li><a href="listPage.jsp" menu-link="3"><span class="ico_03">&nbsp;</span><p>강아지 병원</p></a></li>
+          <li><a href="listPage.jsp" menu-link="6"><span class="ico_04">&nbsp;</span><p>강이지 미용실</p></a></li>
         </ul>
       </div>
 
@@ -87,7 +84,6 @@
       <li><img src="assets/img/pic.jfif"  alt=""></li>
     </ul>  
     <p class="controller">
-      
       <!-- &lang: 왼쪽 방향 화살표
       &rang: 오른쪽 방향 화살표 -->
       <span class="prev">&lang;</span>  
