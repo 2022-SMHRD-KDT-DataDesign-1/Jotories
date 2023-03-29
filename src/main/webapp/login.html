@@ -17,9 +17,6 @@
 
 </head>
 <body>
-
-
-
 	<div class="logo_c">
 		<a href="Main.jsp"><img src="assets/img/logo_main.png" alt=""></a>
 	</div>
@@ -56,10 +53,10 @@
 	var reHtml = "";
 	reHtml += "<form action='LoginService.do' method='post'>";
 	reHtml += '<div class="first-input input__block first-input__block">';
-	reHtml += '<input type="text" placeholder="아이디" class="input" id="email" name="id"  />';
+	reHtml += '<input type="text" placeholder="아이디" class="input" id="email" name="user_id"  />';
 	reHtml += "</div>";
 	reHtml += '<div class="input__block">';
-	reHtml += '<input type="password" placeholder="비밀번호" class="input" id="password" name="pw"   />';
+	reHtml += '<input type="password" placeholder="비밀번호" class="input" id="password" name="user_pw"   />';
 	reHtml += '</div>'
 	reHtml += '<button class="signin__btn">'
 	reHtml += '로그인'
@@ -76,10 +73,10 @@
 							var html = "";
 							html += "<form action='LoginService.do' method='post'>";
 							html += '<div class="first-input input__block first-input__block">';
-							html += '<input type="text" placeholder="아이디" class="input" id="email" name="id"  />';
+							html += '<input type="text" placeholder="아이디" class="input" id="email" name="user_id"  />';
 							html += "</div>";
 							html += '<div class="input__block">';
-							html += '<input type="password" placeholder="비밀번호" class="input" id="password" name="pw"   />';
+							html += '<input type="password" placeholder="비밀번호" class="input" id="password" name="user_pw"   />';
 							html += '</div>'
 							html += '<button class="signin__btn">'
 							html += '로그인'
@@ -94,36 +91,34 @@
 						function() {
 							// 회원가입
 							var html = "";
-							html += "<form action='LoginService.do' method='post'>";
+							html += "<form action='JoinService.do' method='post'>";
 							html += '<div class="first-input input__block first-input__block">';
-							html += '<input type="text" placeholder="아이디" class="input" id="email" name="id"  />';
+							html += '<input type="text" placeholder="아이디" class="input" name="user_id"  />';
 							html += "</div>";
 							html += '<div class="input__block">';
-							html += '<input type="password" placeholder="비밀번호" class="input" id="password" name="pw"   />';
+							html += '<input type="password" placeholder="비밀번호" class="input" name="user_pw"   />';
 							html += '</div>'
 						    html += '<div class="input__block">';
-							html += '<input type="password" placeholder="비밀번호 재확인" class="input" id="password" name="pw"   />';
+							html += '<input type="password" placeholder="비밀번호 재확인" class="input" name="user_pwcheck"   />';
 							html += '</div>'
 							
 							html += '<div class="input__block">';
-							html += '<input type="text" placeholder="닉네임" class="input" id="password" name="pw"   />';
+							html += '<input type="text" placeholder="닉네임" class="input" name="user_nick"   />';
 							html += '</div>'
 							
 							html += '<div class="input__block">';
-							html += '<input type="email"  placeholder="이메일" class="input" id="password" name="pw"   />';
+							html += '<input type="email"  placeholder="이메일" class="input" name="user_email"   />';
 							html += '</div>'
 							
 							html += '<div class="input__block">';
-							html += '<input type="text" placeholder="주소" class="input" id="password" name="pw"   />';
+							html += '<input type="text" placeholder="주소" class="input" name="user_addr"   />';
 							html += '</div>'
 							
 							html += '<div class="input__block">';
-							html += '<input type="text" placeholder="핸드폰 번호" class="input" id="password" name="pw"   />';
+							html += '<input type="text" placeholder="핸드폰 번호" class="input" name="user_phone"   />';
 							html += '</div>'
 							
-							html += '<button class="signin__btn">'
-							html += '로그인'
-							html += '</button>'
+							html += '<input type="submit" class="signin__btn" value="회원가입">'
 							html += '</form>'
 							$('#container2').html(html);
 						});
@@ -176,12 +171,6 @@
 					})
 				});
 	</script>
-
-
-
-
-
-
 
 </body>
 </html>
