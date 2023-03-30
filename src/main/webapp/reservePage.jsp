@@ -177,7 +177,7 @@
                         </div> <!---->
                     </section>
                     <div class="guest_login" style="display: block"     >
-                        <a href="dogiedogie.html"  >
+                        <a href="#" onclick = "gopopup()"   >
                             우리 아이 정보를 등록하러 가보자잇 - !
                             <br     >
                             아가 ~ 가보자 ~
@@ -271,5 +271,24 @@ style="display: none;">상단으로</button>
 
 
         <script src="assets/js/heregood.js"></script>
+        
+        <script >
+        function gopopup() {
+        	
+        	   var _width = '570';
+        	    var _height = '700';
+        	 
+        	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+        	    var _left = Math.ceil(( window.screen.width - _width )/2);
+        	    var _top = Math.ceil(( window.screen.height - _height )/2); 
+            var pop = window.open( 'dogiedogie.html', 'popup', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top,'scrollbars=yes','resizable=yes' ); 
+
+            
+			
+		}
+        
+        
+        
+        </script>
 </body>
 </html>
