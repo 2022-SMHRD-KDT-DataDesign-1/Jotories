@@ -17,8 +17,6 @@ public class InsertDogService implements Service{
 		
 		String moveURL = "";
 		
-		DogVO resultVO = null;
-		
 		String dog_name = (String)request.getParameter("dog_name");
 		String dog_gen = (String)request.getParameter("dog_gen");
 		String dog_neutcheck = (String)request.getParameter("dog_neutcheck");

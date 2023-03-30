@@ -5,5 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dogdog.db.StoreInfoMapper">
-	
+	<insert id="insertStore" parameterType="StoreVO">
+		insert into storeinfo
+		values(store_num.nextval, #{store_name}, #{store_addr}, #{store_tel}
+			 , #{store_owner}, #{user_id}, #{store_like}, #{store_type})
+	</insert>
 </mapper>
