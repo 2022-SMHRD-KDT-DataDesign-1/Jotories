@@ -5,7 +5,12 @@
 <head>
 
 <link rel="stylesheet" href="assets/css/test.css"  type="text/css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/common.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/heregood.css">
 
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -18,26 +23,67 @@
 
 <body>
 
-     
-    <div class="nav">
-        <span class="menu">
-          <div class="dropdown"  style="float:right">
-              <button class="dropdown-btn">더보기</button>
-              <div class="dropdown-submenu">
-                  <a href="#none">공지사항</a>
-                  <a href="#none">이벤트</a>
-                  <a href="#none">1:1 문의</a>
-                  <a href="#none">약관 및 정책</a>
-              </div>
-          </div>
-      </span>
-        <a href="gg.html" class="logo"><img src="assets/img/logo_w_r.png"></a>
-        <div class="nav-items">
-            <a href="#" class="nav-item">예약확인</a>
-            <a href="#" class="nav-item">훈련일지</a>
-            <a href="login.html" class="nav-item">로그인</a>
-        </div>
-    </div>
+         <!-- Wrap -->
+    <div class="wrap show">
+
+        <!-- Header -->
+        <header class="recommend_header">
+
+            <section>
+                <h1><a class="" href="Main.jsp" title="여기어때">여기어때</a></h1>
+                <button type="button" class="btn_menu nav_open ">메뉴</button>
+                <ul class="gnb_pc">
+                    <li><a href="https://www.goodchoice.kr/user/login?returnUrl=my%2FreserveList">예약내역</a></li>
+                    <li class="over">
+                        <button type="button"><span>더보기</span></button>
+                        <ul class="list_03" style="display: none; opacity: 1;">
+                            <li><a href="https://www.goodchoice.kr/more/notice">공지사항</a></li>
+                            <li><a href="https://www.goodchoice.kr/more/event">이벤트</a></li>
+                            <!-- <li><a href="https://www.goodchoice.kr/more/project">혁신 프로젝트</a></li> -->
+                            <li><a href="https://www.goodchoice.kr/more/faq">자주 묻는 질문</a></li>
+                            <li><a href="https://www.goodchoice.kr/more/inquiry">1:1 문의</a></li>
+                            <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="login.html"><span>로그인</span></a></li>
+                </ul>
+
+                <!-- Search -->
+                <div class="srch_bar">
+                    <div class="wrap_inp">
+                        <input type="text" id="keyword" placeholder="지역, 숙소명" autocomplete="off">
+                        <button type="button" class="btn_srch" style="right: 396px;">검색</button>
+                    </div>
+                    <button class="btn_cancel" onclick="srch_close()">취소</button>
+                </div>
+                <!-- //Search -->
+
+            </section>
+        </header>
+
+        <!-- Bg Dimm -->
+        <div class="bg_dimm" onclick="close_layer();">&nbsp;</div>
+        <div class="bg_dimm_prevent">&nbsp;</div>
+
+        <!-- 추천검색어 -->
+      
+
+        <!-- Mobile Menu -->
+
+        <!-- //Mobile Menu -->
+
+        <!-- CSS -->
+
+
+                <!-- Result Top -->
+
+                <!-- //Result Top -->
+
+                <!-- Sub Top -->
+                <div class="sub_top_wrap"> <!-- 페이백일때 클래스 추가 early_top -->
+                
+                </div>
+
 
 
 
@@ -92,6 +138,7 @@
   </div>
      
      <script src="assets/js/main.js"></script>
+                 <script src="assets/js/heregood.js"></script>
      
 </body>
 </html>
