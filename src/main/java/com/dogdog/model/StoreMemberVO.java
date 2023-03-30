@@ -19,4 +19,6 @@ public class StoreMemberVO {
 	@NonNull private String member_to;
 	@NonNull private String member_note;
 	private String member_enroll;
+	@NonNull private String member_name;
+	@NonNull private String user_phone;
 }
