@@ -18,10 +18,11 @@ public class AddStoreBoardService implements Service{
 		HttpSession session = request.getSession();
 		
 		int store_id = Integer.parseInt(request.getParameter("store_id"));
-		String store_title = (String)request.getParameter("store_title");
-		String store_content = (String)request.getParameter("store_content");
+		String storeboard_title = (String)request.getParameter("storeboard_title");
+		String storeboard_content = (String)request.getParameter("storeboard_content");
+		String storeboard_comment = (String)request.getParameter("storeboard_comment");
 		
-		StoreBoardVO vo = new StoreBoardVO(store_id, store_title, store_content);
+		StoreBoardVO vo = new StoreBoardVO(store_id, storeboard_title, storeboard_content, storeboard_comment);
 		StoreBoardDAO dao = new StoreBoardDAO();
 		
 		int cnt = dao.insertBoard(vo);

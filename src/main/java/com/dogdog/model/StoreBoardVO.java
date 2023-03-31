@@ -14,7 +14,8 @@ public class StoreBoardVO {
 	private int storeboard_no;
 	private String store_name;
 	@NonNull private int store_id;
-	@NonNull private String store_title;
-	@NonNull private String store_content;
-	private String store_date;
+	@NonNull private String storeboard_title;
+	@NonNull private String storeboard_content;
+	private String storeboard_date;
+	@NonNull private String storeboard_comment;
 }
