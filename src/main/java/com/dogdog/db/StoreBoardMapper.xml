@@ -8,6 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertBoard" parameterType="StoreBoardVO">
 		insert into storeboard
 		values(storeboard_num.nextval, #{store_name}, #{store_id}
-			 , #{store_title}, #{store_content}, sysdate)
+			 , #{storeboard_title}, #{storeboard_content}, sysdate, #{storeboard_comment})
 	</insert>
 </mapper>
