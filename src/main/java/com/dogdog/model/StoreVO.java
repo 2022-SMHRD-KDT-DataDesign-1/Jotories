@@ -17,7 +17,7 @@ public class StoreVO {
 	@NonNull private String store_tel;
 	@NonNull private String store_owner;
 	@NonNull private String user_id;
-	private int store_like;
+	private int store_rate;
 	@NonNull private String store_type;
-	private String store_pick;
+	private String store_pic;
 }

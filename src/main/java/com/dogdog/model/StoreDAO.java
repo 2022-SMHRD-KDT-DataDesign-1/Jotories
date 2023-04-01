@@ -27,7 +27,32 @@ public class StoreDAO {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		List<StoreVO> resultVO = sqlSession.selectList("selectTop5");
+		List<StoreVO> resultVO = sqlSession.selectList("selectTop5School");
+		
+		return (ArrayList<StoreVO>)resultVO;
+	}
+	
+	public ArrayList<StoreVO> selectTop5Hotel() {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> resultVO = sqlSession.selectList("selectTop5Hotel");
+		
+		return (ArrayList<StoreVO>)resultVO;
+	}
+	public ArrayList<StoreVO> selectTop5Hospital() {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> resultVO = sqlSession.selectList("selectTop5Hospital");
+		
+		return (ArrayList<StoreVO>)resultVO;
+	}
+	public ArrayList<StoreVO> selectTop5Salon() {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> resultVO = sqlSession.selectList("selectTop5Salon");
 		
 		return (ArrayList<StoreVO>)resultVO;
 	}
