@@ -1,3 +1,4 @@
+<%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,9 @@
 </head>
 
 <body>
-
+	<%
+		UserVO login_vo = (UserVO)session.getAttribute("resultVO");
+	%>
      
     <div class="nav">
         <span class="menu">
@@ -31,11 +34,16 @@
               </div>
           </div>
       </span>
-        <a href="gg.html" class="logo"><img src="assets/img/logo_w_r.png"></a>
+        <a href="Main.jsp" class="logo"><img src="assets/img/logo_w_r.png"></a>
         <div class="nav-items">
-            <a href="#" class="nav-item">예약확인</a>
-            <a href="#" class="nav-item">훈련일지</a>
-            <a href="login.html" class="nav-item">로그인</a>
+        	<%if (login_vo == null) {%>
+        		<a href="login.html" class="nav-item">로그인</a>
+        	<%} else {%>
+	            <a href="#" class="nav-item">예약확인</a>
+	            <a href="#" class="nav-item">훈련일지</a>
+	            <a href="MyPage.jsp" class="nav-item">내정보</a>
+	            <a href="LogoutService.do" class="nav-item">로그아웃</a>
+            <%} %>
         </div>
     </div>
 
