@@ -71,9 +71,9 @@ public class Frontcontroller extends HttpServlet {
 		//			// 게시물 삭제
 		//			service = new DeleteBoardService();
 		//			
-		//		} else if(result.equals("DeleteService.do")) {
-		//			// 회원 삭제
-		//			service = new DeleteService();
+	else if(result.equals("DeleteService.do")) {
+			// 회원 삭제
+//			service = new DeleteService();
 		//			
 		//		} else if(result.equals("UpdateService.do")) {
 		//			service = new UpdateService();
@@ -83,7 +83,7 @@ public class Frontcontroller extends HttpServlet {
 		//		}
 		//		else {
 		//			moveURL = "Main.jsp";
-		//		}
+				}
 			
 		moveURL = service.execute(request, response);
 		response.sendRedirect(moveURL);
