@@ -1,0 +1,392 @@
+@charset "UTF-8";
+
+.upback {
+    /* background-image: url("dogh.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.dogdog{
+    height: 50px;
+}
+
+.menu {
+    float: right;
+    padding-top: 12px;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.menu_bar>a {
+    text-decoration-line: none;
+    color: white;
+}
+
+.menu_bar>a:hover {
+    color: yellow;
+}
+
+.menu_bar {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 80px;
+    height: 30px;
+
+    font-size: 18px;
+
+    flex-basis: 50%;
+}
+
+.dh {
+    width: 110px;
+    padding-top: 20px;
+    padding-left: 5px;
+}
+
+.dh+span:hover {
+    color: yellowgreen;
+}
+
+.munja {
+    position: absolute;
+    top: 17%;
+    font-size: 20px;
+    color: white;
+}
+
+/* 필터 박스 */
+#floatMenu {
+    position: absolute;
+    width: 280px;
+    height: 450px;
+    left: 50px;
+    top: 290px;
+    background-color: #606060;
+    color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10%;
+}
+
+/* 초기화 */
+#reset {
+    width: 80px;
+    height: 30px;
+    background-color: white;
+    color: #ffdba7;
+    border-radius: 10%;
+    border: 1px;
+    box-shadow: none;
+    margin-top: 3%;
+}
+
+/* 적용 */
+#submit {
+    width: 80px;
+    height: 30px;
+    background-color: #ffdba7;
+    color: white;
+    border-radius: 10%;
+    border: 1px;
+    box-shadow: none;
+}
+
+/* 예약가능 */
+#possible {
+    margin-bottom: 3%;
+}
+
+/* 인원 증가 */
+.number_human {
+    margin-right: 29.2%;
+}
+
+.input-number-group {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.input-number-group input[type=number]::-webkit-inner-spin-button,
+.input-number-group input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* 숫자와 양 옆의 - + 의 위치를 조절해주는 곳 */
+.input-number-group .input-group-button {
+    line-height: calc(80px/2 - 15px);
+}
+
+/* 숫자와 양 옆의 - + 의 간격을 조절해주는 곳 */
+.input-number-group .input-number {
+    width: 50px;
+    padding: 0 12px;
+    text-align: center;
+    outline: none;
+    display: block;
+    margin: 0;
+}
+
+/* 숫자의 css */
+.input-number-group .input-number,
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+    border: 1px;
+    height: 30px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 10%;
+    color: #ffdba7;
+    background-color: #606060;
+    font-size: 18px;
+}
+
+/* - + 의 css */
+.input-number-group .input-number-decrement,
+.input-number-group .input-number-increment {
+    display: inline-block;
+    border: 1px;
+    width: 40px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.input-number-group .input-number-decrement {
+    margin-right: 0.3rem;
+}
+
+.input-number-group .input-number-increment {
+    margin-left: 0.3rem;
+}
+
+#price {
+    margin-top: 5%;
+    width: 277px;
+
+}
+
+/* 가격 정하는 css */
+.range-slider {
+    height: 5px;
+    position: relative;
+    background-color: #e1e9f6;
+    border-radius: 2px;
+    margin-left: 3%;
+}
+
+.range-selected {
+    height: 100%;
+    left: 1%;
+    right: 1%;
+    position: absolute;
+    border-radius: 5px;
+    background-color: #1b53c0;
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-input input {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: -7px;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.range-input input::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 3px solid #1b53c0;
+    background-color: #fff;
+    pointer-events: auto;
+    -webkit-appearance: none;
+}
+
+/* div태그를 flex 사용하여 배치 */
+.range-price {
+    margin: 30px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* input태그와 글자 사이의 간격 */
+.range-price input {
+    width: 15px;
+}
+
+/* 가격 min div 태그 */
+.left_min {
+    /* 가격 간의 간격 및 자동 줄바꿈 제거 */
+    margin-right: 30%;
+    white-space: nowrap;
+}
+
+/* 가격 max div 태그 */
+.right_max {
+    /* 가격 간의 간격 및 자동 줄바꿈 제거 */
+    margin-left: 30%;
+    white-space: nowrap;
+}
+
+/* 가격 min input 태그 */
+.left_min>input {
+    border: none;
+    background-color: #606060;
+    color: white;
+}
+
+/* 가격 max 값 */
+.right_max>input {
+    border: none;
+    background-color: #606060;
+    color: white;
+    
+}
+
+/* 오른쪽 */
+
+#right {
+    position:absolute;
+    left: 40%;
+    right: 10%;
+    top: 250px;
+}
+
+.hotels {
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+.hotels_name {
+    text-align: left;
+
+    flex-basis: 50%;
+}
+
+a>img {
+    width: 180px;
+    padding-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 8%;
+}
+
+.up_name {
+    font-size: 18px;
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 10px;
+    white-space: nowrap;
+}
+
+.down_price {
+    font-size: 18px;
+    position: absolute;
+    white-space: nowrap;
+}
+
+#hotel1 {
+    top: 23%;
+    left: 37%;
+}
+
+#hotel2 {
+    top: 23%;
+    left: 87%;
+}
+
+#hotel3 {
+    top: 57%;
+    left: 37%;
+}
+
+#hotel4 {
+    top: 57%;
+    left: 87%;
+}
+
+#hotel5 {
+    top: 89%;
+    left: 37%;
+}
+
+#hotel6 {
+    top: 89%;
+    left: 87%;
+}
+
+@media screen and (max-width:1100px) {
+    .hotels_name {
+        flex-basis: 70%;
+    }
+
+    #hotel1 {
+        top: 12%;
+        left: 85%;
+    }
+
+    #hotel2 {
+        top: 29%;
+        left: 85%;
+    }
+
+    #hotel3 {
+        top: 45%;
+        left: 85%;
+    }
+
+    #hotel4 {
+        top: 62%;
+        left: 85%;
+    }
+
+    #hotel5 {
+        top: 78%;
+        left: 85%;
+    }
+
+    #hotel6 {
+        top: 95%;
+        left: 85%;
+    }
+
+}
+
+@media screen and (max-width:645px) {
+    #hid1{display:none;}
+}
+
+@media screen and (max-width:535px) {
+    #hid{display:none;}
+}

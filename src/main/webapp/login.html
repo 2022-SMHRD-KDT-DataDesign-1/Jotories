@@ -1,143 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="assets/css/login.css"  type="text/css" />
-  
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/login.css" type="text/css" />
+
+<style type="text/css">
+
+
+
+</style>
+
 </head>
 <body>
-   
-
-
-  <div class="logo_c">
-    <a href="Main.jsp"><img src="assets/img/logo_main.png" alt=""></a>
-  </div>
+	<div class="logo_c">
+		<a href="Main.jsp"><img src="assets/img/logo_main.png" alt=""></a>
+	</div>
 
 
 
-<div class="container">
-  
-  <!-- Heading -->
-  <h3>로그인</h3>
-  
-  <!-- Links -->
-  <ul class="links">
-    <li>
-      <a href="#" id="signin">로그인</a>
-    </li>
-    <li>
-      <a href="#" id="signup">회원가입</a>
-    </li>
-    <li>
-      <a href="#" id="reset">RESET</a>
-    </li>
-  </ul>
-  
-  <!-- Form -->
-  <form  action="" method="post">
-    <!-- email input -->
-    <div class="first-input input__block first-input__block">
-       <input type="text" placeholder="아이디" class="input" id="email"   />
-    </div>
-    <!-- password input -->
-    <div class="input__block">
-       <input type="password" placeholder="비밀번호" class="input" id="password"    />
-    </div>
-    <!-- repeat password input -->
-    <div class="input__block">
-       <input type="password" placeholder="비밀번호 재확인" class="input repeat__password"    />
-    </div>
-        <!-- 닉네임 -->
-    
-    <div class="input__block">
-      <input type="text" placeholder="닉네임" class="input repeat__password"     />
-   </div>
-           <!-- 이메일 -->
-   
-   <div class="input__block">
-    <input type="email" placeholder="이메일" class="input repeat__password"     />
- </div>
-         <!-- 주소 -->
- 
- <div class="input__block">
-  <input type="text" placeholder="주소" class="input repeat__password"    />
-</div>
-        <!-- 핸드폰 -->
+	<div class="container">
 
-<div class="input__block">
-  <input type="text" placeholder="핸드폰 번호" class="input repeat__password"    />
-</div>
-    <!-- sign in button -->
-    <button class="signin__btn">
-      로그인
-    </button>
-  </form>
+		<!-- Heading -->
+		<h3>로그인</h3>
 
-</div>
+		<!-- Links -->
+		<ul class="links">
+			<li><a href="#" id="signin">로그인</a></li>
+			<li><a href="#" id="signup">회원가입</a></li>
+			<li><a href="#" id="reset">RESET</a></li>
+		</ul>
+		<div id="container2">
+		
+		
+		</div>
+
+
+	</div>
+	
+
+	
 
 
 
 
 
+	<script>
+	var reHtml = "";
+	reHtml += "<form action='LoginService.do' method='post'>";
+	reHtml += '<div class="first-input input__block first-input__block">';
+	reHtml += '<input type="text" placeholder="아이디" class="input" id="email" name="user_id"  />';
+	reHtml += "</div>";
+	reHtml += '<div class="input__block">';
+	reHtml += '<input type="password" placeholder="비밀번호" class="input" id="password" name="user_pw"   />';
+	reHtml += '</div>'
+	reHtml += '<button class="signin__btn">'
+	reHtml += '로그인'
+	reHtml += '</button>'
+	reHtml += '</form>'
 
-    <script>
+	$('#container2').html(reHtml);
+	
+	
+		$('#signin')
+				.click(
+						function() {
+							// 로그인
+							var html = "";
+							html += "<form action='LoginService.do' method='post'>";
+							html += '<div class="first-input input__block first-input__block">';
+							html += '<input type="text" placeholder="아이디" class="input" id="email" name="user_id"  />';
+							html += "</div>";
+							html += '<div class="input__block">';
+							html += '<input type="password" placeholder="비밀번호" class="input" id="password" name="user_pw"   />';
+							html += '</div>'
+							html += '<button class="signin__btn">'
+							html += '로그인'
+							html += '</button>'
+							html += '</form>'
 
-    $(document).ready(function(){
-   let signup = $(".links").find("li").find("#signup") ; 
-   let signin = $(".links").find("li").find("#signin") ;
-   let reset  = $(".links").find("li").find("#reset")  ; 
-   let first_input = $("form").find(".first-input");
-   let hidden_input = $("form").find(".input__block").find(".repeat__password");
-   let signin_btn  = $("form").find(".signin__btn");
- 
-   //----------- sign up ---------------------
-   signup.on("click",function(e){
-     e.preventDefault();
-     $(this).parent().parent().siblings("h3").text("회원가입");
-     $(this).parent().css("opacity","1");
-     $(this).parent().siblings().css("opacity",".6");
-     first_input.removeClass("first-input__block").addClass("signup-input__block");
-     hidden_input.css({
-       "opacity" : "1",
-       "display" : "block"
-     });
-     signin_btn.text("회원가입");
-   });
-   
- 
-  //----------- sign in ---------------------
-  signin.on("click",function(e){
-     e.preventDefault();
-     $(this).parent().parent().siblings("h3").text("로그인");
-     $(this).parent().css("opacity","1");
-     $(this).parent().siblings().css("opacity",".6");
-     first_input.addClass("first-input__block")
-       .removeClass("signup-input__block");
-     hidden_input.css({
-       "opacity" : "0",
-       "display" : "none"
-     });
-     signin_btn.text("로그인");
-   });
-  
-  //----------- reset ---------------------
-  reset.on("click",function(e){
-    e.preventDefault();
-    $(this).parent().parent().siblings("form")
-    .find(".input__block").find(".input").val("");
-  })
-});
-    </script>
+							$('#container2').html(html);
 
+						});
+		$('#signup')
+				.click(
+						function() {
+							// 회원가입
+							var html = "";
+							html += "<form action='JoinService.do' method='post'>";
+							html += '<div class="first-input input__block first-input__block">';
+							html += '<input type="text" placeholder="아이디" class="input" name="user_id"  />';
+							html += "</div>";
+							html += '<div class="input__block">';
+							html += '<input type="password" placeholder="비밀번호" class="input" name="user_pw"   />';
+							html += '</div>'
+						    html += '<div class="input__block">';
+							html += '<input type="password" placeholder="비밀번호 재확인" class="input" name="user_pwcheck"   />';
+							html += '</div>'
+							
+							html += '<div class="input__block">';
+							html += '<input type="text" placeholder="닉네임" class="input" name="user_nick"   />';
+							html += '</div>'
+							
+							html += '<div class="input__block">';
+							html += '<input type="email"  placeholder="이메일" class="input" name="user_email"   />';
+							html += '</div>'
+							
+							html += '<div class="input__block">';
+							html += '<input type="text" placeholder="주소" class="input" name="user_addr"   />';
+							html += '</div>'
+							
+							html += '<div class="input__block">';
+							html += '<input type="text" placeholder="핸드폰 번호" class="input" name="user_phone"   />';
+							html += '</div>'
+							
+							html += '<input type="submit" class="signin__btn" value="회원가입">'
+							html += '</form>'
+							$('#container2').html(html);
+						});
 
+		$(document).ready(
+				function() {
+					let signup = $(".links").find("li").find("#signup");
+					let signin = $(".links").find("li").find("#signin");
+					let reset = $(".links").find("li").find("#reset");
+					let first_input = $("form").find(".first-input");
+					let hidden_input = $("form").find(".input__block").find(
+							".repeat__password");
+					let signin_btn = $("form").find(".signin__btn");
 
+					//----------- sign up ---------------------
+					signup.on("click", function(e) {
+						e.preventDefault();
+						$(this).parent().parent().siblings("h3").text("회원가입");
+						$(this).parent().css("opacity", "1");
+						$(this).parent().siblings().css("opacity", ".6");
+						first_input.removeClass("first-input__block").addClass(
+								"signup-input__block");
+						hidden_input.css({
+							"opacity" : "1",
+							"display" : "block"
+						});
+						signin_btn.text("회원가입");
+					});
 
+					//----------- sign in ---------------------
+					signin.on("click", function(e) {
+						e.preventDefault();
+						$(this).parent().parent().siblings("h3").text("로그인");
+						$(this).parent().css("opacity", "1");
+						$(this).parent().siblings().css("opacity", ".6");
+						first_input.addClass("first-input__block").removeClass(
+								"signup-input__block");
+						hidden_input.css({
+							"opacity" : "0",
+							"display" : "none"
+						});
+						signin_btn.text("로그인");
+					});
 
-
+					//----------- reset ---------------------
+					reset.on("click", function(e) {
+						e.preventDefault();
+						$(this).parent().parent().siblings("form").find(
+								".input__block").find(".input").val("");
+					})
+				});
+	</script>
 
 </body>
 </html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogdog.db.StoreReviewMapper">
+	<insert id="insertReview" parameterType="StoreReviewVO">
+		insert into storereview
+		values(review_num.nextval, #{user_id}, #{store_id}
+		   , #{review_content}, #{review_date}, #{review_rate})
+	</insert>
+</mapper>

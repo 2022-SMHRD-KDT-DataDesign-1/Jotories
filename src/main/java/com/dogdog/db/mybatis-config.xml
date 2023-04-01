@@ -13,17 +13,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<typeAlias type="com.dogdog.model.StoreBoardVO" alias="StoreBoardVO"/>
 		<typeAlias type="com.dogdog.model.StoreVO" alias="StoreVO"/>
 		<typeAlias type="com.dogdog.model.StoreMemberVO" alias="StoreMemberVO"/>
-		<typeAlias type="com.dogdog.model.StroeReviewVO" alias="StroeReviewVO"/>
+		<typeAlias type="com.dogdog.model.StoreReviewVO" alias="StoreReviewVO"/>
 	</typeAliases>
 	
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
-        <property name="driver" value="${driver}"/>
+        <!-- <property name="driver" value="${driver}"/>
         <property name="url" value="${url}"/>
         <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
+        <property name="password" value="${password}"/> -->
+        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@project-db-stu3.ddns.net:1525:xe"/>
+        <property name="username" value="campus_d_230322_1"/>
+        <property name="password" value="smhrd1"/>
       </dataSource>
     </environment>
   </environments>
@@ -32,10 +36,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<mappers>
 		<mapper resource="com/dogdog/db/UserInfoMapper.xml"/>
 		<mapper resource="com/dogdog/db/DogInfoMapper.xml"/>
-		<mapper resource="com/dogdog/db/StroeBoardMapper.xml"/>
-		<mapper resource="com/dogdog/db/StroeInfoMapper.xml"/>
-		<mapper resource="com/dogdog/db/StroeMemberMapper.xml"/>
-		<mapper resource="com/dogdog/db/StroeReviewMapper.xml"/>
+		<mapper resource="com/dogdog/db/StoreBoardMapper.xml"/>
+		<mapper resource="com/dogdog/db/StoreInfoMapper.xml"/>
+		<mapper resource="com/dogdog/db/StoreMemberMapper.xml"/>
+		<mapper resource="com/dogdog/db/StoreReviewMapper.xml"/>
 	</mappers>
 	
 </configuration>

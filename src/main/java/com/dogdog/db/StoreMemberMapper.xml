@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogdog.db.StoreMemberMapper">
+	<!-- 예약자 등록 -->
+	<insert id="insertMember" parameterType="StoreMemberVO">
+		insert into storemember
+		values(member_num.nextval, #{store_id}, #{user_id}, #{dog_no}
+			 , #{member_from}, #{member_to}, #{member_note}, sysdate)
+	</insert>
+	
+</mapper>
