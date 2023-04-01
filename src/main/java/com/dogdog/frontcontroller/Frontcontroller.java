@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dogdog.command.Service;
 import com.dogdog.controller.JoinService;
 import com.dogdog.controller.LoginService;
+import com.dogdog.controller.LogoutService;
 
 
 /**
@@ -57,13 +58,12 @@ public class Frontcontroller extends HttpServlet {
 			// 회원가입 기능
 			service = new JoinService();
 			
-		//		} else if(result.equals("LogoutService.do")) {
-		//			// 로그아웃 기능
-		//			
-		//			service = new LogoutService();
-		//			
-		//			
-		//		} else if(result.equals("BoardService.do")) {
+		} else if(result.equals("LogoutService.do")) {
+			// 로그아웃 기능
+			service = new LogoutService();
+			
+		} 
+//				else if(result.equals("BoardService.do")) {
 		//			// 게시판 조회
 		//			service = new BoardService();
 		//			
@@ -71,9 +71,9 @@ public class Frontcontroller extends HttpServlet {
 		//			// 게시물 삭제
 		//			service = new DeleteBoardService();
 		//			
-		//		} else if(result.equals("DeleteService.do")) {
-		//			// 회원 삭제
-		//			service = new DeleteService();
+	else if(result.equals("DeleteService.do")) {
+			// 회원 삭제
+//			service = new DeleteService();
 		//			
 		//		} else if(result.equals("UpdateService.do")) {
 		//			service = new UpdateService();
@@ -83,11 +83,8 @@ public class Frontcontroller extends HttpServlet {
 		//		}
 		//		else {
 		//			moveURL = "Main.jsp";
-		//		}
+				}
 			
-			
-	
-		}
 		moveURL = service.execute(request, response);
 		response.sendRedirect(moveURL);
 

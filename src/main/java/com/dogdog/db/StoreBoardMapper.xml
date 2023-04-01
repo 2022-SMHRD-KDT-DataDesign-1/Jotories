@@ -5,5 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dogdog.db.StoreBoardMapper">
-	
+	<insert id="insertBoard" parameterType="StoreBoardVO">
+		insert into storeboard
+		values(storeboard_num.nextval, #{store_name}, #{store_id}
+			 , #{storeboard_title}, #{storeboard_content}, sysdate, #{storeboard_comment})
+	</insert>
 </mapper>

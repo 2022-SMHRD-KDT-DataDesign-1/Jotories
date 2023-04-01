@@ -5,5 +5,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.dogdog.db.StoreInfoMapper">
+	<insert id="insertStore" parameterType="StoreVO">
+		insert into storeinfo
+		values(store_num.nextval, #{store_name}, #{store_addr}, #{store_tel}
+			 , #{store_owner}, #{user_id}, #{store_rate}, #{store_type}, #{store_pic})
+	</insert>
+	
+	<select id="selectTop5School" resultType="StoreVO">
+		<![CDATA[  
+		select store_id, store_name, store_addr, store_tel, store_owner, user_id, store_rate, store_type, a.*
+		  from (
+		  		select *
+		  		from storeinfo
+		  		where store_type = '유치원'
+		  		order by store_rate desc
+		  ) a
+		  where rownum <= 5
+		]]>
+	</select>
+	
+	<select id="selectTop5Hotel" resultType="StoreVO">
+		<![CDATA[  
+		select store_id, store_name, store_addr, store_tel, store_owner, user_id, store_rate, store_type, a.*
+		  from (
+		  		select *
+		  		from storeinfo
+		  		where store_type = '호텔'
+		  		order by store_rate desc
+		  ) a
+		  where rownum <= 5
+		]]>
+	</select>
+	
+	<select id="selectTop5Hospital" resultType="StoreVO">
+		<![CDATA[  
+		select store_id, store_name, store_addr, store_tel, store_owner, user_id, store_rate, store_type, a.*
+		  from (
+		  		select *
+		  		from storeinfo
+		  		where store_type = '병원'
+		  		order by store_rate desc
+		  ) a
+		  where rownum <= 5
+		]]>
+	</select>
+	
+	<select id="selectTop5Salon" resultType="StoreVO">
+		<![CDATA[  
+		select store_id, store_name, store_addr, store_tel, store_owner, user_id, store_rate, store_type, a.*
+		  from (
+		  		select *
+		  		from storeinfo
+		  		where store_type = '미용'
+		  		order by store_rate desc
+		  ) a
+		  where rownum <= 5
+		]]>
+	</select>
 	
 </mapper>

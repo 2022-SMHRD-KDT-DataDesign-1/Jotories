@@ -20,8 +20,106 @@
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	
+	<link rel="stylesheet" type="text/css" href="assets/css/common.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/heregood.css">
+	
 </head>
 <body>
+
+       <!-- Google Tag Manager (noscript) -->
+
+
+    <!-- Wrap -->
+    <div class="wrap show">
+
+        <!-- Header -->
+        <header class="recommend_header">
+
+            <section>
+                <h1><a class="" href="Main.jsp" title="여기어때">여기어때</a></h1>
+                <button type="button" class="btn_menu nav_open ">메뉴</button>
+                <ul class="gnb_pc">
+                    <li><a href="https://www.goodchoice.kr/user/login?returnUrl=my%2FreserveList">예약내역</a></li>
+                    <li class="over">
+                        <button type="button"><span>더보기</span></button>
+                        <ul class="list_03" style="display: none; opacity: 1;">
+                            <li><a href="https://www.goodchoice.kr/more/notice">공지사항</a></li>
+                            <li><a href="https://www.goodchoice.kr/more/event">이벤트</a></li>
+                            <!-- <li><a href="https://www.goodchoice.kr/more/project">혁신 프로젝트</a></li> -->
+                            <li><a href="https://www.goodchoice.kr/more/faq">자주 묻는 질문</a></li>
+                            <li><a href="https://www.goodchoice.kr/more/inquiry">1:1 문의</a></li>
+                            <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="login.html"><span>로그인</span></a></li>
+                </ul>
+
+                <!-- Search -->
+                <div class="srch_bar">
+                    <div class="wrap_inp">
+                        <input type="text" id="keyword" placeholder="지역, 숙소명" autocomplete="off">
+                        <button type="button" class="btn_srch" style="right: 396px;">검색</button>
+                    </div>
+                    <button class="btn_cancel" onclick="srch_close()">취소</button>
+                </div>
+                <!-- //Search -->
+
+            </section>
+        </header>
+
+        <!-- Bg Dimm -->
+        <div class="bg_dimm" onclick="close_layer();">&nbsp;</div>
+        <div class="bg_dimm_prevent">&nbsp;</div>
+
+        <!-- 추천검색어 -->
+      
+
+        <!-- Mobile Menu -->
+
+        <!-- //Mobile Menu -->
+
+        <!-- CSS -->
+
+
+                <!-- Result Top -->
+
+                <!-- //Result Top -->
+
+                <!-- Sub Top -->
+                <div class="sub_top_wrap"> <!-- 페이백일때 클래스 추가 early_top -->
+                    <div class="sub_top bg_kong_1">
+                        <h2>펜션</h2>
+                        <div class="area">
+                            <div class="btn_area align_vertical"><span>경기/인천</span>양평/용문</div>
+                            <div class="btn_date"><span class="date_view"><b>3.30 ~
+                                        3.31</b></span></div>
+                        </div>
+                        <span class="keyword"></span>
+                    </div>
+                </div>
+                <!-- //Sub Top -->
+
+                <!-- Datepicker -->
+
+
+                <!-- Content  -->
+                    <!-- Area -->
+
+                    <!-- //Area -->
+
+                    <!-- Filter -->
+                 
+                    <!-- //Filter -->
+
+                    <!-- List -->
+             
+            <!-- //Content  -->
+
+      
+
+        </div>
+
 
 
 
@@ -134,100 +232,9 @@
 		</div>
 	</div>
 
-	<script>
+      <script src="assets/js/listPage.js"></script>
+            <script src="assets/js/heregood.js"></script>
+      
 
-        // 스크롤을 하면 따라 오게 하는 스크립트
-        $(document).ready(function () {
-
-            // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-            var floatPosition = parseInt($("#floatMenu").css('top'));
-            // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
-
-            $(window).scroll(function () {
-                // 현재 스크롤 위치를 가져온다.
-                var scrollTop = $(window).scrollTop();
-                var newPosition = scrollTop + floatPosition + "px";
-
-                /* 애니메이션 없이 바로 따라감
-                 $("#floatMenu").css('top', newPosition);
-                 */
-
-                $("#floatMenu").stop().animate({
-                    "top": newPosition
-                }, 500);
-
-            }).scroll();
-        });
-
-        // 기간을 선택할 수 있게 하는 스크립트
-        $(function () {
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
-            }, function (start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
-        });
-
-        // 인원 증가 스크립트
-        $('.input-number-increment').click(function () {
-            var $input = $(this).parents('.input-number-group').find('.input-number');
-            var val = parseInt($input.val());
-            $input.val(val + 1);
-        });
-
-        // 인원 감소 스크립트
-        $('.input-number-decrement').click(function () {
-            var $input = $(this).parents('.input-number-group').find('.input-number');
-            var val = parseInt($input.val());
-            if (val <= 1) {
-                val = 1;
-                $input.val(val);
-            } else {
-                $input.val(val - 1);
-            }
-        });
-
-        // 가격 정하는 스크립트
-        let rangeMin = 1;
-        const range = document.querySelector(".range-selected");
-        const rangeInput = document.querySelectorAll(".range-input input");
-        const rangePrice = document.querySelectorAll(".range-price input");
-
-        rangeInput.forEach((input) => {
-            input.addEventListener("input", (e) => {
-                let minRange = parseInt(rangeInput[0].value);
-                let maxRange = parseInt(rangeInput[1].value);
-                if (maxRange - minRange < rangeMin) {
-                    if (e.target.className === "min") {
-                        rangeInput[0].value = maxRange - rangeMin;
-                    } else {
-                        rangeInput[1].value = minRange + rangeMin;
-                    }
-                } else {
-                    rangePrice[0].value = minRange;
-                    rangePrice[1].value = maxRange;
-                    range.style.left = (minRange / rangeInput[0].max) * 100 + "%";
-                    range.style.right = 100 - (maxRange / rangeInput[1].max) * 100 + "%";
-                }
-            });
-        });
-
-        rangePrice.forEach((input) => {
-            input.addEventListener("input", (e) => {
-                let minPrice = rangePrice[0].value;
-                let maxPrice = rangePrice[1].value;
-                if (maxPrice - minPrice >= rangeMin && maxPrice <= rangeInput[1].max) {
-                    if (e.target.className === "min") {
-                        rangeInput[0].value = minPrice;
-                        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
-                    } else {
-                        rangeInput[1].value = maxPrice;
-                        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
-                    }
-                }
-            });
-        });
-
-    </script>
 </body>
 </html>
