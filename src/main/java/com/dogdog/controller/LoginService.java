@@ -18,13 +18,10 @@ public class LoginService implements Service{
 		String user_id = (String)request.getParameter("user_id");
 		String user_pw = (String)request.getParameter("user_pw");
 		
-		System.out.println("들어오니1");
 		
 		UserVO vo = new UserVO(user_id, user_pw);
 		UserDAO dao = new UserDAO();
-		System.out.println("들어오니2");
 		resultVO = dao.selectUser(vo);
-		System.out.println("들어오니3");
 		System.out.println(resultVO);
 		if(resultVO != null) {
 			System.out.println("로그인 성공");
