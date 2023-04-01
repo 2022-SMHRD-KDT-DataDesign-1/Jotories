@@ -1,3 +1,7 @@
+<%@page import="com.dogdog.model.StoreVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dogdog.model.StoreDAO"%>
+<%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,8 +26,10 @@
 </head>
 
 <body>
+    <% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
 
          <!-- Wrap -->
+    <!-- <div class="wrap show" style="background-color: #fafafa !important;"> -->
     <div class="wrap show">
 
         <!-- Header -->
@@ -45,7 +51,9 @@
                             <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
                         </ul>
                     </li>
-                    <li><a href="login.html"><span>로그인</span></a></li>
+                    <% String updateLogout = "<li><a href='mypage.jsp'><span>마이페이지</span></a></li>" + "<li><a href='LogoutService.do'><span>로그아웃</span></a></li>";%>
+					<%= resultVO != null ? updateLogout : "<li><a href='login.html'><span>로그인</span></a></li>" %>
+                    
                 </ul>
 
                 <!-- Search -->
@@ -90,13 +98,13 @@
     <div class="outer">
         <div class="inner-list">
           <div class="inner">
-            <a href="ex01_board.html"><img class="imgs" src="assets/img/dd.png" alt=""></a>
+            <a href="ex01_board.html"><img class="imgs" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221020_189%2F1666232009262sSkLY_JPEG%2FIMG_6229_Original.jpg" alt=""></a>
           </div>
           <div class="inner">
-            <a href="ex02_myPage1.html"><img class="imgs" src="assets/img/j_p.png" alt=""></a>
+            <a href="ex02_myPage1.html"><img class="imgs" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221020_241%2F16662320088510dTJo_JPEG%2FIMG_4963_Original.jpg" alt=""></a>
           </div>
           <div class="inner">
-            <a href="ex03_myPage2.html"><img class="imgs" src="assets/img/pic.jfif" alt=""></a>
+            <a href="ex03_myPage2.html"><img class="imgs" src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221020_82%2F1666232007597CaN81_JPEG%2FIMG_4802_Original.jpg" alt=""></a>
           </div>
         </div>
       </div>
@@ -109,14 +117,16 @@
 
      <div class="main_link">
         <ul class="main_link_items">
-          <li><a href="listPage.jsp" menu-link="1"><span class="ico_01">&nbsp;</span><p>강아지 유치원</p></a></li>
-          <li><a href="listPage.jsp" menu-link="2"><span class="ico_02">&nbsp;</span><p>강아지 호텔</p></a></li>
-          <li><a href="listPage.jsp" menu-link="3"><span class="ico_03">&nbsp;</span><p>강아지 병원</p></a></li>
-          <li><a href="listPage.jsp" menu-link="6"><span class="ico_04">&nbsp;</span><p>강이지 미용실</p></a></li>
+          <li><a href="listPage.jsp" menu-link="1"><span class="ico_01">&nbsp;</span><p>유치원</p></a></li>
+          <li><a href="listPage.jsp" menu-link="2"><span class="ico_02">&nbsp;</span><p>호텔</p></a></li>
+          <li><a href="listPage.jsp" menu-link="3"><span class="ico_03">&nbsp;</span><p>병원</p></a></li>
+          <li><a href="listPage.jsp" menu-link="6"><span class="ico_04">&nbsp;</span><p>미용실</p></a></li>
         </ul>
       </div>
-
-
+<%-- <% 
+StoreDAO storeDao = new StoreDAO();
+ArrayList<StoreVO> schoolTop5List = storeDao.selectTop5School(); %> --%>
+		
       <div class="top5_1">
         <h1>유치원 인기순위</h1>
       </div>

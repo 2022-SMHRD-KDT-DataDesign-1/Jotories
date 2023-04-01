@@ -15,6 +15,6 @@ public class StoreReviewVO {
 	@NonNull private String user_id;
 	@NonNull private int store_id;
 	@NonNull private String review_content;
-	@NonNull private String review_likecheck;
 	@NonNull private String review_date;
+	@NonNull private double review_rate;
 }

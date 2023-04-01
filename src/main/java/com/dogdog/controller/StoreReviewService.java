@@ -20,10 +20,10 @@ public class StoreReviewService implements Service{
 		String user_id = (String)session.getAttribute("user_id");		
 		int store_id = Integer.parseInt(request.getParameter("store_id"));
 		String review_content = request.getParameter("review_content");
-		String review_likecheck = request.getParameter("review_likecheck");
 		String review_date = request.getParameter("review_date");
+		double review_rate = Double.parseDouble(request.getParameter("review_rate"));
 		
-		StoreReviewVO vo = new StoreReviewVO(user_id, store_id, review_content, review_likecheck, review_date);
+		StoreReviewVO vo = new StoreReviewVO(user_id, store_id, review_content, review_date, review_rate);
 		StoreReviewDAO dao = new StoreReviewDAO();
 		
 		int cnt = dao.insertReview(vo);

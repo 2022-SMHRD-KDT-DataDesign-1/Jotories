@@ -10,4 +10,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(store_num.nextval, #{store_name}, #{store_addr}, #{store_tel}
 			 , #{store_owner}, #{user_id}, #{store_like}, #{store_type})
 	</insert>
+	
+	<select id="selectTop5School" resultType="StoreVO">
+		<![CDATA[  
+		select store_id, store_name, store_addr, store_tel, store_owner, user_id, store_like, store_type, a.*
+		  from (
+		  		select *
+		  		from storeinfo
+		  		where store_type = 'school'
+		  		order by store_like desc
+		  ) a
+		  where rownum <= 5;
+		]]>
+	</select>
 </mapper>

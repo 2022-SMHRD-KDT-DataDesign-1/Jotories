@@ -1,9 +1,7 @@
 @charset "UTF-8";
 body{
-	    color: rgba(0,0,0,0.87);
-	        background: rgb(253,253,253);
-	    
-	
+	    color: #000000DE;
+	    background: #000000;	
 }
 
 
@@ -60,31 +58,36 @@ text-align: center;
   padding-top: 100px;
     
     height: 600px;
-    width: 800px;
+    width: 900px;
     margin: 0 auto;
       overflow-x: hidden;
 }
 
 .inner-list {
   display: flex;
-  transition: .8s ease-out;
+  transition: 2.5s ease-out;
   height: 100%;
-  height: 500px;
-  width: 800px;
+  /* height: 500px; */
+  width: 900px;
 }
 
 .inner {
   height: 500px;
-  width: 800px;
-
+  width: 900px;
+  overflow: hidden;
 }
 
 .button-list {
   text-align: center;
+  padding: 10px;
+  background-color: snow;
 }
 .imgs{
-    height: 500px;
-  width: 800px;
+    /* height: 500px; */
+  width: 110%;
+  top: 10%;
+  left: 10%;
+  transform: translate(-10%, -10%);
 }
 a {
     color : black;
@@ -166,8 +169,10 @@ text-align: center;
     border: 0;
     box-sizing: border-box;
     overflow: hidden;
-    padding: 32px 0 29px 41px;
-    background: rgb(253,253,253);
+    padding: 50px 50px 50px 50px;
+    /* padding-top:100px; */
+    /* background: rgb(253,253,253); */
+    background-color: snow !important;
     display: flex;
 
 
@@ -251,10 +256,10 @@ align-items: center;
   
   /* 보여줄 구간의 높이와 넓이 설정 */
   #slideShow{
-  border-top : 1px solid black;
+  /* border-top : 1px solid black;
 	  border-bottom : 1px solid black;
 	  border-right : 1px solid black;
-	  border-left : 1px solid black;
+	  border-left : 1px solid black; */
         display: flex;
 
 

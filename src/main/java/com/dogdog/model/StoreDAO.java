@@ -1,5 +1,8 @@
 package com.dogdog.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -18,5 +21,14 @@ public class StoreDAO {
 		sqlSession.close();
 		
 		return cnt;
+	}
+	
+	public ArrayList<StoreVO> selectTop5School() {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> resultVO = sqlSession.selectList("selectTop5");
+		
+		return (ArrayList<StoreVO>)resultVO;
 	}
 }

@@ -19,4 +19,5 @@ public class StoreVO {
 	@NonNull private String user_id;
 	private int store_like;
 	@NonNull private String store_type;
+	private String store_pick;
 }

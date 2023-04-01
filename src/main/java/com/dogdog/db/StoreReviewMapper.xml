@@ -8,6 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertReview" parameterType="StoreReviewVO">
 		insert into storereview
 		values(review_num.nextval, #{user_id}, #{store_id}
-		   , #{review_content}, #{review_likecheck}, #{review_date})
+		   , #{review_content}, #{review_date}, #{review_rate})
 	</insert>
 </mapper>
