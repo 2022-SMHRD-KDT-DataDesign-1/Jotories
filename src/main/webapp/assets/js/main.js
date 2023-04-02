@@ -59,38 +59,116 @@ let interval = getInterval(); // interval 등록
 // 슬라이드 배너 부분
 
 
-const slides = document.querySelector('.slides'); //전체 슬라이드 컨테이너
+const slides = document.querySelectorAll('.slides'); //전체 슬라이드 컨테이너
 const slideImg = document.querySelectorAll('.slides li'); //모든 슬라이드들
-let currentIdx = 0; //현재 슬라이드 index
-const slideCount = slideImg.length; // 슬라이드 개수
-const prev = document.querySelector('.prev'); //이전 버튼
-const next = document.querySelector('.next'); //다음 버튼
-const slideWidth = 300; //한개의 슬라이드 넓이
-const slideMargin = 50; //슬라이드간의 margin 값
+let currentIdx = [0, 0, 0, 0]; //현재 슬라이드 index
+const slideCount = 3; // 슬라이드 개수
+const prev = document.querySelectorAll('.prev'); //이전 버튼
+const next = document.querySelectorAll('.next'); //다음 버튼
+const slideWidth = 1800; //한개의 슬라이드 넓이
+const slideMargin = 10; //슬라이드간의 margin 값
 
 //전체 슬라이드 컨테이너 넓이 설정
-slides.style.width = (slideWidth) * slideCount + 'px';
 
-function moveSlide(num) {
-  slides.style.left = -num * 400 + 'px';
-  currentIdx = num;
+slides[0].style.width = slideWidth + 'px';
+
+function moveSlide0(num) {
+  slides[0].style.left = -num * 400 + 'px';
+  currentIdx[1] = num;
 }
 
-prev.addEventListener('click', function () {
+prev[0].addEventListener('click', function () {
   /*첫 번째 슬라이드로 표시 됐을때는 
   이전 버튼 눌러도 아무런 반응 없게 하기 위해 
   currentIdx !==0일때만 moveSlide 함수 불러옴 */
 
-  if (currentIdx !== 0) moveSlide(currentIdx - 1);
+  if (currentIdx[0] !== 0) moveSlide0(currentIdx[0] - 1);
 });
 
-next.addEventListener('click', function () {
+next[0].addEventListener('click', function () {
   /* 마지막 슬라이드로 표시 됐을때는 
   다음 버튼 눌러도 아무런 반응 없게 하기 위해
   currentIdx !==slideCount - 1 일때만 
   moveSlide 함수 불러옴 */
-  if (currentIdx !== slideCount - 1) {
-    moveSlide(currentIdx + 1);
+  if (currentIdx[0] !== slideCount - 1) {
+    moveSlide0(currentIdx[0] + 1);
+  }
+});
+
+
+slides[1].style.width = (slideWidth)+ 'px';
+
+function moveSlide1(num) {
+  slides[1].style.left = -num * 400 + 'px';
+  currentIdx[1] = num;
+}
+
+prev[1].addEventListener('click', function () {
+  /*첫 번째 슬라이드로 표시 됐을때는 
+  이전 버튼 눌러도 아무런 반응 없게 하기 위해 
+  currentIdx !==0일때만 moveSlide 함수 불러옴 */
+
+  if (currentIdx[1] !== 0) moveSlide1(currentIdx[1] - 1);
+});
+
+next[1].addEventListener('click', function () {
+  /* 마지막 슬라이드로 표시 됐을때는 
+  다음 버튼 눌러도 아무런 반응 없게 하기 위해
+  currentIdx !==slideCount - 1 일때만 
+  moveSlide 함수 불러옴 */
+  if (currentIdx[1] !== slideCount - 1) {
+    moveSlide1(currentIdx[1] + 1);
+  }
+});
+
+
+slides[2].style.width = (slideWidth)+ 'px';
+
+function moveSlide2(num) {
+  slides[2].style.left = -num * 400 + 'px';
+  currentIdx[2] = num;
+}
+
+prev[2].addEventListener('click', function () {
+  /*첫 번째 슬라이드로 표시 됐을때는 
+  이전 버튼 눌러도 아무런 반응 없게 하기 위해 
+  currentIdx !==0일때만 moveSlide 함수 불러옴 */
+
+  if (currentIdx[2] !== 0) moveSlide2(currentIdx[2] - 1);
+});
+
+next[2].addEventListener('click', function () {
+  /* 마지막 슬라이드로 표시 됐을때는 
+  다음 버튼 눌러도 아무런 반응 없게 하기 위해
+  currentIdx !==slideCount - 1 일때만 
+  moveSlide 함수 불러옴 */
+  if (currentIdx[2] !== slideCount - 1) {
+    moveSlide2(currentIdx[2] + 1);
+  }
+});
+
+slides[3].style.width = (slideWidth)+ 'px';
+
+function moveSlide3(num) {
+  slides[3].style.left = -num * 400 + 'px';
+  currentIdx[3] = num;
+}
+
+prev[3].addEventListener('click', function () {
+  /*첫 번째 슬라이드로 표시 됐을때는 
+  이전 버튼 눌러도 아무런 반응 없게 하기 위해 
+  currentIdx !==0일때만 moveSlide 함수 불러옴 */
+
+  if (currentIdx[3] !== 0) moveSlide3(currentIdx[3] - 1);
+});
+
+next[3].addEventListener('click', function () {
+  /* 마지막 슬라이드로 표시 됐을때는 
+  다음 버튼 눌러도 아무런 반응 없게 하기 위해
+  currentIdx !==slideCount - 1 일때만 
+  moveSlide 함수 불러옴 */
+  if (currentIdx[3] !== slideCount - 1) {
+    moveSlide3(currentIdx[3] + 1);
   }
 });
 
