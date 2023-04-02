@@ -159,20 +159,25 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
       <div class="top5_1">
         <h1 style="padding-bottom: 20px;">유치원 인기순위</h1>
       </div>
- <div id="slideShow">
+ <div id="slideShow1">
     <ul class="slides">
     	<% for(StoreVO s:schoolTop5List) {
     		String stars = "";
+    		String restStars = "";
     		for(int i = 0; i < s.getStore_rate(); i++) {
     			stars += "★";
     		}
+    		for(int i = 0; i < 5 - s.getStore_rate(); i++) {
+           		restStars += "★";
+            }
     		out.print("<li ><div class='top5_container'>"+
         "<div class='top5_img'>" +
             "<img src='"+ s.getStore_pic() +"' alt='"+ s.getStore_name() +"'></div>"+
         "<div class='top5_content'>"+
         "<strong class='top5_storename'>"+s.getStore_name()+"</strong><br>"+
-        "<span class='star'>"+ stars +"<span>★★★★★</span>"+
-        "<input type='range' oninput='drawStar(this)' value='1' step='1' min='0' max='10'></span>"+
+        "<span class='star'>"+ stars +"<span>★★★★★</span></span><span class='star_rest'>"+ restStars +
+        
+        /*"<input type='range' oninput='drawStar(this)' value='1' step='1' min='0' max='10'> */
         "<span class='top5_rate'>"+ s.getStore_rate() +"</span>"+
         /* "<span class='top5_rate'>(리뷰수)</span>"+ */
         "</div></div></li>");
@@ -193,7 +198,7 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
       <div class="top5_1">
         <h1 style="padding-bottom: 20px;">호텔 인기순위</h1>
       </div>
- <div id="slideShow">
+ <div id="slideShow2">
     <ul class="slides">
     	<% for(StoreVO s:hotelTop5List) {
     		String stars = "";
@@ -227,7 +232,7 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
       <div class="top5_1">
         <h1 style="padding-bottom: 20px;">병원 인기순위</h1>
       </div>
- <div id="slideShow">
+ <div id="slideShow3">
     <ul class="slides">
     	<% for(StoreVO s:hospitalTop5List) {
     		String stars = "";
@@ -259,9 +264,9 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
     </p>
   </div>
       <div class="top5_1">
-        <h1 style="padding-bottom: 20px;">유치원 인기순위</h1>
+        <h1 style="padding-bottom: 20px;">미용 인기순위</h1>
       </div>
- <div id="slideShow">
+ <div id="slideShow4">
     <ul class="slides">
     	<% for(StoreVO s:salonTop5List) {
     		String stars = "";
