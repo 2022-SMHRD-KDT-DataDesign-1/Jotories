@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body{
+	    color: #000000DE;
+	    background: #000000;	
+}
 
 
   
@@ -9,7 +13,7 @@
 }
 
 .logo{
-	
+   
   margin-left: 400px;
   
 
@@ -46,10 +50,6 @@ align-items: center;
 
 text-align: center;
 }
-.hide_logo{
-
-    visibility: hidden;
-}
 
 
 
@@ -58,31 +58,36 @@ text-align: center;
   padding-top: 100px;
     
     height: 600px;
-    width: 800px;
+    width: 900px;
     margin: 0 auto;
       overflow-x: hidden;
 }
 
 .inner-list {
   display: flex;
-  transition: .8s ease-out;
+  transition: 2.5s ease-out;
   height: 100%;
-  height: 500px;
-  width: 800px;
+  /* height: 500px; */
+  width: 900px;
 }
 
 .inner {
   height: 500px;
-  width: 800px;
-
+  width: 900px;
+  overflow: hidden;
 }
 
 .button-list {
   text-align: center;
+  padding: 10px;
+  background-color: snow;
 }
 .imgs{
-    height: 500px;
-  width: 800px;
+    /* height: 500px; */
+  width: 110%;
+  top: 10%;
+  left: 10%;
+  transform: translate(-10%, -10%);
 }
 a {
     color : black;
@@ -133,6 +138,7 @@ text-align: center;
     width:100px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.192);
     display: none;
+    white-space: nowrap;
 }
 
 .dropdown-submenu a {
@@ -164,8 +170,10 @@ text-align: center;
     border: 0;
     box-sizing: border-box;
     overflow: hidden;
-    padding: 32px 0 29px 41px;
-    background: rgb(253,253,253);
+    padding: 50px 50px 50px 50px;
+    /* padding-top:100px; */
+    /* background: rgb(253,253,253); */
+    background-color: snow !important;
     display: flex;
 
 
@@ -237,7 +245,7 @@ align-items: center;
 .main_link_items .ico_01{background:url('https://i.ibb.co/bQxz0Ct/ico-s.png') no-repeat; background-size:48px auto}
 .main_link_items .ico_02{background:url('https://i.ibb.co/G5QyfGn/ico-hotel.png') no-repeat; background-size:48px auto}
 .main_link_items .ico_03{background:url('https://i.ibb.co/9tYL6vG/ico-119.png') no-repeat; background-size:48px auto}
-.main_link_items .ico_04{background:url('https://i.ibb.co/bQxz0Ct/ico-s.png') no-repeat; background-size:48px auto}
+.main_link_items .ico_04{background:url('https://i.ibb.co/jRktKwz/ico-mm.png') no-repeat; background-size:48px auto}
   
   
   
@@ -249,7 +257,14 @@ align-items: center;
   
   /* 보여줄 구간의 높이와 넓이 설정 */
   #slideShow{
-    width: 100%;
+  /* border-top : 1px solid black;
+	  border-bottom : 1px solid black;
+	  border-right : 1px solid black;
+	  border-left : 1px solid black; */
+        display: flex;
+
+
+    width: 900px;
     height: 300px;
     position: relative;
     /* margin: 50px auto; */
@@ -257,14 +272,18 @@ align-items: center;
     /*리스트 형식으로 이미지를 일렬로 
     정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
     hidden으로 숨겨줘야됨*/
+      margin: 0 auto;
+    
   }
   
   
   .slides{
+
+	
     position: absolute;
     left: 0;
     top: 0;
-    width: 2500px; /* 슬라이드할 사진과 마진 총 넓이 */
+    width: 1000px; /* 슬라이드할 사진과 마진 총 넓이 */
     transition: left 0.5s ease-out; 
     /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
   }
@@ -277,7 +296,7 @@ align-items: center;
   /* 첫 번째 슬라이드 가운데에 정렬하기위해
   첫번째 슬라이드만 margin-left조정 */
   .slides li:first-child{
-    margin-left: 100px;
+    margin-left: 5px;
   }
   
   /* 슬라이드들 옆으로 정렬 */
@@ -308,7 +327,7 @@ align-items: center;
   }
   
   .prev{
-    left: 10px;
+    left: -10px;
   }
   
   /* 이전 화살표에 마우스 커서가 올라가 있을때 
@@ -316,9 +335,9 @@ align-items: center;
   .prev:hover{
     transform: translateX(-10px);
   }
-  
+   
   .next{
-    right: 10px;
+    right: -10px;
   }
   
   /* 다음 화살표에 마우스 커서가 올라가 있을때 
@@ -326,4 +345,68 @@ align-items: center;
   .next:hover{
     transform: translateX(10px);
   }
+  
+  .top5_1{
+    margin-left: 400px;
+    margin-top: 100px;
+  
+  }
+
+.top5_container{
+  width:290px;
+  height:280px;
+  /* border: 1px solid lightgrey; */
+  padding-left:20px;
+  /* box-shadow: 2px 2px 2px 2px #000; */
+  /* display: flex;
+  justify-content: center; */
+}
+
+.top5_img img{
+    width: 250px;
+    height: 250px;
+    /* padding-top: 10px; */
+    /* margin: 0 auto; */
+    border: 0.5px solid lightgrey;
+}
+
+.top5_content{
+	/* margint-top: -10px;
+    margin-left: 10px;
+    margin-bottom: 10px; */
+    /* margin: 0 auto; */
+}
+
+.top5_storename{
+    font-size: 1rem;
+}
+
+.top5_rate{
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.star {
+position: relative;
+font-size: 1rem;
+color: #ddd;
+}
+
+.star input {
+width: 100%;
+height: 100%;
+position: absolute;
+left: 0;
+opacity: 0;
+cursor: pointer;
+}
+
+.star span {
+width: 0;
+position: absolute; 
+left: 0;
+color: yellow;
+overflow: hidden;
+pointer-events: none;
+}
 

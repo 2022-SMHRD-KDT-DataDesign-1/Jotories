@@ -76,4 +76,5 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		
 		return cnt;
 	}
+	
 }
