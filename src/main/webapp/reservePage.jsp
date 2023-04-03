@@ -143,11 +143,11 @@
                                 >
                             한글, 영문, 숫자만 입력 가능. (문자 사이 공백은 1칸만 입력 가능)
                         </p>
-                        <div       ><strong class="mt_09"
+                        <div><strong class="mt_09"
                                  >휴대폰 번호</strong> <span class="safety_txt"
                                  >개인 정보 보호를 위해 안심번호로 숙소에 전송됩니다.</span>
                             <div class="phone_confirm guest-phone"  >
-                                <div class="input-box"  ><input type="tel"
+                                <div class="inp_wrap input-box"  ><input type="tel"
                                         name="userPhone" placeholder="체크인시 필요한 정보입니다."
                                         maxlength="13" value=""
                                         class="input validation-required-input"  >

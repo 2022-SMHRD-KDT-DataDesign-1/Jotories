@@ -49,12 +49,18 @@
                             <li><a href="https://www.goodchoice.kr/more/faq">자주 묻는 질문</a></li>
                             <li><a href="https://www.goodchoice.kr/more/inquiry">1:1 문의</a></li>
                             <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
+                            
                         </ul>
                     </li>
-                    <% String updateLogout = "<li><a href='mypage.jsp'><span>마이페이지</span></a></li>" + "<li><a href='LogoutService.do'><span>로그아웃</span></a></li>";%>
-					<%= resultVO != null ? updateLogout : "<li><a href='login.html'><span>로그인</span></a></li>" %>
-                    
-                </ul>
+                    <% String updateLogout = "";
+                    updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='https://i.ibb.co/qm22JbD/image.png' alt='"+resultVO.getUser_nick()+"'></a>"+
+                            "<ul class='list_04' style='display:none'>" +
+                                "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
+                                "<li><a href='MyPage.jsp'>내정보</a></li>" +
+                                "<li><a href='ReserveList.jsp'>예약내역<!-- span>0건</span --></a></li>" +
+                                "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
+                                <%= updateLogout %>
+                        </ul>
 
                 <!-- Search -->
                 <div class="srch_bar">

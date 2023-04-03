@@ -178,4 +178,35 @@ const drawStar = (target) => {
     console.log(`${target.value * 10}%`);
 }
 
+// 링크 제어
+$(function(){
+   $('header .nav_open').click(function(){ // 메뉴 오픈
+      nav_open();
+   });
+   $('header .srch_open').click(function(){ // 검색 오픈
+      srch_open();
+   });
+   $('.pop_guest_reserve_open').click(function(){ // 비회원 예약내역 조회
+      pop_layer_w.call(this, 'pop_guest_reserve');return false;
+   });
+
+   $('.pop_mem_reserve_open, .mobile_reserve').click(function(){ // 회원 예약내역 조회
+      pop_layer_w.call(this, 'pop_mem_reserve');return false;
+   });
+
+   $('.pop_login_open').click(function(){ // 1:1문의, 모바일 포인트/쿠폰함 클릭시 로그인
+      pop_layer_w.call(this, 'pop_login');return false;
+   });
+   $('.pop_mem_reserve_open2').click(function(){ // 더보기 옆 아이콘 예약내역 조회
+      pop_layer_w('pop_mem_reserve');
+   });
+   /*$('.pop_logout_open').click(function(){ // 로그아웃
+      pop_twobtn('ell','로그아웃 하시겠습니까?','취소','로그아웃','close_layer()',"logoutPro()"); return false;
+   });*/
+   $('.pop_login_open').click(function(){
+      pop_layer_w('pop_login');return false;
+   });
+
+
+});
 

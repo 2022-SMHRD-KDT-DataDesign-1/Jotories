@@ -20,11 +20,13 @@
         <form action="">
         <div class="right-container">
           <header>
-            <h1>Yay, puppies! Ensure your pup gets the best care! </h1>
+            <!-- <h1>Yay, puppies! Ensure your pup gets the best care! </h1> -->
+            <h1>더 좋은 서비스를 위해 <br>
+            아이의 정보를 입력해주세요! </h1>
             <div class="set">
               <div class="pets-name">
                 <label for="pets-name">Name</label>
-                <input id="pets-name" placeholder="Pet's name" type="text" name="dog_name"></input>
+                <input id="pets-name" placeholder="이름" type="text" name="dog_name"></input>
               </div>
               <div class="pets-id">
                 <!-- <button id="pets-upload">
@@ -32,22 +34,22 @@
                 </button>
                 <label for="pets-upload">Upload a photo</label> -->
                 <label for="pets-id">ID Number</label>
-                <input id="pets-id" placeholder="ID Number" type="text" name="dog_enroll"></input>
+                <input id="pets-id" placeholder="등록번호" type="text" name="dog_enroll"></input>
               </div>
             </div>
             <div class="set">
                 <div class="pets-birthday">
                   <label for="pets-birthday">Birthday</label>
-                  <input id="pets-birthday" placeholder="MM/DD/YYYY" type="text" name="dog_birth"></input>
+                  <input id="pets-birthday" placeholder="YYYY-MM-DD" type="text" name="dog_birth"></input>
                 </div>
               <div class="pets-breed">
                 <label for="pets-breed">Age</label>
-                <input id="pets-breed" placeholder="Pet's Age" type="text" name="dog_age"></input>
+                <input id="pets-breed" placeholder="나이" type="text" name="dog_age"></input>
               </div>
             </div>
             <div class="set">
               <div class="pets-gender">
-                <label for="pet-gender-female">Gender</label>
+                <label for="pet-gender-female">성별</label>
                 <div class="radio-container">
                   <input id="pet-gender-female" name="pet-gender" type="radio" value="female"></input>
                   <label for="pet-gender-female">Female</label>
@@ -56,17 +58,17 @@
                 </div>
               </div>
               <div class="pets-spayed-neutered">
-                <label for="pet-spayed">Spayed or Neutered</label>
+                <label for="pet-spayed">중성화 여부</label>
                 <div class="radio-container">
                   <input id="pet-spayed" name="spayed-neutered" type="radio" value="spayed"></input>
-                  <label for="pet-spayed">Spayed</label>
+                  <label for="pet-spayed">X</label>
                   <input id="pet-neutered" name="spayed-neutered" type="radio" value="neutered"></input>
-                  <label for="pet-neutered">Neutered</label>
+                  <label for="pet-neutered">O</label>
                 </div>
               </div>
             </div>
             <div class="pets-weight">
-              <label for="pet-weight-0-25">Weight</label>
+              <label for="pet-weight-0-25">몸무게</label>
               <div class="radio-container">
                 <input id="pet-weight-0-25" name="pet-weight" type="radio" value="0-7"></input>
                 <label for="pet-weight-0-25">0-7 kg</label>
@@ -81,13 +83,19 @@
           </header>
           <footer>
             <div class="set">
-              <button id="back"><a>Back</a></button>
+              <button id="back"><a>초기화</a></button>
               <!-- <button id="next">Next</button> -->
-              <input id="next" type="submit" value="Next">
+              <input id="next" type="submit" onclick="moveClose();" value="확인">
             </div>
           </footer>
         </div>
     </form>
       </div>
+      <script type="text/javascript">
+      	function moveClose(){
+      		opener.location.href="MyPage.jsp";
+      		self.close();
+      	}
+      </script>
 </body>
 </html>
