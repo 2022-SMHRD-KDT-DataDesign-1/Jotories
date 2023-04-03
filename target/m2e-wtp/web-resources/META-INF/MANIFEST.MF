@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: smhrd
 Build-Jdk: 17.0.5
-=======
-Built-By: young
-Build-Jdk: 17.0.3
->>>>>>> jyj
 Created-By: Maven Integration for Eclipse
 
