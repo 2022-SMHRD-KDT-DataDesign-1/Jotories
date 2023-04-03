@@ -10,4 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(review_num.nextval, #{user_id}, #{store_id}
 		   , #{review_content}, #{review_date}, #{review_rate})
 	</insert>
+	
+	<select id="selectStoreReview" resultType="StoreReviewVO" parameterType="String">
+		select avg(review_rate)
+		from storereview
+		where store_id=#{store_id}
+	</select>
 </mapper>

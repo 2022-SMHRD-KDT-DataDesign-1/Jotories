@@ -1,3 +1,6 @@
+<%@page import="com.dogdog.model.StoreReviewVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dogdog.model.StoreReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +25,7 @@
         <header>
 
             <section>
-                <h1><a href="Main.jsp" title="여기어때">여기어때</a></h1>
+                <h1><a href="Main.jsp" title="DogDog">DogDog</a></h1>
                 <button type="button" class="btn_menu nav_open ">메뉴</button>
                 <ul class="gnb_pc">
                     <li><a href="reserveList.jsp">예약내역</a></li>
@@ -405,7 +408,7 @@
 
             <!-- Tab Menu -->
             <div class="tab">
-                <button onclick="init_map('37.819163520545', '127.26470774528');"><span>숙소정보</span></button>
+                <button onclick="init_map('37.819163520545', '127.26470774528');"><span>업소 정보</span></button>
                 <button class="tab_review"><span>리뷰</span></button>
             </div>
 
@@ -621,11 +624,19 @@
                 }
             </style>
             <!-- 리뷰 -->
+            <% 
+            int store_id = (int)session.getAttribute("store_id");
+            
+            StoreReviewDAO srDAO = new StoreReviewDAO();
+            double storeRate = srDAO.selectStoreRate(store_id);
+            ArrayList<StoreReviewVO> resultList = srDAO.selectStoreReview(1);
+            String rateComment = "";
+            %>
             <article id="review" class="review">
-                <div class="score_top"><strong>최고예요</strong>
+                <div class="score_top"><strong>최고예요!<%-- <%= rateComment = storeRate >= 4.0 ? "최고예요!" : "좋아요!" %> --%></strong>
                     <div class="score_wrap">
                         <div class="score_star star_50"></div>
-                        <div class="num">10.0</div>
+                        <div class="num">10.0<%-- <%= storeRate %> --%></div>
                     </div>
                     <p>
                         전체 리뷰 <b>7</b> <span>|</span>
