@@ -17,5 +17,4 @@ public class LogoutService implements Service{
 		
 		return "Main.jsp";
 	}
-	
 }
