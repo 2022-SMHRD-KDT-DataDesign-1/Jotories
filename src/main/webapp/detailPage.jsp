@@ -1,5 +1,3 @@
-<%@page import="com.dogdog.model.UserVO"%>
-<%@page import="com.dogdog.model.UserDAO"%>
 <%@page import="com.dogdog.model.StoreReviewVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dogdog.model.StoreReviewDAO"%>
@@ -9,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>똑똑</title>
+<title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="assets/css/detailPage2.css">
 <link rel="stylesheet"  href="assets/css/d_jq.css">
@@ -20,7 +18,7 @@
 
 </head>
 <body >
-     <% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
+      
     <div class="wrap show">
 
         <!-- Header -->
@@ -30,7 +28,7 @@
                 <h1><a href="Main.jsp" title="DogDog">DogDog</a></h1>
                 <button type="button" class="btn_menu nav_open ">메뉴</button>
                 <ul class="gnb_pc">
-                    <li><a href="MyPage.jsp" class="nuxt-link-exact-active nuxt-link-active">예약내역</a></li>
+                    <li><a href="reserveList.jsp">예약내역</a></li>
                     <li class="over">
                         <button type="button"><span>더보기</span></button>
                         <ul class="list_03">
@@ -42,14 +40,7 @@
                             <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
                         </ul>
                     </li>
-                    <% String updateLogout = "";
-                    updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='"+ resultVO.getUser_profile()+"' alt='"+resultVO.getUser_nick()+"'></a>"+
-                            "<ul class='list_04' style='display:none'>" +
-                                "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
-                                "<li><a href='editcontent.jsp'>내정보</a></li>" +
-                                "<li><a href='MyPage.jsp'>예약내역<!-- span>0건</span --></a></li>" +
-                                "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
-                                <%= updateLogout %>
+                    <li><a href="login.html"><span>로그인</span></a></li>
                 </ul>
 
                 <!-- Search -->
@@ -417,8 +408,10 @@
 
             <!-- Tab Menu -->
             <div class="tab">
-                <button onclick="init_map('37.819163520545', '127.26470774528');"><span>업소 정보</span></button>
+                <button class="on"><span>객실안내/예약</span></button>
+                <button onclick="init_map('37.549788234578', '126.92179271704');"><span>숙소정보</span></button>
                 <button class="tab_review"><span>리뷰</span></button>
+ 
             </div>
 
             <form id="product_filter_form" method="get" action="https://www.goodchoice.kr/product/detail"
@@ -442,7 +435,7 @@
 
 
             <!-- 숙소정보 -->
-            <article class="detail_info">
+            <article class="room_info on">
                 <!-- 기본 정보 -->
                 <button type="button" id="default_info_tab" class="category on"><span>기본 정보</span></button>
                 <section class="default_info" style="display: block;">
@@ -634,109 +627,90 @@
             </style>
             <!-- 리뷰 -->
             <% 
-            String[] store_id_list = request.getQueryString().split("=");
-            int store_id = Integer.parseInt(store_id_list[1]) ;
+            int store_id = (int)session.getAttribute("store_id");
             
             StoreReviewDAO srDAO = new StoreReviewDAO();
-            UserDAO uDAO = new UserDAO();
-            double storeRate = srDAO.selectStoreReviewRate(store_id);
-            ArrayList<StoreReviewVO> resultList = srDAO.selectStoreReview(store_id);
+            //double storeRate = srDAO.selectStoreRate(store_id);
+            ArrayList<StoreReviewVO> resultList = srDAO.selectStoreReview(1);
             String rateComment = "";
             %>
             <article id="review" class="review">
-                <div class="score_top"><strong><%= rateComment = storeRate >= 4.0 ? "최고예요!" : "좋아요!" %></strong>
+                <div class="score_top"><strong>최고예요!<%-- <%= rateComment = storeRate >= 4.0 ? "최고예요!" : "좋아요!" %> --%></strong>
                     <div class="score_wrap">
                         <div class="score_star star_50"></div>
-                        <div class="num"><%= storeRate %></div>
+                        <div class="num">10.0<%-- <%= storeRate %> --%></div>
                     </div>
                     <p>
-                        전체 리뷰 <b><%= srDAO.countStoreReview(store_id)%></b> <span>|</span>
-                        <!-- 제휴점 답변 <b>3</b> <span>|</span> --> <span class="review_link">운영정책 &gt;</span></p>
+                        전체 리뷰 <b>7</b> <span>|</span>
+                        제휴점 답변 <b>3</b> <span>|</span> <span class="review_link">운영정책 &gt;</span></p>
                 </div>
                 <ul>
-                <% for(StoreReviewVO srVO : resultList) { 
-                	double rate = srVO.getReview_rate();
-                	String nick = uDAO.selectNick(srVO.getUser_id());
-                	String comment = "";
-                	
-                	if(rate == 5.0) {
-                		comment += "여기만한 곳은 어디에도 없을 거예요.";
-                	} else if(rate >= 4.0) {
-                		comment += "추천해요.";
-                	} else if(rate >= 2.5) {
-                		comment += "보통이에요.";
-                	} else {
-                		comment += "추천하지 않을래요.";
-                	}
-                %>
-                	<li>
+                    <li>
                         <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_22.png" alt="<%= nick%>"></p> <!-- <span
-                                class="best_review">베스트 리뷰</span> --> 
-                                <strong><%= comment %> </strong>
+                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_22.png" alt="은혁마마"></p> <span
+                                class="best_review">베스트 리뷰</span> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
                             <div class="score_wrap_sm">
                                 <div class="score_star star_50"></div>
-                                <div class="num">rate</div>
+                                <div class="num">10.0</div>
                             </div>
-                            <div class="name"><!-- <b>104호(단체룸) 객실 이용 · </b> --><%= nick%>
+                            <div class="name"><b>104호(단체룸) 객실 이용 · </b>은혁마마
                             </div>
-                            <div class="txt"><%= srVO.getReview_content()%></div> <!----> <span
-                                class="date"><%= srVO.getReview_date() %></span>
+                            <div class="txt">시댁 식구들 하고 8명이 다녀왔어요~사장님 너무 친절하시고 마침 전날인가?전전날인가 눈이와서 운치도 정말 좋았습니다 애들은 눈놀이
+                                실컷하고 어른들은 경치 좋은곳에서 불멍도 실컷하고 힐링하고 왔어요~~다음엔 여름에도 또 한번 다녀오려구요~~~</div> <!----> <span
+                                class="date">2개월 전</span>
                         </div>
                     </li>
-                <% } %>
-                    <!-- 
                     <li>
                         <div class="guest">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_21.png" alt="아처누어차어러"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
+                            <!----> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
                             <div class="score_wrap_sm">
                                 <div class="score_star star_50"></div>
                                 <div class="num">10.0</div>
                             </div>
                             <div class="name"><b>104호(단체룸) 객실 이용 · </b>아처누어차어러
                             </div>
-                            <div class="txt">온수사용은 좀 아쉬웠어요~~<br>찬물이 왔다갔다거려서ㅜㅜ<br>사장님 친절하세요</div> <span
+                            <div class="txt">온수사용은 좀 아쉬웠어요~~<br>찬물이 왔다갔다거려서ㅜㅜ<br>사장님 친절하세요</div> <!----> <span
                                 class="date">1개월 전</span>
                         </div>
                     </li>
                     <li>
                         <div class="guest">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_21.png" alt="69세염소자리"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
+                            <!----> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
                             <div class="score_wrap_sm">
                                 <div class="score_star star_50"></div>
                                 <div class="num">10.0</div>
                             </div>
                             <div class="name"><b>카라반203호 객실 이용 · </b>69세염소자리
                             </div>
-                            <div class="txt">너무깨끗하고 주인분들이친절해요</div> <span class="date">5개월 전</span>
+                            <div class="txt">너무깨끗하고 주인분들이친절해요</div> <!----> <span class="date">5개월 전</span>
                         </div>
                     </li>
                     <li>
                         <div class="guest">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png" alt="69세염소자리"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
+                            <!----> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
                             <div class="score_wrap_sm">
                                 <div class="score_star star_50"></div>
                                 <div class="num">10.0</div>
                             </div>
                             <div class="name"><b>카라반201호 객실 이용 · </b>69세염소자리
                             </div>
-                            <div class="txt">너무좋았어요 정말ㅎ</div> <span class="date">6개월 전</span>
+                            <div class="txt">너무좋았어요 정말ㅎ</div> <!----> <span class="date">6개월 전</span>
                         </div>
                     </li>
                     <li>
                         <div class="guest">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_25.png" alt="예써니"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
+                            <!----> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
                             <div class="score_wrap_sm">
                                 <div class="score_star star_50"></div>
                                 <div class="num">10.0</div>
                             </div>
                             <div class="name"><b>카라반202호 객실 이용 · </b>예써니
                             </div>
-                            <div class="txt">갈때마다 너무 만족 하고 옵니다~</div> <span class="date">7개월 전</span>
+                            <div class="txt">갈때마다 너무 만족 하고 옵니다~</div> <!----> <span class="date">7개월 전</span>
                         </div>
                         <div class="boss">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_owner.png" alt="제휴점 답변"></p>
@@ -749,7 +723,7 @@
                     <li>
                         <div class="guest">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_21.png" alt="예써니"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
+                            <!----> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
                             <div class="score_wrap_sm">
                                 <div class="score_star star_50"></div>
                                 <div class="num">10.0</div>
@@ -784,14 +758,14 @@
                     <li>
                         <div class="guest">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_25.png" alt="거기어때니"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
+                            <!----> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
                             <div class="score_wrap_sm">
                                 <div class="score_star star_50"></div>
                                 <div class="num">10.0</div>
                             </div>
                             <div class="name"><b>카라반204호 객실 이용 · </b>거기어때니
                             </div>
-                            <div class="txt">잘쉬었다가 갑니다.</div> <span class="date">9개월 전</span>
+                            <div class="txt">잘쉬었다가 갑니다.</div> <!----> <span class="date">9개월 전</span>
                         </div>
                         <div class="boss">
                             <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_owner.png" alt="제휴점 답변"></p>
@@ -800,7 +774,7 @@
                                 만족하셨다니 정말 다행입니다. <br>다음번에 또 방문해 주시면 더욱 좋은 모습으로 인사드리겠습니다.<br>감사합니다. <br>항상 행복하세요!!<br>
                             </div> <span class="date">9개월 전</span>
                         </div>
-                    </li> -->
+                    </li>
                 </ul>
                 <div id="pagination">
                     <div class="paging"><!----><!----></div>

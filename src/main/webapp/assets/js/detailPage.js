@@ -289,15 +289,9 @@ $(function(){
 		$()
     });
 
-    $('.room .cal_bg button').each(function(){ // PC 갤러리 닫기
-        $(this).click(function(){
-            $(this).parent().parent().removeClass('on');
-			$(this).parent().removeClass('visible');
-//			$('.room_info .room.on .cal_bg,	.room_info .room.on .pic_wrap').removeClass('visible');
-        });
-    });
 
-    $('.detail_info .category').each(function(e){ // 숙소정보 열기
+
+   $('.detail_info .category').each(function(e){ // 숙소정보 열기
         $(this).click(function(i){
             i.preventDefault();
             if ($(this).hasClass('on')){
