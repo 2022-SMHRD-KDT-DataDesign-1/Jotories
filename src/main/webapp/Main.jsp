@@ -1,3 +1,4 @@
+<%@page import="com.dogdog.model.StoreVO"%>
 <%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -18,36 +19,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-	<%
-		UserVO login_vo = (UserVO)session.getAttribute("resultVO");
-	%>
-     
-    <div class="nav">
-        <span class="menu">
-          <div class="dropdown"  style="float:right">
-              <button class="dropdown-btn">더보기</button>
-              <div class="dropdown-submenu">
-                  <a href="#none">공지사항</a>
-                  <a href="#none">이벤트</a>
-                  <a href="#none">1:1 문의</a>
-                  <a href="#none">약관 및 정책</a>
-              </div>
-          </div>
-      </span>
-        <a href="Main.jsp" class="logo"><img src="assets/img/logo_w_r.png"></a>
-        <div class="nav-items">
-        	<%if (login_vo == null) {%>
-        		<a href="login.html" class="nav-item">로그인</a>
-        	<%} else {%>
-	            <a href="#" class="nav-item">예약확인</a>
-	            <a href="#" class="nav-item">훈련일지</a>
-	            <a href="MyPage.jsp" class="nav-item">내정보</a>
-	            <a href="LogoutService.do" class="nav-item">로그아웃</a>
-            <%} %>
-        </div>
-    </div>
-=======
     <% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
 
          <!-- Wrap -->
@@ -120,7 +91,6 @@
                 
                 </div>
 
->>>>>>> master
 
 
 
@@ -146,17 +116,10 @@
 
      <div class="main_link">
         <ul class="main_link_items">
-<<<<<<< HEAD
-          <li><a href="listPage.jsp" menu-link="1"><span class="ico_01">&nbsp;</span><p>강아지 유치원</p></a></li>
-          <li><a href="listPage.jsp" menu-link="2"><span class="ico_02">&nbsp;</span><p>강아지 호텔</p></a></li>
-          <li><a href="listPage.jsp" menu-link="3"><span class="ico_03">&nbsp;</span><p>강아지 병원</p></a></li>
-          <li><a href="listPage.jsp" menu-link="6"><span class="ico_04">&nbsp;</span><p>강이지 미용실</p></a></li>
-=======
           <li><a href="StoreListService.do?type=school" menu-link="1"><span class="ico_01">&nbsp;</span><p>유치원</p></a></li>
           <li><a href="StoreListService.do?type=hotel" menu-link="2"><span class="ico_02">&nbsp;</span><p>호텔</p></a></li>
           <li><a href="StoreListService.do?type=hospital" menu-link="3"><span class="ico_03">&nbsp;</span><p>병원</p></a></li>
           <li><a href="StoreListService.do?type=salon" menu-link="6"><span class="ico_04">&nbsp;</span><p>미용실</p></a></li>
->>>>>>> master
         </ul>
       </div>
 
@@ -166,14 +129,6 @@
       </div>
  <div id="slideShow">
     <ul class="slides">
-<<<<<<< HEAD
-      <li ><img src="assets/img/pic.jfif" alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif" alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-=======
     	<% for(StoreVO s:schoolTop5List) {
     		/* double rate = storeDao.selectStoreRate(s.getStore_id());
     		if(((int)(rate + 0.5) / 10 ) * 10 >= rate){
