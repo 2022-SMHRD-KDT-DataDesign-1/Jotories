@@ -1,3 +1,5 @@
+<%@page import="com.dogdog.model.StoreVO"%>
+<%@page import="com.dogdog.model.StoreDAO"%>
 <%@page import="com.dogdog.model.StoreMemberVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dogdog.model.StoreMemberDAO"%>
@@ -151,24 +153,28 @@
                 </nav>
             </div>
             <div class="align_rt">
-            <% if(resultListSM != null) { %>
+            <% if(resultListSM != null) { 
+            	for(StoreMemberVO smVO:resultListSM){
+            		StoreDAO sDAO = new StoreDAO();
+            		StoreVO sVO = sDAO.selectOneList(smVO.getStore_id());
+            %>
                 <!-- 예약 내역이 존재할 경우 이 부분을 jsp 이용해서 -->
                 <div class="list_none1" style="display: block">
                     숙소 예약내역<br>
                     <div>
                         <img src="assets/img/쿼카1.png" class="reser_img">
-                        <span class="img_name"><a href="">[유치원]더펫하우스 협동조합</a></span>
+                        <span class="img_name"><a href="">[<%= sVO.getStore_type() %>]<%= sVO.getStore_name() %></a></span>
                         <br>
                         <div class="check_in">
                             <span>예약날짜</span><br>
-                            <p style="margin-top: 5px; font-size: 18px; font-weight: 600;">4.06(목)</p>
+                            <p style="margin-top: 5px; font-size: 18px; font-weight: 600;"><%= smVO.getMember_from() %></p>
                             
                         </div>
                         <div class="reser_but">
                             <button class="but1"><a href="reservePage.jsp" class="aaa"><strong>다시 예약</strong></a></button>
                             <button class="but1 trigger"><strong>리뷰 쓰기</strong></button>
 						</div>
-
+					<%} %>
 
 
 						<!-- Button -->
