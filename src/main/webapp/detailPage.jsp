@@ -137,7 +137,6 @@
                                 <ul>
                                     <li><a href="https://www.goodchoice.kr/more/notice">공지사항</a></li>
                                     <li><a href="https://www.goodchoice.kr/more/event">이벤트</a></li>
-                                    <!-- <li><a href="https://www.goodchoice.kr/more/project">혁신 프로젝트</a></li> -->
                                     <li><a href="https://www.goodchoice.kr/more/faq">고객문의</a></li>
                                     <li><a href="https://www.goodchoice.kr/my/notiSetting">알림설정</a></li>
                                     <li>
@@ -415,25 +414,8 @@
                         <button>더보기</button>
                         <div><%= sbVO.getStoreboard_comment() %></div>
                     </div>
-                    <div id="reservationBtn" style="background-color:#eb1b47; font-size: 1rem; font-weight: bold; color: white; padding:1rem; cursor:pointer;"OnClick="location.href ='reservePage.jsp'">예약하기</div>
-                    <!-- <div class="event_link">
-                        <section class="gra_mint_2 on">on클래스 추가시 오픈
-                            <ul>
-                                <a>
-                                    <li>예약하기</li>
-                                </a>
-                            </ul>
-                        </section>
-                        div>
-                                                                            <ul class="dot_txt">
-                                    <li><span>★방역숙소★ 일 1회 방역 시행</span>ㆍ예약 기간 : 상시<br />
-    ㆍ내용 : 일 1회 방역 시행<br />
-    <br />
-    <b>** 현장상황에 따라 내용이 변경될 수 있으며,<br />
-    자세한 내용은 펜션으로 문의바랍니다.</b></li>
-                                </ul>
-                                                                </div
-                    </div> -->
+                    <div id="reservationBtn" style="border-radius:5px; background-color:#eb1b47; font-size: 1rem; font-weight: bold; color: white; margin-left:1rem; padding:1.1rem; cursor:pointer;"OnClick="location.href ='reservePage.jsp'">예약하기</div>
+                    
                 </div>
                 <!-- //Right -->
 
@@ -655,14 +637,24 @@
             StoreReviewDAO srDAO = new StoreReviewDAO();
             UserDAO uDAO = new UserDAO();
             double storeRate = srDAO.selectStoreReviewRate(store_id);
+            String storeRateS = String.format("%.2f", storeRate);
             ArrayList<StoreReviewVO> resultList = srDAO.selectStoreReview(store_id);
             String rateComment = "";
             %>
             <article id="review" class="review">
                 <div class="score_top"><strong><%= rateComment = storeRate >= 4.0 ? "최고예요!" : "좋아요!" %></strong>
                     <div class="score_wrap">
-                        <div class="score_star star_50"></div>
-                        <div class="num"><%= storeRate %></div>
+                        <div class="star-ratings">
+							<div 
+						    class="star-ratings-fill space-x-2 text-lg" style="width: <%= storeRate * 20 %>%"
+							>
+								<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							</div>
+							<div class="star-ratings-base space-x-2 text-lg" style="color: gray;">
+								<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+							</div>
+						</div>
+                        <div class="num" style=" padding-top:0.7rem; color:black;"><%= storeRateS %></div>
                     </div>
                     <p>
                         전체 리뷰 <b><%= srDAO.countStoreReview(store_id)%></b> <span>|</span>
@@ -711,122 +703,7 @@
                         </div>
                     </li>
                 <% } %>
-                    <!-- 
-                    <li>
-                        <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_21.png" alt="아처누어차어러"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
-                            <div class="score_wrap_sm">
-                                <div class="score_star star_50"></div>
-                                <div class="num">10.0</div>
-                            </div>
-                            <div class="name"><b>104호(단체룸) 객실 이용 · </b>아처누어차어러
-                            </div>
-                            <div class="txt">온수사용은 좀 아쉬웠어요~~<br>찬물이 왔다갔다거려서ㅜㅜ<br>사장님 친절하세요</div> <span
-                                class="date">1개월 전</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_21.png" alt="69세염소자리"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
-                            <div class="score_wrap_sm">
-                                <div class="score_star star_50"></div>
-                                <div class="num">10.0</div>
-                            </div>
-                            <div class="name"><b>카라반203호 객실 이용 · </b>69세염소자리
-                            </div>
-                            <div class="txt">너무깨끗하고 주인분들이친절해요</div> <span class="date">5개월 전</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_23.png" alt="69세염소자리"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
-                            <div class="score_wrap_sm">
-                                <div class="score_star star_50"></div>
-                                <div class="num">10.0</div>
-                            </div>
-                            <div class="name"><b>카라반201호 객실 이용 · </b>69세염소자리
-                            </div>
-                            <div class="txt">너무좋았어요 정말ㅎ</div> <span class="date">6개월 전</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_25.png" alt="예써니"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
-                            <div class="score_wrap_sm">
-                                <div class="score_star star_50"></div>
-                                <div class="num">10.0</div>
-                            </div>
-                            <div class="name"><b>카라반202호 객실 이용 · </b>예써니
-                            </div>
-                            <div class="txt">갈때마다 너무 만족 하고 옵니다~</div> <span class="date">7개월 전</span>
-                        </div>
-                        <div class="boss">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_owner.png" alt="제휴점 답변"></p>
-                            <strong>제휴점 답변</strong>
-                            <div class="txt">안녕하세요 고객님, 베어힐입니다.<br>재방문뿐만 아니라 좋은 리뷰를 남겨주서 정말 감사드립니다.<br>고객님들께서 편안한 시간이 될
-                                수 있도록 최선을 다하며 운영하고 있습니다.<br>항상 변치않고 더욱 좋은 시설과 최고의 서비스를 고객님들께 제공할 수 있도록 노력하겠습니다.<br>저희
-                                펜션을 재방문해주셔 다시 감사합니다.<br>좋은 하루되세요~</div> <span class="date">6개월 전</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_21.png" alt="예써니"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
-                            <div class="score_wrap_sm">
-                                <div class="score_star star_50"></div>
-                                <div class="num">10.0</div>
-                            </div>
-                            <div class="name"><b>카라반203호 객실 이용 · </b>예써니
-                            </div>
-                            <div class="txt">너무 좋았습니다~ 요 몇일 비가와서 계곡물이 최상이예요 너무 추울 정도 였어요</div>
-                            <div class="gallery_re">
-                                <div class="swiper-container swiper-type-3">
-                                    <ul class="swiper-wrapper">
-                                        <li class="swiper-slide"><img
-                                                src="//image.goodchoice.kr/talk/epilogue/7591722/62d4bc53a2c8f.jpg"
-                                                alt="여기만한 곳은 어디에도 없을 거예요."></li>
-                                        <li class="swiper-slide"><img
-                                                src="//image.goodchoice.kr/talk/epilogue/7591722/62d4bc53ac4d5.jpg"
-                                                alt="여기만한 곳은 어디에도 없을 거예요."></li>
-                                    </ul>
-                                    <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
-                                </div>
-                            </div> <span class="date">8개월 전</span>
-                        </div>
-                        <div class="boss">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_owner.png" alt="제휴점 답변"></p>
-                            <strong>제휴점 답변</strong>
-                            <div class="txt">안녕하세요 고객님, 베어힐입니다,<br>멋진 사진과 함께 소중한 리뷰를 남겨주셔 감사드립니다.<br>저희 펜션을 이용한 시간동안
-                                만족스러운 시간이 되신 것 같아 정말 뿌듯합니다.<br>앞으로도 고객님들께서 만족스러운 시간이 되실 수 있도록 시설관리와 서비스 제공에 힘쓰며 운영하도록
-                                하겠습니다.<br>항상 좋은 일들만 가득하시기를 바라며<br>저희 펜션을 이용해 주셔서 감사드립니다.</div> <span class="date">6개월
-                                전</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_25.png" alt="거기어때니"></p>
-                            <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
-                            <div class="score_wrap_sm">
-                                <div class="score_star star_50"></div>
-                                <div class="num">10.0</div>
-                            </div>
-                            <div class="name"><b>카라반204호 객실 이용 · </b>거기어때니
-                            </div>
-                            <div class="txt">잘쉬었다가 갑니다.</div> <span class="date">9개월 전</span>
-                        </div>
-                        <div class="boss">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_owner.png" alt="제휴점 답변"></p>
-                            <strong>제휴점 답변</strong>
-                            <div class="txt">안녕하세요 고객님, 베어힐 카라반펜션입니다.<br>먼저 소중한 리뷰를 남겨 주셔서 정말 감사드립니다. 저희 펜션을 이용하시는 동안
-                                만족하셨다니 정말 다행입니다. <br>다음번에 또 방문해 주시면 더욱 좋은 모습으로 인사드리겠습니다.<br>감사합니다. <br>항상 행복하세요!!<br>
-                            </div> <span class="date">9개월 전</span>
-                        </div>
-                    </li> -->
+                    
                 </ul>
                 <div id="pagination">
                     <div class="paging"><!----><!----></div>
@@ -901,36 +778,10 @@
                             </span>
                             <p></p>
                         </strong>
-                        
-                        
-
-                        <!-- <div class="stage">
-                            <div class="default_html">
-                                ㆍ강아지 정보를 정확히 입력해주세요
-                                <br>ㆍ약속된 시간을 지켜주세요 
-                                <br>ㆍ
-                                <br>ㆍ둘
-                                <br>ㆍ셋
-                                <br>ㆍ얍
-                                <br> <br>
-                                <br>
-
-
-                                <section class="re_btn">on클래스 추가시 오픈
-                                    <ul>
-                                        <a href="reservePage.jsp">
-                                            <li>예약하기</li>
-                                        </a>
-                                    </ul>
-                                </section>
-                            </div>
-
-                        </div> -->
                     </article>
                 </div>
             </div>
         </div>
-
 
         <!-- Footer -->
         <footer>
