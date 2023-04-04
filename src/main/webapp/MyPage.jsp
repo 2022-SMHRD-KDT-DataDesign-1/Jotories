@@ -1,3 +1,6 @@
+<%@page import="com.dogdog.model.StoreMemberVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dogdog.model.StoreMemberDAO"%>
 <%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,7 +18,11 @@
 </head>
 
 <body class="pc">
-<% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
+<% 
+	UserVO resultVO = (UserVO)session.getAttribute("resultVO");
+	StoreMemberDAO smDAO = new StoreMemberDAO();
+	ArrayList<StoreMemberVO> resultListSM = smDAO.selectReservation(resultVO.getUser_id());
+%>
     <div class="wrap show">
         <header>
             <section>
@@ -113,7 +120,7 @@
                             </ul>
                             <div class="center">
                                 <p>독독 고객센터</p>
-                                <p><a href="tel:1670-6250">xxxx-xxxx</a></p>
+                                <p><a href="tel:1670-6250">1670-6250</a></p>
                                 <p>오전 9시 - 오후 8시</p>
                             </div>
                         </div>
@@ -137,13 +144,14 @@
                             </a></li>
 
                         <li><a href="editcontent.jsp">내 정보 관리</a></li>
-                        <li><a href="/my/notifications" class="">
+                        <li><a href="#" class="">
                                 알림
                             </a></li>
                     </ul>
                 </nav>
             </div>
             <div class="align_rt">
+            <% if(resultListSM != null) { %>
                 <!-- 예약 내역이 존재할 경우 이 부분을 jsp 이용해서 -->
                 <div class="list_none1" style="display: block">
                     숙소 예약내역<br>
@@ -170,12 +178,13 @@
 
                     </div>
                 </div>
-
+			<% } else { %>
                 <div class="list_none" style="display: block">
                     예약 내역이 없습니다.
                     <b>여러가지 종류의 예약 가능한<br>반려견 서비스들을 지금 만나세요!</b>
                     <p><a href="http://localhost:8080/DogDog/Main.jsp#none" class="btn_red">다양한 반려견 서비스 보러가기</a></p>
                 </div>
+                <% } %>
             </div>
         </div>
         <footer>

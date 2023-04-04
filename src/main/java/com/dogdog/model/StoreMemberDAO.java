@@ -1,5 +1,8 @@
 package com.dogdog.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -19,5 +22,16 @@ public class StoreMemberDAO {
 		sqlSession.close();
 		
 		return cnt;
+	}
+	
+	public ArrayList<StoreMemberVO> selectReservation(String user_id) {
+		
+		SqlSession sqlSession =  sqlSessionFactory.openSession(true);
+		
+		List<StoreMemberVO> resultList = sqlSession.selectList("selectReservation", user_id);
+		
+		sqlSession.close();
+		
+		return (ArrayList<StoreMemberVO>)resultList;
 	}
 }

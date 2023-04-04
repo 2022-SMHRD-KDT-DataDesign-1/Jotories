@@ -19,11 +19,12 @@
 
 <body class="pc">
 	<% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
+	<form action="UpdateService.do">
 	<div class="wrap show">
 		<header>
 			<section>
 				<h1>
-					<a href="Main.jsp" title="여기어때">여기어때</a>
+					<a href="Main.jsp" title="독독">독독</a>
 				</h1>
 				<button type="button" class="btn_menu nav_open">메뉴</button>
 				<ul class="gnb_pc">
@@ -147,7 +148,7 @@
 							<div class="center">
 								<p>독독 고객센터</p>
 								<p>
-									<a href="tel:1670-6250">xxxx-xxxx</a>
+									<a href="tel:1670-6250">1670-6250</a>
 								</p>
 								<p>오전 9시 - 오후 8시</p>
 							</div>
@@ -172,37 +173,38 @@
 							<li><a href="editcontent.jsp"
 								class="nuxt-link-exact-active nuxt-link-active active">내 정보
 									관리</a></li>
-							<li><a href="/my/notifications" class=""> 알림 </a></li>
+							<li><a href="#" class=""> 알림 </a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="align_rt">
 					<div style="display: block">
 						<h3>내정보 수정</h3>
+						
 						<div class="nick_cor">
 							<div class="pw_input__title">
-								<b>닉네임</b> <span class="title__uinfo">순수한포병학교</span>
+								<b>닉네임</b> <span class="title__uinfo"><%= resultVO.getUser_nick()%></span>
 							</div>
 							<!-- 수정버튼 -->
 							<button id="btns-wrap__edit-btn" type="button"
 								style="display: block;">수정</button>
 							<div id="clicks" style="display: none">
 								<!-- 클릭 시ㅣ 나오는 input -->
-								<input type="text" placeholder="닉네임을 입력하는 공간입니다." class="teext"><br>
+								<input type="text" name="user_nick" placeholder="닉네임을 입력하는 공간입니다." class="teext"><br>
 							</div>
 						</div>
 
 						<!-- 예약자 이름 -->
 						<div class="reser_name">
 							<div class="pw_input__title">
-								<b>예약자 이름</b>
+								<b>이메일 주소</b><span class="title__uinfo"><%= resultVO.getUser_email() %></span>
 							</div>
 							<!-- 수정버튼 -->
 							<button id="btns-wrap__edit-btn1" type="button"
 								style="display: block;">수정</button>
 							<div id="clicks1" style="display: none">
 								<!-- 클릭 시 나오는 input -->
-								<input type="text" placeholder="예약자 이름을 입력하는 공간입니다."
+								<input type="text" placeholder="이메일 주소를 입력하는 공간입니다." name="user_email"
 									class="teext"><br>
 							</div>
 						</div>
@@ -210,28 +212,32 @@
 						<!-- 연락처 -->
 						<div class="phone_num">
 							<div class="pw_input__title">
-								<b>연락처</b> <span class="title__uinfo">01012341234</span>
+								<b>연락처</b> <span class="title__uinfo"><%= resultVO.getUser_phone() %></span>
 							</div>
 							<!-- 수정버튼 -->
 							<button id="btns-wrap__edit-btn2" type="button"
 								style="display: block;">수정</button>
 							<div id="clicks2" style="display: none">
 								<!-- 클릭 시 나오는 input -->
-								<input type="tel" class="form-control m-input" name="tel"
+								<input type="tel" class="form-control" name="user_phone"
 									id="telInput" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}"
 									maxlength="13" placeholder="예) 010-1234-5678" /><br>
+									<!-- <input type="text" name="user_phone" id="cellPhone" placeholder="핸드폰번호 입력" maxlength="13" /><br> -->
+								<!-- <input type="text" name="user_phone" id="cellPhone" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="예) 010-1234-5678" maxlength="13" /><br> -->
 							</div>
 						</div>
 
 						<!-- 전체 버튼 -->
 						<div id="allB">
-							<button class="btns-wrap__submit-btn" type="submit">수정완료</button>
+							<input class="btns-wrap__submit-btn" type="submit" value="수정완료">
 							<button class="btns-wrap__cancel-btn" type="button">수정취소</button>
 						</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
+		</form>
 		<footer>
 			<div class="align">
 				<ul class="link">
@@ -247,7 +253,7 @@
 					<li><a href="#">콘텐츠산업진흥법에의한 표시</a></li>
 				</ul>
 				<p>
-					<b>고객센터 xxxx-xxxx</b> 오전 9시 - 오후 8시
+					<b>고객센터 1670-6250</b> 오전 9시 - 오후 8시
 				</p>
 				<address>
 					<span>(주) 독독컴퍼니</span> 주소 : 광주광역시 동구 봉은사로 479, 479타워 11층 | 대표이사 :

@@ -29,4 +29,10 @@ public class UserVO {
 		this.user_phone = user_phone;
 	}
 	
+	public UserVO(@NonNull String user_id, @NonNull String user_nick, @NonNull String user_email, @NonNull String user_phone) {
+		this.user_id = user_id;
+		this.user_nick = user_nick;
+		this.user_email = user_email;
+		this.user_phone = user_phone;
+	}
 }

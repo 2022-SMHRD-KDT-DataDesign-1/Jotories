@@ -12,17 +12,16 @@ public class UpdateService implements Service {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
 		HttpSession session = request.getSession();
-		UserVO login_vo = (UserVO) session.getAttribute("result_vo");
+		UserVO resultVO = (UserVO) session.getAttribute("resultVO");
 		
 		String moveURL = "";
-		String id = login_vo.getUser_id();
-		String nick = request.getParameter("user_nick");
-		// 이 부분이 예약자 이름을 써야 되는 부분인데 DB에 존재하지 않아서...
-		String tel = request.getParameter("user_phone");
+		String user_id = resultVO.getUser_id();
+		String user_nick = request.getParameter("user_nick") != null ? request.getParameter("user_nick") : resultVO.getUser_nick();
+		String user_email = request.getParameter("user_email") != null ? request.getParameter("user_email") : resultVO.getUser_email();
+		String user_phone = request.getParameter("user_phone") != null ? request.getParameter("user_phone") : resultVO.getUser_phone();
 		
-		UserVO vo = new UserVO(id, nick, tel);
+		UserVO vo = new UserVO(user_id, user_nick, user_email, user_phone);
 		
 		UserDAO dao = new UserDAO();
 		int cnt = dao.updateUser(vo);
@@ -31,10 +30,10 @@ public class UpdateService implements Service {
 			System.out.println("수정성공!");
 			session = request.getSession();
 			session.setAttribute("result_vo", vo);
-			moveURL = "Main.jsp";
+			moveURL = "editcontent.jsp";
 		} else {
 			System.out.println("수정실패...");
-			moveURL = "MyPage.jsp";
+			moveURL = "editcontent.jsp";
 		}
 		
 		return moveURL;
