@@ -6,8 +6,6 @@
 <%@page import="com.dogdog.model.StoreBoardDAO"%>
 <%@page import="com.dogdog.model.UserVO"%>
 <%@page import="com.dogdog.model.UserDAO"%>
-=======
->>>>>>> jsj
 <%@page import="com.dogdog.model.StoreReviewVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dogdog.model.StoreReviewDAO"%>
@@ -28,15 +26,11 @@
 
 </head>
 <body >
-<<<<<<< HEAD
      <% 
      UserVO resultVO = (UserVO)session.getAttribute("resultVO"); 
      String[] store_id_list = request.getQueryString().split("=");
      int store_id = Integer.parseInt(store_id_list[1]) ;
      %>
-=======
-      
->>>>>>> jsj
     <div class="wrap show">
 
         <!-- Header -->
@@ -199,119 +193,7 @@
                                         alt="<%= sbVO.getStore_name() %>" class="swiper-lazy"></li>
                            	<% cnt++ ;} cnt=0; %>
                                 
-                                <!-- <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17"
-                                    style="width: 490px; transform: translate3d(-490px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/11/01/10/lHYFaEX15oGL.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="18"
-                                    style="width: 490px; transform: translate3d(-980px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/gn6UCDGhmjJS.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 전경" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate swiper-slide-prev"
-                                    data-swiper-slide-index="19"
-                                    style="width: 490px; transform: translate3d(-1470px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/3oOBWQu6Pfme.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 전경" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="0"
-                                    style="width: 490px; transform: translate3d(-1960px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                                    <img alt="포천 베어힐 카라반 펜션 | 대표이미지" class="swiper-lazy swiper-lazy-loaded"
-                                        src="//image.goodchoice.kr/resize_490x348/affiliate/2022/10/31/17/dT3AnfU7hEor.jpg">
-                                </li>
-                                <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="1"
-                                    style="width: 490px; transform: translate3d(-2450px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/rOHiKEYtS9Qj.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반201호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="2"
-                                    style="width: 490px; transform: translate3d(-2940px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/z1uDQd7psxeX.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="3"
-                                    style="width: 490px; transform: translate3d(-3430px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/QHxjoWTdve4z.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="4"
-                                    style="width: 490px; transform: translate3d(-3920px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/unvRbZiyNA8r.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 102호(단체룸)" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="5"
-                                    style="width: 490px; transform: translate3d(-4410px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/JhlekWCg3M8m.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 102호(단체룸)" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="6"
-                                    style="width: 490px; transform: translate3d(-4900px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/x70ZsOF5PYzg.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반204호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="7"
-                                    style="width: 490px; transform: translate3d(-5390px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/2MKpQUFchNlL.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반204호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="8"
-                                    style="width: 490px; transform: translate3d(-5880px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/lE2MLhm7A1Y9.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 103호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="9"
-                                    style="width: 490px; transform: translate3d(-6370px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/fRJMpubUl1PK.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 103호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="10"
-                                    style="width: 490px; transform: translate3d(-6860px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/aseZgwfW6ir1.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반203호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="11"
-                                    style="width: 490px; transform: translate3d(-7350px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/cQlfksu4e9M5.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 104호(단체룸)" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="12"
-                                    style="width: 490px; transform: translate3d(-7840px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/Ukm7tboqMYlD.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 104호(단체룸)" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="13"
-                                    style="width: 490px; transform: translate3d(-8330px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/MH3Kl4zyZc9F.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 101호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="14"
-                                    style="width: 490px; transform: translate3d(-8820px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/3EZgeOjHLDQn.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 101호" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="15"
-                                    style="width: 490px; transform: translate3d(-9310px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/08/10/18/6bCcnxYI1TN4.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 전경" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="16"
-                                    style="width: 490px; transform: translate3d(-9800px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/08/10/18/iNtJR52IfFwv.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="17"
-                                    style="width: 490px; transform: translate3d(-10290px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/11/01/10/lHYFaEX15oGL.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="18"
-                                    style="width: 490px; transform: translate3d(-10780px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/gn6UCDGhmjJS.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 전경" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="19"
-                                    style="width: 490px; transform: translate3d(-11270px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/3oOBWQu6Pfme.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 전경" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
-                                    data-swiper-slide-index="0"
-                                    style="width: 490px; transform: translate3d(-11760px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img alt="포천 베어힐 카라반 펜션 | 대표이미지" class="swiper-lazy swiper-lazy-loaded"
-                                        src="//image.goodchoice.kr/resize_490x348/affiliate/2022/10/31/17/dT3AnfU7hEor.jpg">
-                                </li>
-                                <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
-                                    data-swiper-slide-index="1"
-                                    style="width: 490px; transform: translate3d(-12250px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/rOHiKEYtS9Qj.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반201호" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2"
-                                    style="width: 490px; transform: translate3d(-12740px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/z1uDQd7psxeX.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3"
-                                    style="width: 490px; transform: translate3d(-13230px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/QHxjoWTdve4z.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy"></li> -->
+                              
                             </ul>
                         </div>
                         <div class="swiper-container gallery-thumbs swiper-container-horizontal">
@@ -324,43 +206,7 @@
                                         alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
                            	<% cnt++ ;} cnt=0; %>
                                 
-                                <!-- <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17"
-                                    style="width: 115px;"><img
-                                        data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/11/01/10/lHYFaEX15oGL.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="18"
-                                    style="width: 115px;"><img
-                                        data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/gn6UCDGhmjJS.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 전경" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate swiper-slide-prev"
-                                    data-swiper-slide-index="19" style="width: 115px;"><img
-                                        data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/3oOBWQu6Pfme.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 전경" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="0"
-                                    style="width: 115px;"><img alt="포천 베어힐 카라반 펜션 | 대표이미지"
-                                        class="swiper-lazy swiper-lazy-loaded"
-                                        src="//image.goodchoice.kr/resize_490x348/affiliate/2022/10/31/17/dT3AnfU7hEor.jpg">
-                                </li>
-                                <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="1"
-                                    style="width: 115px;"><img alt="포천 베어힐 카라반 펜션 | 카라반201호"
-                                        class="swiper-lazy swiper-lazy-loaded"
-                                        src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/rOHiKEYtS9Qj.jpg">
-                                </li>
-                                <li class="swiper-slide" data-swiper-slide-index="2" style="width: 115px;"><img
-                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy swiper-lazy-loaded"
-                                        src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/z1uDQd7psxeX.jpg">
-                                </li>
-                                <li class="swiper-slide" data-swiper-slide-index="3" style="width: 115px;"><img
-                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy swiper-lazy-loaded"
-                                        src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/QHxjoWTdve4z.jpg">
-                                </li>
-                                <li class="swiper-slide" data-swiper-slide-index="4" style="width: 115px;"><img
-                                        data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/unvRbZiyNA8r.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 102호(단체룸)" class="swiper-lazy"></li>
-                                <li class="swiper-slide" data-swiper-slide-index="5" style="width: 115px;"><img
-                                        data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/JhlekWCg3M8m.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 102호(단체룸)" class="swiper-lazy"></li> -->
-
+                           
                             </ul>
                         </div>
                         <!-- Add Arrows -->
@@ -424,9 +270,9 @@
 
             <!-- Tab Menu -->
             <div class="tab">
-                <button class="on"><span>객실안내/예약</span></button>
-                <button onclick="init_map('37.549788234578', '126.92179271704');"><span>숙소정보</span></button>
-                <button class="tab_review"><span>리뷰</span></button>
+                <button class="on"><span>숙소정보</span></button>
+                <button onclick="init_map('37.549788234578', '126.92179271704');"><span>리뷰</span></button>
+                <button class="tab_review"><span></span></button>
  
             </div>
 
@@ -543,7 +389,6 @@
                         <li>성수기 기간동안 일부 객실의 경우 요금변동이 있을 수 있습니다</li>
                         <li>수영장 운영은 날씨 또는 업소 상황에 따라 변동 될 수 있습니다</li>
                     </ul>
-                    <div class="map" id="google_maps"></div>
                 </section>
 
                 <!-- 편의시설 및 서비스 -->
