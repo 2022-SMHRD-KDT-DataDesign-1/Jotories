@@ -23,11 +23,19 @@ public class StoreReviewDAO {
 		return cnt;
 	}
 	
-	public double selectStoreRate(int store_id) {
+	public double selectStoreReviewRate(int store_id) {
+		
+		double storeRate = -1;
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		double storeRate = sqlSession.selectOne("selectStoreRate", store_id);
+		storeRate = sqlSession.selectOne("selectStoreReviewRate", store_id);
+		
+		if(storeRate >= 0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
 		
 		sqlSession.close();
 		
@@ -43,6 +51,16 @@ public class StoreReviewDAO {
 		sqlSession.close();
 		
 		return (ArrayList<StoreReviewVO>)resultList;
+	}
+	
+	public int countStoreReview(int store_id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		int cnt = sqlSession.selectOne("countStoreReview", store_id);
+		
+		sqlSession.close();
+		
+		return cnt;
 	}
 	
 }

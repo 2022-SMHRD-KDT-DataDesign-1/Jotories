@@ -11,7 +11,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		   , #{review_content}, #{review_date}, #{review_rate})
 	</insert>
 	
-	<select id="selectStoreReview" resultType="StoreReviewVO" parameterType="String">
+	<select id="selectStoreReview" resultType="StoreReviewVO" parameterType="int">
+		select * from storereview
+		where store_id=#{store_id}
+	</select>
+	
+	<select id="countStoreReview" resultType="int" parameterType="int">
+		select count(review_no)
+		from storereview
+		where store_id=#{store_id}
+	</select>
+	
+	<select id="selectStoreReviewRate" resultType="double" parameterType="int">
 		select avg(review_rate)
 		from storereview
 		where store_id=#{store_id}

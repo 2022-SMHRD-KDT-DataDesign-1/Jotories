@@ -32,7 +32,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 where user_id=#{user_id} and user_pw=#{user_pw}
 	</select>
 	
-	
+	<select id="selectNick" resultType="String" parameterType="String">
+		select user_nick
+		from userinfo
+		where user_id=#{user_id}
+	</select>
 	
 	
 	

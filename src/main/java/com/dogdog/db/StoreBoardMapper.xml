@@ -10,4 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(storeboard_num.nextval, #{store_name}, #{store_id}
 			 , #{storeboard_title}, #{storeboard_content}, sysdate, #{storeboard_comment})
 	</insert>
+	
+	<select id="selectBoard" resultType="StoreBoardVO">
+		select * from storeboard
+		where store_id=#{store_id}
+	</select>
 </mapper>
