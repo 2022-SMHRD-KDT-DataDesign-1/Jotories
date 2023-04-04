@@ -1185,3 +1185,68 @@ ic_Inactive_account.png
 .input-component__type1 .input-wrap input::-moz-placeholder {color: rgba(0,0,0,0.24);}
 .input-component__type1 .input-wrap input:-ms-input-placeholder {color: rgba(0,0,0,0.24);}
 .input-component__type1 .input-wrap input:-moz-placeholder {color: rgba(0,0,0,0.24);}
+
+
+.star {
+position: relative;
+font-size: 1rem;
+color: #ddd;
+}
+
+.star input {
+width: 100%;
+height: 100%;
+position: absolute;
+left: 0;
+opacity: 0;
+cursor: pointer;
+}
+
+.star span {
+width: 100%;
+position: absolute; 
+left: 0;
+color: yellow;
+overflow: hidden;
+pointer-events: none;
+}
+
+.star_rest {
+	color: lightgrey;
+}
+
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  /* margin-top:-2rem; */
+  font-size: 2.5rem;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  /* text-shadow:
+    -1px -1px 0 #6E6E6E,
+   1px -1px 0 #6E6E6E,
+    -1px 1px 0 #6E6E6E,
+    1px 1px 0 #6E6E6E;   */
+  -webkit-text-stroke-color: #6E6E6E;
+}
+ 
+.star-ratings-fill {
+  color: #F3F781;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+  background-color: transparent;
+}
+ 
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
