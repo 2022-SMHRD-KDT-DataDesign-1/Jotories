@@ -259,7 +259,7 @@
                         <button>더보기</button>
                         <div><%= sbVO.getStoreboard_comment() %></div>
                     </div>
-                    <div id="reservationBtn" style="border-radius:5px; background-color:#eb1b47; font-size: 1rem; font-weight: bold; color: white; margin-left:1rem; padding:1.1rem; cursor:pointer;"OnClick="location.href ='reservePage.jsp'">예약하기</div>
+                    <div id="reservationBtn" style="border-radius:5px; background-color:#eb1b47; font-size: 1rem; font-weight: bold; color: white; margin-left:1rem; padding:1.1rem; cursor:pointer;"OnClick="location.href ='reservePage.jsp?sotre=<%=sbVO.getStore_id()%>'">예약하기</div>
                     
                 </div>
                 <!-- //Right -->

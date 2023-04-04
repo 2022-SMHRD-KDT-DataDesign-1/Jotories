@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="com.dogdog.model.StoreVO"%>
 <%@page import="com.dogdog.model.StoreDAO"%>
 <%@page import="com.dogdog.model.StoreMemberVO"%>
@@ -152,6 +153,7 @@
                     </ul>
                 </nav>
             </div>
+            <from action="StoreReviewService.do">
             <div class="align_rt">
             <% 
             StoreDAO sDAO = new StoreDAO();
@@ -159,6 +161,7 @@
             	for(StoreMemberVO smVO:resultListSM) {
             		StoreVO sVO = sDAO.selectOneList(smVO.getStore_id());
             %>
+            <input type="hidden" name="store_id" value="<%= smVO.getStore_id()%>">
                 <!-- 예약 내역이 존재할 경우 이 부분을 jsp 이용해서 -->
                 <div class="list_none1" style="display: block">
                     숙소 예약내역<br>
@@ -224,6 +227,7 @@
             </div>
         </footer>
     </div>
+
       <div class="modal-wrapper">
     <div class="modal">
       <div class="content" id="zz">
@@ -234,33 +238,34 @@
           </div>
           <div class="center_star">
             <div class="star-rating space-x-4 mx-auto" text-aling = "center">
-                <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+                <input type="radio" id="5-stars" name="review_rate" value="5" v-model="ratings"/>
                 <label for="5-stars" class="star pr-4">★</label>
-                <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+                <input type="radio" id="4-stars" name="review_rate" value="4" v-model="ratings"/>
                 <label for="4-stars" class="star">★</label>
-                <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+                <input type="radio" id="3-stars" name="review_rate" value="3" v-model="ratings"/>
                 <label for="3-stars" class="star">★</label>
-                <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+                <input type="radio" id="2-stars" name="review_rate" value="2" v-model="ratings"/>
                 <label for="2-stars" class="star">★</label>
-                <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+                <input type="radio" id="1-star" name="review_rate" value="1" v-model="ratings" />
                 <label for="1-star" class="star">★</label>
             </div>
+            <input type="hidden" name="review_date" value=<%=LocalDate.now().toString() %>>
 
 
         
 
         </div>
         <div class="center_star">
-            <textarea cols="56" rows="7" placeholder="리뷰를 입력하세욤"></textarea>
+            <textarea cols="56" rows="7" placeholder="리뷰를 입력해주세요" name="review_content"></textarea>
 
         </div>
              
         <div class="center_star">
     
-                     <button class="btn_sub" type="submit"> <h3>등록하기</h3> </button>
+                     <input class="btn_sub" type="submit"> <h3>등록하기</h3> </input>
         
         </div>
-
+	</form>
 
 
 

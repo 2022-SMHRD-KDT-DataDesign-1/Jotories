@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dogdog.command.Service;
 import com.dogdog.controller.DetailPageService;
+import com.dogdog.controller.InsertDogService;
 import com.dogdog.controller.JoinService;
 import com.dogdog.controller.LoginService;
 import com.dogdog.controller.LogoutService;
+import com.dogdog.controller.ReservationService;
 import com.dogdog.controller.StoreListService;
 import com.dogdog.controller.UpdateService;
 
@@ -66,22 +68,19 @@ public class Frontcontroller extends HttpServlet {
 			service = new LogoutService();
 			
 		} else if(result.equals("StoreListService.do")) {
-			// 로그아웃 기능
 		    service = new StoreListService();
 		
 		} else if(result.equals("DetailPageService.do")) {
-			// 게시판 조회
 			service = new DetailPageService();
 		
 		} else if(result.equals("UpdateService.do")) {
 			service = new UpdateService();
-		//		} else if(result.equals("DeleteBoardService.do")) {
-		//			// 게시물 삭제
-		//			service = new DeleteBoardService();
+			
+		} else if(result.equals("ReservationService.do")) {
+			service = new ReservationService();
 		//			
-		// else if(result.equals("DeleteService.do")) {
-			// 회원 삭제
-//			service = new DeleteService();
+		 }else if(result.equals("InsertDogService.do")) {
+			service = new InsertDogService();
 		//			
 		//			
 		//		} else if(result.equals("MessageService.do")) {
