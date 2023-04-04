@@ -7,9 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
   <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/review.css">
+  
     <link rel="stylesheet" href="assets/css/reservation.css">
 
     <link rel="stylesheet" href="assets/css/heregood.css">
+    <link rel="stylesheet" href="assets/css/MyPage.css">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -110,7 +113,6 @@
 
       
 
-        </div>
         
 
     <div id="content">
@@ -262,6 +264,90 @@ style="display: none;">상단으로</button>
          ></a>
 </span></div>
 
+        </div>
+
+
+  <div class="modal-wrapper">
+    <div class="modal">
+      <div class="content" id="zz">
+        <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv5fJHV6t9CkXrhetBbkn-0H-OAmxnFig--Q&usqp=CAU" class="m_header-banner-close"></a>
+             <div class="good-job">
+            <h1>예약 완료 ! ! ! </h1>
+          </div>
+          <div class="center_star1">
+						<section >
+						<br>
+							<p>
+							<br>
+								<h3>예약장소&nbsp&nbsp</h3>	
+								<br>						
+								앨리스카라반캠프
+								<br>
+							</p>
+							<p>
+							<br>
+								<h3>강아지이름&nbsp&nbsp</h3>	
+								<br>						
+								조멍멍
+								<br>
+							</p>
+							
+							<p>
+							<br>
+								<h3>예약자&nbsp&nbsp</h3>	
+								<br>						
+								승재
+								<br>
+							</p>				
+							
+							<p>
+							<br>
+								<h3>예약일자&nbsp&nbsp</h3>	
+								<br>						
+								2020
+								<br>
+							</p>
+														<br>
+							
+						</section>
+					
+
+
+
+				</div>
+        
+                <div class="center_star">
+        
+
+        <a href="MyPage.jsp">            <button class="btn_sub" type="submit" style="text-align: center;">등록하기 </button>
+        </a>
+        
+        </div>
+ 
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -272,6 +358,7 @@ style="display: none;">상단으로</button>
 
 
         <script src="assets/js/heregood.js"></script>
+        <script src="assets/js/review.js"></script>
         
         <script >
         function gopopup() {

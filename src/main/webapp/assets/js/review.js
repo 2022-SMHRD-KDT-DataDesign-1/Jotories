@@ -38,6 +38,21 @@
         return true;
     });
   });
+  
+  
+   $( document ).ready(function() {
+    $('.btn_pay').on('click', function() {
+       $('.modal-wrapper').toggleClass('open');
+      $('.wrap').toggleClass('blur-it');
+                     console.log("크하헤헤");
+
+      return false;
+
+
+    });
+  });
+  
+  
 
 
   function closePop() {
