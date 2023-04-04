@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="assets/css/MyPage.css">
 <link rel="stylesheet" href="assets/css/MyPage_d.css">
+<link rel="stylesheet" href="assets/css/review.css">
 
 </head>
 
@@ -153,11 +154,20 @@
                         <div class="check_in">
                             <span>예약날짜</span><br>
                             <p style="margin-top: 5px; font-size: 18px; font-weight: 600;">4.06(목)</p>
+                            
                         </div>
                         <div class="reser_but">
-                            <button class="but1"><a href="reservePage.jsp"><strong>다시 예약</strong></a></button>
-                            <button class="but1"><a href="review"><strong>리뷰 쓰기</strong></a></button>
-                        </div>
+                            <button class="but1"><a href="reservePage.jsp" class="aaa"><strong>다시 예약</strong></a></button>
+                            <button class="but1 trigger"><strong>리뷰 쓰기</strong></button>
+						</div>
+
+
+
+						<!-- Button -->
+
+  
+  <!-- Modal -->
+
                     </div>
                 </div>
 
@@ -177,10 +187,7 @@
                     <li><a href="#" data-default="privacy">개인정보처리방침</a><span>|</span></li>
                     <li><button type="button" onclick="pop_licence();return false;">
                             사업자 정보확인</button><span>|</span></li>
-                    <li><a href="#" target="_blank">여기어때 마케팅센터</a><span>|</span>
-                    </li>
-                    <li><a href="#" target="_blank">액티비티
-                            호스트센터</a><span>|</span></li>
+  
                     <li><a href="#" target="_blank">DogDod
                             독독</a><span>|</span></li>
                     <li><a href="#">콘텐츠산업진흥법에의한 표시</a></li>
@@ -202,9 +209,57 @@
             </div>
         </footer>
     </div>
+      <div class="modal-wrapper">
+    <div class="modal">
+      <div class="content" id="zz">
+        <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv5fJHV6t9CkXrhetBbkn-0H-OAmxnFig--Q&usqp=CAU" class="m_header-banner-close"></a>
+
+          <div class="good-job">
+            <h2>리뷰 작성하기</h2>
+          </div>
+          <div class="center_star">
+            <div class="star-rating space-x-4 mx-auto" text-aling = "center">
+                <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+                <label for="5-stars" class="star pr-4">★</label>
+                <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+                <label for="4-stars" class="star">★</label>
+                <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+                <label for="3-stars" class="star">★</label>
+                <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+                <label for="2-stars" class="star">★</label>
+                <input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+                <label for="1-star" class="star">★</label>
+            </div>
+
+
+        
+
+        </div>
+        <div class="center_star">
+            <textarea cols="56" rows="7" placeholder="리뷰를 입력하세욤"></textarea>
+
+        </div>
+             
+        <div class="center_star">
+    
+                     <button class="btn_sub" type="submit"> <h3>등록하기</h3> </button>
+        
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
     <button onclick="moveTop();" class="btn_go_top">상단으로</button>
     
     <script type="text/javascript" src="assets/js/service/common.js"></script>
+    <script type="text/javascript" src="assets/js/review.js"></script>
 
 
 

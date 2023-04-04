@@ -549,27 +549,27 @@ article.on{display:block}
 .room_info .info .hotel .price button{height:56px;padding:0;background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_gt_2.png') 100% 50% no-repeat;background-size:12px auto;font-size:16px;color:rgba(0,0,0,0.87);text-align:left}
 .room_info .pic_view,.room_info .cal_bg{display:none}
 .room_info .gallery_m{display:none;}
-.detail_info .btn_align{margin:0 16px}
-.detail_info button{display:block;position:relative;width:100%;height:56px;padding:0 16px;border:none;border-top:1px solid rgba(0,0,0,0.08);background:#fff;font-size:16px;line-height:56px;color:rgba(0,0,0,0.87);text-align:left;cursor:pointer}
-.detail_info button:first-child{border-top:none}
-.detail_info button:after{display:inline-block;content:"";position:absolute;top:50%;right:21px;width:12px;height:8px;margin-top:-4px;background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 0 no-repeat;background-size:12px auto}
-.detail_info .on{border-bottom:none}
-.detail_info .on:after{background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 -8px no-repeat;background-size:12px auto}
-.detail_info section{display:none;overflow:hidden;margin:0 16px 11px 16px;padding:0 16px;border-radius:4px;background:rgb(245,245,245)}
-.detail_info .default_info,
-.detail_info .seller_info {padding-bottom:32px}
-.detail_info .default_info strong,
-.detail_info .seller_info strong {display:block;margin:30px 0 10px 0;font-size:15px;color:rgba(0,0,0,0.56)}
-.detail_info .default_info h3,
-.detail_info .seller_info h3 {display:block;margin:30px 0 10px 0;font-size:15px;color:rgba(0,0,0,0.56)}
-.detail_info .default_info p,
-.detail_info .seller_info p {font-size:15px;line-height:24px;color:rgba(0,0,0,0.56)}
-.detail_info .default_info .map{width:100%;height:160px;margin-top:30px;background:#e8e8e8}
-.detail_info .default_info ul,
-.detail_info .seller_info ul {font-size:15px;line-height:24px;color:rgba(0,0,0,0.56)}
-.detail_info .default_info ul li,
-.detail_info .seller_info ul li {padding-left:14px;background:url('//image.goodchoice.kr/images/web_v3/ico_bul_3.png') -1px 0 no-repeat;background-size:12px auto}
-.detail_info .default_info ul li img {width: 100%}
+.room_info .btn_align{margin:0 16px}
+.room_info button{display:block;position:relative;width:100%;height:56px;padding:0 16px;border:none;border-top:1px solid rgba(0,0,0,0.08);background:#fff;font-size:16px;line-height:56px;color:rgba(0,0,0,0.87);text-align:left;cursor:pointer}
+.room_info button:first-child{border-top:none}
+.room_info button:after{display:inline-block;content:"";position:absolute;top:50%;right:21px;width:12px;height:8px;margin-top:-4px;background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 0 no-repeat;background-size:12px auto}
+.room_info .on{border-bottom:none}
+.room_info .on:after{background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 -8px no-repeat;background-size:12px auto}
+.room_info section{display:none;overflow:hidden;margin:0 16px 11px 16px;padding:0 16px;border-radius:4px;background:rgb(245,245,245)}
+.room_info .default_info,
+.room_info .seller_info {padding-bottom:32px}
+.room_info .default_info strong,
+.room_info .seller_info strong {display:block;margin:30px 0 10px 0;font-size:15px;color:rgba(0,0,0,0.56)}
+.room_info .default_info h3,
+.room_info .seller_info h3 {display:block;margin:30px 0 10px 0;font-size:15px;color:rgba(0,0,0,0.56)}
+.room_info .default_info p,
+.room_info .seller_info p {font-size:15px;line-height:24px;color:rgba(0,0,0,0.56)}
+.room_info .default_info .map{width:100%;height:160px;margin-top:30px;background:#e8e8e8}
+.room_info .default_info ul,
+.room_info .seller_info ul {font-size:15px;line-height:24px;color:rgba(0,0,0,0.56)}
+.room_info .default_info ul li,
+.room_info .seller_info ul li {padding-left:14px;background:url('//image.goodchoice.kr/images/web_v3/ico_bul_3.png') -1px 0 no-repeat;background-size:12px auto}
+.room_info .default_info ul li img {width: 100%}
 
 .col_pink{color:rgb(242,17,76)}
 .swiper_detail{display:block !important}
@@ -1163,20 +1163,20 @@ article.on{display:block}
 	.room .owl-nav .disabled{opacity:0.3}
 	.room .owl-prev{left:0 !important;border-radius:0 4px 4px 0;background:#FFF url('//image.goodchoice.kr/images/web_v3/ico_arr_lt_4.png') 50% 50% no-repeat !important;background-size:20px auto !important}
 	.room .owl-next{right:0 !important;border-radius:4px 0 0 4px;background:#FFF url('//image.goodchoice.kr/images/web_v3/ico_arr_gt_4.png') 50% 50% no-repeat !important;background-size:20px auto !important}
-	.detail_info{width:962px;margin:0 auto;border-bottom:1px solid rgba(0,0,0,0.08)}
-	.detail_info button{display:block;position:relative;height:80px;margin:0;padding:0 16px;border-top:1px solid rgba(0,0,0,0.08);font-size:18px;line-height:80px}
-	.detail_info button:after{display:inline-block;content:"";position:absolute;top:50%;right:16px;width:12px;height:8px;margin-top:-4px;background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 0 no-repeat;background-size:12px auto}
-	.detail_info .on{border-bottom:none}
-	.detail_info .on:after{background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 -8px no-repeat;background-size:12px auto}
-	.detail_info section{overflow:hidden;padding:0 57px;margin:0 0 23px 0;border-radius:5px;background:rgb(250,250,250)}
-	.detail_info .boss_intro{display:none}
-	.detail_info .default_info,
-	.detail_info .seller_info {padding:12px 57px 48px 57px}
-	.detail_info .default_info strong,
-	.detail_info .seller_info strong {display:block;margin:35px 0 10px 0;font-size:16px;color:rgba(0,0,0,0.56)}
-	.detail_info .default_info p,
-	.detail_info .seller_info p{font-size:15px;line-height:24px;color:rgba(0,0,0,0.56)}
-	.detail_info .default_info .map{width:100%;height:160px;margin-top:30px;background:#e8e8e8}
+	.room_info{width:962px;margin:0 auto;border-bottom:1px solid rgba(0,0,0,0.08)}
+	.room_info button{display:block;position:relative;height:80px;margin:0;padding:0 16px;border-top:1px solid rgba(0,0,0,0.08);font-size:18px;line-height:80px}
+	.room_info button:after{display:inline-block;content:"";position:absolute;top:50%;right:16px;width:12px;height:8px;margin-top:-4px;background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 0 no-repeat;background-size:12px auto}
+	.room_info .on{border-bottom:none}
+	.room_info .on:after{background:#fff url('//image.goodchoice.kr/images/web_v3/ico_arr_3.png') 0 -8px no-repeat;background-size:12px auto}
+	.room_info section{overflow:hidden;padding:0 57px;margin:0 0 23px 0;border-radius:5px;background:rgb(250,250,250)}
+	.room_info .boss_intro{display:none}
+	.room_info .default_info,
+	.room_info .seller_info {padding:12px 57px 48px 57px}
+	.room_info .default_info strong,
+	.room_info .seller_info strong {display:block;margin:35px 0 10px 0;font-size:16px;color:rgba(0,0,0,0.56)}
+	.room_info .default_info p,
+	.room_info .seller_info p{font-size:15px;line-height:24px;color:rgba(0,0,0,0.56)}
+	.room_info .default_info .map{width:100%;height:160px;margin-top:30px;background:#e8e8e8}
 	.dot_txt{font-size:16px;line-height:26px;color:rgba(0,0,0,0.56)}
 	.dot_txt li{margin-bottom:7px;padding-left:14px;background:url('//image.goodchoice.kr/images/web_v3/ico_bul_3.png') 0 2px no-repeat;background-size:12px auto}
 	.col_pink{color:rgb(242,17,76)}

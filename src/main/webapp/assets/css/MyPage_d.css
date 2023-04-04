@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+@charset "UTF-8";
 /* Point 포인트 */
 .point_show {
   padding-bottom: 38px;
@@ -244,6 +246,11 @@
     border-color: white;
     border-radius: 5%;
     font-size: 18px;
+  }
+  
+  
+  .aaa{
+  color: black;
   }
 }
 
