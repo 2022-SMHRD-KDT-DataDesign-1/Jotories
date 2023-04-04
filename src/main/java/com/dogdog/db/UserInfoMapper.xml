@@ -8,16 +8,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="UserVO">
 		insert into userinfo
-		values(#{user_id}, #{user_pw}, #{user_nick}, #{user_phone}, #{user_email}, #{user_addr})
+		values(#{user_id}, #{user_pw}, #{user_nick}, #{user_phone}, #{user_email}, #{user_addr}, default)
 	</insert>
 	<!-- 회원정보 수정 -->
 	<update id="updateUser" parameterType="UserVO">
 		update userinfo
-		   set user_pw=#{user_pw}
-			 , user_nick=#{user_nick}
+		   set user_nick=#{user_nick}
 			 , user_phone=#{user_phone}
 			 , user_email=#{user_email}
-			 , user_addr=#{user_addr}
 	</update>
 	
 	<!-- 회원탈퇴 -->

@@ -39,7 +39,11 @@
                 <h1><a class="" href="Main.jsp" title="여기어때">여기어때</a></h1>
                 <button type="button" class="btn_menu nav_open ">메뉴</button>
                 <ul class="gnb_pc">
+                <% if(resultVO != null){ %>
                     <li><a href="MyPage.jsp" class="nuxt-link-exact-active nuxt-link-active">예약내역</a></li>
+                    <%} else { %>
+                    	<li><a href="#" class="nuxt-link-exact-active nuxt-link-active">예약내역</a></li>
+                    <% } %>
                     <li class="over">
                         <button type="button"><span>더보기</span></button>
                         <ul class="list_03" style="display: none; opacity: 1;">
@@ -144,23 +148,24 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
  <div id="slideShow1">
     <ul class="slides">
     	<% for(StoreVO s:schoolTop5List) {
-    		/* double rate = storeDao.selectStoreRate(s.getStore_id());
+    		double rate = storeDao.selectStoreRate(s.getStore_id());
+    		String rateS = String.format("%.1f", rate);
     		if(((int)(rate + 0.5) / 10 ) * 10 >= rate){
     			rate = ((int)(rate + 0.5) / 10 ) * 10;
     		} else {
     			rate = (int)rate;
-    		} */
+    		}
     		//System.out.println(((num+5) / 10) * 10);
     		String stars = "";
     		String restStars = "";
     		String moveURL = "DetailPageService.do?store=" + s.getStore_id();
-    		/* 
+    		
     		for(double i = 0; i < rate; i++) {
     			stars += "★";
     		}
     		for(double i = 0; i < 5 - rate; i++) {
            		restStars += "★";
-            } */
+            }
     		out.print("<li ><a href="+ moveURL +"><div class='top5_container'>"+
         "<div class='top5_img'>" +
             "<img src='"+ s.getStore_pic() +"' alt='"+ s.getStore_name() +"'></div>"+
@@ -169,7 +174,7 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
         "<span class='star'>"+ stars +"<span>★★★★★</span></span><span class='star_rest'>"+ restStars +
         
         /*"<input type='range' oninput='drawStar(this)' value='1' step='1' min='0' max='10'> */
-        "<span class='top5_rate'>"+ s.getStore_rate() +"</span>"+
+        "<span class='top5_rate'>"+ rateS +"</span>"+
         /* "<span class='top5_rate'>(리뷰수)</span>"+ */
         "</div></div></a></li>");
     	} %>
@@ -192,23 +197,24 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
  <div id="slideShow2">
     <ul class="slides">
     	<% for(StoreVO s:hotelTop5List) {
-    		/* double rate = storeDao.selectStoreRate(s.getStore_id());
+    		double rate = storeDao.selectStoreRate(s.getStore_id());
+    		String rateS = String.format("%.1f", rate);
     		if(((int)(rate + 0.5) / 10 ) * 10 >= rate){
     			rate = ((int)(rate + 0.5) / 10 ) * 10;
     		} else {
     			rate = (int)rate;
-    		} */
+    		}
     		//System.out.println(((num+5) / 10) * 10);
     		String stars = "";
     		String restStars = "";
     		String moveURL = "DetailPageService.do?store=" + s.getStore_id();
-    		/* 
+    		
     		for(double i = 0; i < rate; i++) {
     			stars += "★";
     		}
     		for(double i = 0; i < 5 - rate; i++) {
            		restStars += "★";
-            } */
+            }
     		out.print("<li ><a href="+ moveURL +"><div class='top5_container'>"+
         "<div class='top5_img'>" +
             "<img src='"+ s.getStore_pic() +"' alt='"+ s.getStore_name() +"'></div>"+
@@ -217,7 +223,7 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
         "<span class='star'>"+ stars +"<span>★★★★★</span></span><span class='star_rest'>"+ restStars +
         
         /*"<input type='range' oninput='drawStar(this)' value='1' step='1' min='0' max='10'> */
-        "<span class='top5_rate'>"+ s.getStore_rate() +"</span>"+
+        "<span class='top5_rate'>"+ rateS +"</span>"+
         /* "<span class='top5_rate'>(리뷰수)</span>"+ */
         "</div></div></a></li>");
     	} %>
@@ -240,23 +246,24 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
  <div id="slideShow3">
     <ul class="slides">
     	<% for(StoreVO s:hospitalTop5List) {
-    		/* double rate = storeDao.selectStoreRate(s.getStore_id());
+    		double rate = storeDao.selectStoreRate(s.getStore_id());
+    		String rateS = String.format("%.1f", rate);
     		if(((int)(rate + 0.5) / 10 ) * 10 >= rate){
     			rate = ((int)(rate + 0.5) / 10 ) * 10;
     		} else {
     			rate = (int)rate;
-    		} */
+    		}
     		//System.out.println(((num+5) / 10) * 10);
     		String stars = "";
     		String restStars = "";
     		String moveURL = "DetailPageService.do?store=" + s.getStore_id();
-    		/* 
+    		
     		for(double i = 0; i < rate; i++) {
     			stars += "★";
     		}
     		for(double i = 0; i < 5 - rate; i++) {
            		restStars += "★";
-            } */
+            }
     		out.print("<li ><a href="+ moveURL +"><div class='top5_container'>"+
         "<div class='top5_img'>" +
             "<img src='"+ s.getStore_pic() +"' alt='"+ s.getStore_name() +"'></div>"+
@@ -265,7 +272,7 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
         "<span class='star'>"+ stars +"<span>★★★★★</span></span><span class='star_rest'>"+ restStars +
         
         /*"<input type='range' oninput='drawStar(this)' value='1' step='1' min='0' max='10'> */
-        "<span class='top5_rate'>"+ s.getStore_rate() +"</span>"+
+        "<span class='top5_rate'>"+ rateS +"</span>"+
         /* "<span class='top5_rate'>(리뷰수)</span>"+ */
         "</div></div></a></li>");
     	} %>
@@ -288,23 +295,24 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
  <div id="slideShow4">
     <ul class="slides">
     	<% for(StoreVO s:salonTop5List) {
-    		/* double rate = storeDao.selectStoreRate(s.getStore_id());
+    		double rate = storeDao.selectStoreRate(s.getStore_id());
+    		String rateS = String.format("%.1f", rate);
     		if(((int)(rate + 0.5) / 10 ) * 10 >= rate){
     			rate = ((int)(rate + 0.5) / 10 ) * 10;
     		} else {
     			rate = (int)rate;
-    		} */
+    		}
     		//System.out.println(((num+5) / 10) * 10);
     		String stars = "";
     		String restStars = "";
     		String moveURL = "DetailPageService.do?store=" + s.getStore_id();
     		
-    		/* for(double i = 0; i < rate; i++) {
+    		for(double i = 0; i < rate; i++) {
     			stars += "★";
     		}
     		for(double i = 0; i < 5 - rate; i++) {
            		restStars += "★";
-            } */
+            }
     		out.print("<li ><a href="+ moveURL +"><div class='top5_container'>"+
         "<div class='top5_img'>" +
             "<img src='"+ s.getStore_pic() +"' alt='"+ s.getStore_name() +"'></div>"+
@@ -313,7 +321,7 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
         "<span class='star'>"+ stars +"<span>★★★★★</span></span><span class='star_rest'>"+ restStars +
         
         /*"<input type='range' oninput='drawStar(this)' value='1' step='1' min='0' max='10'> */
-        "<span class='top5_rate'>"+ s.getStore_rate() +"</span>"+
+        "<span class='top5_rate'>"+ rateS +"</span>"+
         /* "<span class='top5_rate'>(리뷰수)</span>"+ */
         "</div></div></a></li>");
     	} %>
