@@ -18,4 +18,14 @@ public class StoreBoardDAO {
 		
 		return cnt;
 	}
+	
+	public StoreBoardVO selectBoard(int store_id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		StoreBoardVO resultVO = sqlSession.selectOne("selectBoard", store_id);
+		
+		sqlSession.close();
+		
+		return resultVO;
+	}
 }

@@ -16,6 +16,7 @@ public class UserVO {
 	@NonNull private String user_phone;
 	@NonNull private String user_email;
 	@NonNull private String user_addr;
+	private String user_profile;
 	
 	public UserVO(@NonNull String user_id, @NonNull String user_pw) {
 		this.user_id = user_id;

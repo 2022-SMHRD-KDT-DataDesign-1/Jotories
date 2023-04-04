@@ -1,3 +1,4 @@
+<%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 
 </head>
 <body>
-
+<% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
 
 
     <!-- Wrap -->
@@ -30,7 +31,7 @@
                 <h1><a class="" href="Main.jsp" title="여기어때">여기어때</a></h1>
                 <button type="button" class="btn_menu nav_open ">메뉴</button>
                 <ul class="gnb_pc">
-                    <li><a href="https://www.goodchoice.kr/user/login?returnUrl=my%2FreserveList">예약내역</a></li>
+                    <li><a href="MyPage.jsp" class="nuxt-link-exact-active nuxt-link-active">예약내역</a></li>
                     <li class="over">
                         <button type="button"><span>더보기</span></button>
                         <ul class="list_03" style="display: none; opacity: 1;">
@@ -42,7 +43,14 @@
                             <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
                         </ul>
                     </li>
-                    <li><a href="login.html"><span>로그인</span></a></li>
+                    <% String updateLogout = "";
+                    updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='"+ resultVO.getUser_profile()+"' alt='"+resultVO.getUser_nick()+"'></a>"+
+                            "<ul class='list_04' style='display:none'>" +
+                                "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
+                                "<li><a href='editontent.jsp'>내정보</a></li>" +
+                                "<li><a href='MyPage.jsp'>예약내역<!-- span>0건</span --></a></li>" +
+                                "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
+                                <%= updateLogout %>
                 </ul>
 
                 <!-- Search -->

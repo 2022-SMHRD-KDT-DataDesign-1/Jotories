@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dogdog.command.Service;
+import com.dogdog.controller.DetailPageService;
 import com.dogdog.controller.JoinService;
 import com.dogdog.controller.LoginService;
 import com.dogdog.controller.LogoutService;
+import com.dogdog.controller.StoreListService;
 
 
 /**
@@ -62,11 +64,14 @@ public class Frontcontroller extends HttpServlet {
 			// 로그아웃 기능
 			service = new LogoutService();
 			
-		} 
-//				else if(result.equals("BoardService.do")) {
-		//			// 게시판 조회
-		//			service = new BoardService();
-		//			
+		} else if(result.equals("StoreListService.do")) {
+		// 로그아웃 기능
+		    service = new StoreListService();
+		
+		} else if(result.equals("DetailPageService.do")) {
+					// 게시판 조회
+					service = new DetailPageService();
+		}
 		//		} else if(result.equals("DeleteBoardService.do")) {
 		//			// 게시물 삭제
 		//			service = new DeleteBoardService();

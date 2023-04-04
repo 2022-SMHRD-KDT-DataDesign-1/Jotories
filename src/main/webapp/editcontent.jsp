@@ -1,3 +1,4 @@
+<%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
 </head>
 
 <body class="pc">
-
+	<% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
 	<div class="wrap show">
 		<header>
 			<section>
@@ -40,7 +41,14 @@
 									및 정책</a></li>
 						</ul></li>
 
-					<li><a href="login.html">로그인</a></li>
+					<% String updateLogout = "";
+                    updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='"+ resultVO.getUser_profile()+"' alt='"+resultVO.getUser_nick()+"'></a>"+
+                            "<ul class='list_04' style='display:none'>" +
+                                "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
+                                "<li><a href='editontent.jsp'>내정보</a></li>" +
+                                "<li><a href='MyPage.jsp'>예약내역<!-- span>0건</span --></a></li>" +
+                                "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
+                                <%= updateLogout %>
 				</ul>
 				<div class="srch_bar">
 					<div class="wrap_inp">

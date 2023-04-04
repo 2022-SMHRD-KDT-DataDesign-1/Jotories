@@ -63,4 +63,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<select id="selectAllList" resultType="StoreVO" parameterType="String">
+		select *
+		from storeinfo
+		where store_type=#{store_type}
+	</select>
+	
+	<select id="selectStoreRate" resultType="double" parameterType="int">
+		select avg(review_rate)
+		from storereview
+		where store_id=#{store_id}
+	</select>
+	
 </mapper>

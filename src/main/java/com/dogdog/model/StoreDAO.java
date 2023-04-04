@@ -23,37 +23,76 @@ public class StoreDAO {
 		return cnt;
 	}
 	
+	public ArrayList<StoreVO> selectAllList(String store_type) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> resultList = sqlSession.selectList("selectAllList", store_type);
+		
+		sqlSession.close();
+		
+		return (ArrayList<StoreVO>)resultList;
+	}
+	
 	public ArrayList<StoreVO> selectTop5School() {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		List<StoreVO> resultVO = sqlSession.selectList("selectTop5School");
+		List<StoreVO> resultList = sqlSession.selectList("selectTop5School");
 		
-		return (ArrayList<StoreVO>)resultVO;
+		sqlSession.close();
+		
+		return (ArrayList<StoreVO>)resultList;
 	}
 	
 	public ArrayList<StoreVO> selectTop5Hotel() {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		List<StoreVO> resultVO = sqlSession.selectList("selectTop5Hotel");
+		List<StoreVO> resultList = sqlSession.selectList("selectTop5Hotel");
 		
-		return (ArrayList<StoreVO>)resultVO;
+		sqlSession.close();
+		
+		return (ArrayList<StoreVO>)resultList;
 	}
 	public ArrayList<StoreVO> selectTop5Hospital() {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		List<StoreVO> resultVO = sqlSession.selectList("selectTop5Hospital");
+		List<StoreVO> resultList = sqlSession.selectList("selectTop5Hospital");
 		
-		return (ArrayList<StoreVO>)resultVO;
+		sqlSession.close();
+		
+		return (ArrayList<StoreVO>)resultList;
 	}
 	public ArrayList<StoreVO> selectTop5Salon() {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		List<StoreVO> resultVO = sqlSession.selectList("selectTop5Salon");
+		List<StoreVO> resultList = sqlSession.selectList("selectTop5Salon");
 		
-		return (ArrayList<StoreVO>)resultVO;
+		sqlSession.close();
+		
+		return (ArrayList<StoreVO>)resultList;
+	}
+	
+	
+	public double selectStoreRate(int store_id) {
+		
+		double storeRate = -1;
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		storeRate = sqlSession.selectOne("selectStoreRate", store_id);
+		
+		if(storeRate >= 0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
+		
+		sqlSession.close();
+		
+		return storeRate;
 	}
 }

@@ -1,3 +1,7 @@
+<%@page import="com.dogdog.model.UserVO"%>
+<%@page import="com.dogdog.model.StoreDAO"%>
+<%@page import="com.dogdog.model.StoreVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +16,11 @@
 <link rel="stylesheet" href="assets/css/l_j.css">
 </head>
 <body class="pc">
+	<% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
+	<%
+		StoreDAO sDAO = new StoreDAO();
+		ArrayList<StoreVO> resultList = (ArrayList<StoreVO>)session.getAttribute("resultStoreList");
+	%>
 
 	<div class="wrap show">
 
@@ -25,7 +34,7 @@
 				<button type="button" class="btn_srch srch_open "
 					style="right: 396px;">검색</button>
 				<ul class="gnb_pc">
-					<li><a href="https://www.goodchoice.kr/my/reserveList">예약내역</a></li>
+					<li><a href="MyPage.jsp" class="nuxt-link-exact-active nuxt-link-active">예약내역</a></li>
 					<li class="over">
 						<button type="button">
 							<span>더보기</span>
@@ -43,7 +52,14 @@
 									정책</a></li>
 						</ul>
 					</li>
-					<li><a href="login.html">로그인</a></li>
+					<% String updateLogout = "";
+                    updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='"+ resultVO.getUser_profile()+"' alt='"+resultVO.getUser_nick()+"'></a>"+
+                            "<ul class='list_04' style='display:none'>" +
+                                "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
+                                "<li><a href='editontent.jsp'>내정보</a></li>" +
+                                "<li><a href='MyPage.jsp'>예약내역<!-- span>0건</span --></a></li>" +
+                                "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
+                                <%= updateLogout %>
 
 
 				</ul>
@@ -270,31 +286,43 @@
 								<button type="button" class="btn_map" onclick="pop_map_pc();">지도</button>
 							</div>
 						</div>
-
 						<div id="poduct_list_area">
 							<!-- 마포구 -->
 							<div class="title"></div>
-							<li class="list_4 adcno6"><a
-								href="detailPage.jsp"
+							<%
+							for(StoreVO sVO:resultList){
+								String recommend = "";
+								if(sVO.getStore_rate() >= 4.0) {
+									recommend += "추천해요!";
+								} else if(sVO.getStore_rate() >= 3.0) {
+									recommend += "평범해요.";
+								} else if(sVO.getStore_rate() >= 2.5) {
+									recommend += "괜찮아요.";
+								} else {
+									recommend += "추천하지 않아요.";
+								}
+							%>
+								<li class="list_4 adcno6"><a
+								href="DetailPageService.do?store=<%=sVO.getStore_id()%>"
 								data-ano="48278" data-adcno="6" data-alat="37.549788234578"
 								data-alng="126.92179271704" data-distance="271.307"
 								data-affiliate="1">
 									<p class="pic">
 										<img class="lazy"
-											data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/48278/0/8364725d612c02ea224e0c6274108c18.jpg"
-											src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/48278/0/8364725d612c02ea224e0c6274108c18.jpg"
-											alt="홍대 코코아 게스트하우스" style="display: inline;">
+											data-original="<%= sVO.getStore_pic()%>"
+											src="<%= sVO.getStore_pic()%>"
+											alt="<%= sVO.getStore_name()%>" style="display: inline;">
 									</p>
 									<div class="stage">
 										<div class="name">
 
-											<strong> 홍대 코코아 게스트하우스 </strong>
+											<strong> <%= sVO.getStore_name()%> </strong>
 											<p class="score">
-												<span><em>9.5</em>&nbsp;추천해요</span>&nbsp;(223)
+												<span><em><%= sVO.getStore_rate() %>.0</em>&nbsp;<%= recommend%></span><!-- &nbsp;(223) -->
 											</p>
-											<p>마포구 | 홍대 상상마당 도보 2분</p>
+											<p><%= sVO.getStore_addr() %></p>
 										</div>
-										<div class="price">
+										<!-- <div class="price">
 											<div class="map_html">
 												<p>
 													<b>79,000원</b>
@@ -302,11 +330,12 @@
 											</div>
 											<p>
 												<b style="color: rgba(0, 0, 0, 1);">79,000원</b>
-											</p>
-										</div>
+											</p> 
+										</div> -->
 									</div>
 							</a></li>
-							<li class="list_4 adcno6"><a
+							<% }%>
+							<!-- <li class="list_4 adcno6"><a
 								href="detailPage.jsp"
 								data-ano="60048" data-adcno="6" data-alat="37.550347070392"
 								data-alng="126.90983856239" data-distance="271.37"
@@ -433,7 +462,7 @@
 											</p>
 										</div>
 									</div>
-							</a></li>
+							</a></li> -->
 
 						</div>
 

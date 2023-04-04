@@ -77,4 +77,16 @@ SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		return cnt;
 	}
 	
+	public String selectNick(String user_id) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		// 값 넘길 때 따옴표 쓰지 않는 것 주의
+		String user_nick = sqlSession.selectOne("selectNick", user_id);
+		
+		sqlSession.close();
+		
+		return user_nick;
+	}
+	
 }
