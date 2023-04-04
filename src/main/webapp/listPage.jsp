@@ -1,3 +1,5 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.dogdog.model.StoreReviewDAO"%>
 <%@page import="com.dogdog.model.StoreReviewVO"%>
 <%@page import="com.dogdog.model.UserVO"%>
@@ -23,6 +25,15 @@
 		StoreDAO sDAO = new StoreDAO();
 		StoreReviewDAO srDAO = new StoreReviewDAO();
 		ArrayList<StoreVO> resultList = (ArrayList<StoreVO>)session.getAttribute("resultStoreList");
+		String sel_date = LocalDate.now().toString();
+		/* if(request.getQueryString() != null){
+			 String[] sel_date_list = request.getQueryString().split("&");
+			 
+			 sel_date = sel_date_list[1].split("=")[1];
+			 
+			 System.out.println(sel_date);
+			
+		} */
 	%>
 
 	<div class="wrap show">
@@ -31,7 +42,7 @@
 
 			<section>
 				<h1>
-					<a class="" href="Main.jsp" title="여기어때">여기어때</a>
+					<a class="" href="Main.jsp" title="똑똑">똑똑</a>
 				</h1>
 				<button type="button" class="btn_menu nav_open ">메뉴</button>
 				<button type="button" class="btn_srch srch_open "
@@ -169,13 +180,13 @@
 									<li><a href="https://www.goodchoice.kr/more/faq">고객문의</a></li>
 									<li><a href="https://www.goodchoice.kr/my/notiSetting">알림설정</a></li>
 									<li><a href="https://q.egiftcard.kr/couponstatus/"
-										target="_blank"> 여기어때 상품권 잔액 조회 </a></li>
+										target="_blank"> 똑똑 상품권 잔액 조회 </a></li>
 									<li><a href="https://www.goodchoice.kr/more/terms">약관
 											및 정책</a></li>
 								</ul></li>
 						</ul>
 						<div class="center">
-							<p>여기어때 고객행복센터</p>
+							<p>똑똑 고객행복센터</p>
 							<p>
 								<a href="tel:1670-6250">1670-6250</a>
 							</p>
@@ -186,7 +197,7 @@
 			</div>
 		</div>
 
-		<form id="product_filter_form" method="get" action="aa.html">
+		<form id="product_filter_form" method="get" action="#">
 			<input type="hidden" name="sort" id="sort" value="HIT"> <input
 				type="hidden" name="sel_date" id="sel_date" value="2023-04-03">
 			<input type="hidden" name="sel_date2" id="sel_date2"
@@ -312,6 +323,7 @@
 								data-ano="48278" data-adcno="6" data-alat="37.549788234578"
 								data-alng="126.92179271704" data-distance="271.307"
 								data-affiliate="1">
+								<% session.setAttribute("sel_date", sel_date);%>
 									<p class="pic">
 										<img class="lazy"
 											data-original="<%= sVO.getStore_pic()%>"
@@ -327,147 +339,10 @@
 											</p>
 											<p><%= sVO.getStore_addr() %></p>
 										</div>
-										<!-- <div class="price">
-											<div class="map_html">
-												<p>
-													<b>79,000원</b>
-												</p>
-											</div>
-											<p>
-												<b style="color: rgba(0, 0, 0, 1);">79,000원</b>
-											</p> 
-										</div> -->
+										
 									</div>
 							</a></li>
 							<% }%>
-							<!-- <li class="list_4 adcno6"><a
-								href="detailPage.jsp"
-								data-ano="60048" data-adcno="6" data-alat="37.550347070392"
-								data-alng="126.90983856239" data-distance="271.37"
-								data-affiliate="1">
-									<p class="pic">
-										<img class="lazy"
-											data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/60048/0/3c0c4df1d62d99086520febf3603d6e6.jpg"
-											src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/60048/0/3c0c4df1d62d99086520febf3603d6e6.jpg"
-											alt="합정 스티치스 게스트하우스" style="display: inline;">
-									</p>
-									<div class="stage">
-										<div class="name">
-
-											<strong> 합정 스티치스 게스트하우스 </strong>
-											<p class="score">
-												<span><em>9.3</em>&nbsp;추천해요</span>&nbsp;(45)
-											</p>
-											<p>마포구 | 합정역 도보 11분</p>
-										</div>
-										<div class="price">
-											<div class="map_html">
-												<p>
-													<b>99,000원</b>
-												</p>
-											</div>
-											<p>
-												<b style="color: rgba(0, 0, 0, 1);">99,000원</b>
-											</p>
-										</div>
-									</div>
-							</a></li>
-							<li class="list_4 adcno6"><a
-								href="detailPage.jsp"
-								data-ano="11329" data-adcno="6" data-alat="37.554205228972"
-								data-alng="126.91581253568" data-distance="271.798"
-								data-affiliate="1">
-									<p class="pic">
-										<img class="lazy"
-											data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/11329/0/0e9c5150784a70fafd6a52d63d9a39da.jpg"
-											src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/11329/0/0e9c5150784a70fafd6a52d63d9a39da.jpg"
-											alt="홍대 롬바드 게스트하우스" style="display: inline;">
-									</p>
-									<div class="stage">
-										<div class="name">
-
-											<strong> 홍대 롬바드 게스트하우스 </strong>
-											<p class="score">
-												<span><em>9.2</em>&nbsp;추천해요</span>&nbsp;(234)
-											</p>
-											<p>마포구 | 합정역 도보 5분</p>
-										</div>
-										<div class="price">
-											<div class="map_html">
-												<p>
-													<b>28,900원</b>
-												</p>
-											</div>
-											<p>
-												<b style="color: rgba(0, 0, 0, 1);">28,900원</b>
-											</p>
-										</div>
-									</div>
-							</a></li>
-							<li class="list_4 adcno6"><a
-								href="detailPage.jsp"
-								data-ano="11570" data-adcno="6" data-alat="37.560800604731"
-								data-alng="126.90668586181" data-distance="272.534"
-								data-affiliate="1">
-									<p class="pic">
-										<img class="lazy"
-											data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/11570/0/ebfbb589bc63903e62068c9fc32f991c.JPG"
-											src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/11570/0/ebfbb589bc63903e62068c9fc32f991c.JPG"
-											alt="서울 인 게스트하우스 월드컵점" style="display: inline;">
-									</p>
-									<div class="stage">
-										<div class="name">
-
-											<strong> 서울 인 게스트하우스 월드컵점 </strong>
-											<p class="score">
-												<span><em>9.3</em>&nbsp;추천해요</span>&nbsp;(30)
-											</p>
-											<p>마포구 | 마포구청역 도보 5분</p>
-										</div>
-										<div class="price">
-											<div class="map_html">
-												<p>
-													<b>35,000원</b>
-												</p>
-											</div>
-											<p>
-												<b style="color: rgba(0, 0, 0, 1);">35,000원</b>
-											</p>
-										</div>
-									</div>
-							</a></li>
-							<li class="list_4 adcno6"><a
-								href="detailPage.jsp"
-								data-ano="46074" data-adcno="6" data-alat="37.561357268933"
-								data-alng="126.92606140564" data-distance="272.594"
-								data-affiliate="1">
-									<p class="pic">
-										<img class="lazy"
-											data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46074/0/4c1c30ba7046e08a713f7662a554c3b3.jpg"
-											src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46074/0/4c1c30ba7046e08a713f7662a554c3b3.jpg"
-											alt="홍대 아티스트 레지던스 인 연트럴파크" style="display: inline;">
-									</p>
-									<div class="stage">
-										<div class="name">
-
-											<strong> 홍대 아티스트 레지던스 인 연트럴파크 </strong>
-											<p class="score">
-												<span><em>6.4</em>&nbsp;좋아요</span>&nbsp;(19)
-											</p>
-											<p>마포구</p>
-										</div>
-										<div class="price">
-											<div class="map_html">
-												<p>
-													<b>130,000원</b>
-												</p>
-											</div>
-											<p>
-												<b style="color: rgba(0, 0, 0, 1);">130,000원</b>
-											</p>
-										</div>
-									</div>
-							</a></li> -->
 
 						</div>
 

@@ -1,3 +1,6 @@
+<%@page import="com.dogdog.model.StoreMemberVO"%>
+<%@page import="com.dogdog.model.StoreVO"%>
+<%@page import="com.dogdog.model.StoreDAO"%>
 <%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>똑똑</title>
   <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/review.css">
   
@@ -21,7 +24,10 @@
 
 </head>
 <body>
-<% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
+<% 
+	UserVO resultVO = (UserVO)session.getAttribute("resultVO");
+	StoreMemberVO smVO = (StoreMemberVO)session.getAttribute("smVO");
+%>
 
 
     <!-- Wrap -->
@@ -31,7 +37,7 @@
         <header class="recommend_header">
 
             <section>
-                <h1><a class="" href="Main.jsp" title="여기어때">여기어때</a></h1>
+                <h1><a class="" href="Main.jsp" title="똑똑">똑똑</a></h1>
                 <button type="button" class="btn_menu nav_open ">메뉴</button>
                 <ul class="gnb_pc">
                     <li><a href="MyPage.jsp" class="nuxt-link-exact-active nuxt-link-active">예약내역</a></li>
@@ -113,41 +119,53 @@
 
       
 
-        
-
+        </div>
     <div id="content">
         <div class="reserve" >
             <div class="right"  >
+        <%
+        	String[] store_id_list = request.getQueryString().split("=");
+        	int store_id = Integer.parseInt(store_id_list[1]);
+        	
+        	StoreDAO sDAO = new StoreDAO();
+        	StoreVO sVO = sDAO.selectOneList(store_id);
+        if(smVO == null) {
+        %>
                 <section class="info" >
                     <p class="name"  ><strong
-                               >업소이름</strong>앨리스카라반캠프
+                               >업소이름</strong><%= sVO.getStore_name() %>
+                               
+                    <input type="hidden" name="store_idd" value="<%= store_id %>">
+                    <input type="hidden" name="store_name" value="<%= sVO.getStore_name() %>">
                     </p>
-                    <p    ><strong    >예약타입/기간</strong>고양아 멍멍해라 /
-                        2023-03-29
+                    <p    ><strong    >예약타입</strong><%= sVO.getStore_type() %>
+                    <input type="hidden" name="store_type" value="<%= sVO.getStore_type() %>">
                     </p>
-                    <p    ><strong    >예약시작</strong>03.29  15:00
+                    <p    ><strong    >예약시작</strong><%= (String)session.getAttribute("sel_date") %>
+                    <input type="hidden" name="member_from" value="<%= (String)session.getAttribute("sel_date") %>">
                     </p>
-                    <p    ><strong    >예약종료</strong>03.30  11:00
+                    <p    ><strong    >예약종료</strong><%= (String)session.getAttribute("sel_date") %>
+                    <input type="hidden" name="member_to" value="<%= (String)session.getAttribute("sel_date") %>">
                     </p>
                 </section>
                 <section class="total_price_pc"    >
 
                  
-                </section> <!----> <button type="button" class="btn_pay gra_left_right_red"
-                       >
+                </section> <!----> <button type="button" class="btn_pay gra_left_right_red" style="border-radius: 4px;">
                     예약하기
                 </button>
             </div>
 
-
+			<form action="dogiedogie.jsp">
             <div class="left" ><!---->
                 <div >
                     <section class="info_chkin"     >
                         <h3 style="margin-top:0;"     >
                             예약자 정보
                         </h3> <strong     >예약자 이름</strong>
-                        <p class="inp_wrap remove"     ><input type="text"
-                                name="userName" placeholder="체크인시 필요한 정보입니다." maxlength="20"
+                        <p class="inp_wrap remove"     >
+                        <input type="text"
+                                name="member_name" placeholder="체크인시 필요한 정보입니다." maxlength="20"
                                     ></p>
                         <p data-show="name" class="alert_txt" style="visibility: hidden"
                                 >
@@ -158,7 +176,7 @@
                                  >개인 정보 보호를 위해 안심번호로 숙소에 전송됩니다.</span>
                             <div class="phone_confirm guest-phone"  >
                                 <div class="inp_wrap input-box"  ><input type="tel"
-                                        name="userPhone" placeholder="체크인시 필요한 정보입니다."
+                                        name="user_phone" placeholder="체크인시 필요한 정보입니다."
                                         maxlength="13" value=""
                                         class="input validation-required-input"  >
                                     <!----></div> 
@@ -186,17 +204,102 @@
                             </div>
                         </div> <!---->
                     </section>
-                    <div class="guest_login" style="display: block"     >
-                        <a href="#" onclick = "gopopup()"   >
-                            우리 아이 정보를 등록하러 가보자잇 - !
+                    <input class="guest_login" type="submit" value="강아지 정보 등록하러 가기 >>" style="display: block; width: 564px; margin-top: 10px; border: 0px; color: white; font-weight: bold; border-radius:5px;">
+	                        <a href="#" onclick = "gopopup()"   >
+                            
+                            <!-- <br     >
+                            아가 ~ 가보자 ~
+                            <br     >  -->
+                            <!-- <span     >등록하러가기</span> -->
+                        </a>
+                    </div>
+                    <% } else { %>
+                    <section class="info" >
+                    <p class="name"  ><strong
+                               >업소이름</strong><%= sVO.getStore_name() %>
+                               
+                    <input type="hidden" name="store_idd" value="<%= store_id %>">
+                    <input type="hidden" name="store_name" value="<%= sVO.getStore_name() %>">
+                    </p>
+                    <p    ><strong    >예약타입</strong><%= sVO.getStore_type() %>
+                    <input type="hidden" name="store_type" value="<%= sVO.getStore_type() %>">
+                    </p>
+                    <p    ><strong    >예약시작</strong><%= smVO.getMember_from() %>
+                    <input type="hidden" name="member_from" value="<%= smVO.getMember_from() %>">
+                    </p>
+                    <p    ><strong    >예약종료</strong><%= smVO.getMember_to() %>
+                    <input type="hidden" name="member_to" value="<%= smVO.getMember_to() %>">
+                    </p>
+                </section>
+                <section class="total_price_pc"    >
+
+                 
+                </section> <!----> 
+                <input type="submit" class="btn_pay gra_left_right_red" style="border-radius: 4px; color: white; font-weight: bold;" value="예약하기">
+                   
+            </div>
+
+			<form action="ReservationService.do">
+            <div class="left" ><!---->
+                <div >
+                    <section class="info_chkin"     >
+                        <h3 style="margin-top:0;"     >
+                            예약자 정보
+                        </h3> <strong     >예약자 이름</strong>
+                        <p class="inp_wrap remove"     >
+                        <input type="text"
+                                name="member_name" placeholder="체크인시 필요한 정보입니다." maxlength="20"
+                                    value="<%= smVO.getMember_name()%>"></p>
+                        <p data-show="name" class="alert_txt" style="visibility: hidden"
+                                >
+                            한글, 영문, 숫자만 입력 가능. (문자 사이 공백은 1칸만 입력 가능)
+                        </p>
+                        <div><strong class="mt_09"
+                                 >휴대폰 번호</strong> <span class="safety_txt"
+                                 >개인 정보 보호를 위해 안심번호로 숙소에 전송됩니다.</span>
+                            <div class="phone_confirm guest-phone"  >
+                                <div class="inp_wrap input-box"  ><input type="tel"
+                                        name="user_phone" placeholder="체크인시 필요한 정보입니다."
+                                        maxlength="13" value="<%= smVO.getUser_phone() %>"
+                                        class="input validation-required-input"  >
+                                    <!----></div> 
+                                <p data-show="tel" class="alert_txt error-message" 
+                                     >휴대폰 번호를 확인해 주세요.</p>
+                                <div id="verificationCode" style="display: none; height: 48px"
+                                     >
+                                    <strong class="mt_09"  >인증
+                                        번호</strong>
+                                    <section  >
+                                        <div class="input-box"  >
+                                            <input id="digit"
+                                                type="tel" name="userPhone" minlength="4"
+                                                maxlength="4" value=""
+                                                class="input validation-required-input"
+                                                 >
+                                            </div> 
+                                                <button type="button"
+                                            class="btn_ok btn_confirm phone-auth-btn"
+                                             >
+                                            확인
+                                        </button>
+                                    </section>
+                                </div>
+                            </div>
+                        </div> <!---->
+                    </section>
+                    <% } %>
+                    <!-- <div class="guest_login" style="display: block; margin-top: 10px;"     > -->
+                            <!-- <input class="guest_login" type="submit" value="강아지 정보 등록하러 가기 >>" style="display: block; width: 564px; margin-top: 10px; border: 0px; color: white; font-weight: bold; border-radius:5px;">
+	                        <a href="#" onclick = "gopopup()"   >
+                            
                             <br     >
                             아가 ~ 가보자 ~
                             <br     > 
                             <span     >등록하러가기</span>
-                        </a>
-                    </div>
+                        </a> -->
+                    <!-- </div> -->
                     <!---->
-                </div> <!---->
+                <!-- </div> --> <!---->
 
 
 
@@ -222,6 +325,7 @@
             </div>
         </div>
     </div> <!----> <!---->
+    </form>
 </div>
 <footer  >
     <div class="align">
@@ -369,7 +473,7 @@ style="display: none;">상단으로</button>
         	    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
         	    var _left = Math.ceil(( window.screen.width - _width )/2);
         	    var _top = Math.ceil(( window.screen.height - _height )/2); 
-            var pop = window.open( 'dogiedogie.html', 'popup', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top,'scrollbars=yes','resizable=yes' ); 
+            var pop = window.open( 'dogiedogie.jsp', 'popup', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top,'scrollbars=yes','resizable=yes' ); 
 
             
 			
