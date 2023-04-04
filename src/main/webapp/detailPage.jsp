@@ -459,9 +459,10 @@
             String storeRateS = String.format("%.2f", storeRate);
             ArrayList<StoreReviewVO> resultList = srDAO.selectStoreReview(store_id);
             String rateComment = "";
+            int cntR = srDAO.countStoreReview(store_id);
             %>
             <article id="review" class="review">
-                <div class="score_top"><strong>최고예요!<%= rateComment = storeRate >= 4.0 ? "최고예요!" : "좋아요!" %></strong>
+                <div class="score_top"><strong><%= rateComment = storeRate >= 4.0 ? "최고예요!" : "좋아요!" %></strong>
                     <div class="score_wrap">
                         <div class="star-ratings">
 							<div 
@@ -476,8 +477,8 @@
                         <div class="num" style=" padding-top:0.7rem; color:black;"><%= storeRateS %></div>
                     </div>
                     <p>
-                        전체 리뷰 <b>7</b> <span>|</span>
-                        제휴점 답변 <b>3</b> <span>|</span> <span class="review_link">운영정책 &gt;</span></p>
+                        전체 리뷰 <b><%= cntR %></b>
+                        <span>|</span> <span class="review_link">운영정책 &gt;</span></p>
                 </div>
                 <ul>
                 <% for(StoreReviewVO srVO : resultList) { 
@@ -507,18 +508,17 @@
                 %>
                 	<li>
                         <div class="guest">
-                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_22.png" alt="은혁마마"></p> <span
-                                class="best_review">베스트 리뷰</span> <strong>여기만한 곳은 어디에도 없을 거예요.</strong>
+                            <p class="pic"><img src="//image.goodchoice.kr/profile/ico/ico_22.png" alt="은혁마마"></p> <!-- <span
+                                class="best_review">베스트 리뷰</span> --> <strong><%= comment %></strong>
                             <div class="score_wrap_sm">
                                 <span class='star'><%= stars %><span>★★★★★</span></span><span class='star_rest'><%= restStars %>
                                 <%-- <span class='top5_rate'><%= rate %></span> --%>
                                 <div class="num"><%= rate %></div>
                             </div>
-                            <div class="name"><b>104호(단체룸) 객실 이용 · </b>은혁마마
+                            <div class="name"><%= nick %>
                             </div>
-                            <div class="txt">시댁 식구들 하고 8명이 다녀왔어요~사장님 너무 친절하시고 마침 전날인가?전전날인가 눈이와서 운치도 정말 좋았습니다 애들은 눈놀이
-                                실컷하고 어른들은 경치 좋은곳에서 불멍도 실컷하고 힐링하고 왔어요~~다음엔 여름에도 또 한번 다녀오려구요~~~</div> <!----> <span
-                                class="date">2개월 전</span>
+                            <div class="txt"><%= srVO.getReview_content() %></div> <!----> <span
+                                class="date"><%= srVO.getReview_date().split(" ")[0] %></span>
                         </div>
                     </li>
                 <% } %>
@@ -542,10 +542,10 @@
                                     <h3>2. 베스트리뷰 란?</h3>
                                     <p>베스트 리뷰는 리뷰 내용, 글자 수, 등록된 사진, 작성일 등을 종합적으로 고려해 여기어때 또는 판매자가 추천한 리뷰입니다.</p>
                                     <h3>3. 리얼리뷰 작성</h3>
-                                    <p>숙소에 체크인하면, 리뷰를 작성할 수 있습니다.</p>
+                                    <p>업소에 체크인하면, 리뷰를 작성할 수 있습니다.</p>
                                     <ul>
-                                        <li>모텔 : 체크인 시간~체크아웃 14일 이내</li>
-                                        <li>모텔 외 : 체크인 시간~체크아웃 30일 이내</li>
+                                        <li>호텔 : 체크인 시간~체크아웃 14일 이내</li>
+                                        <li>호텔 외 : 체크인 시간~체크아웃 30일 이내</li>
                                     </ul>
                                     <h3>4. 삭제 정책</h3>
                                     <p>여기어때는 고객님이 작성하신 긍정/부정적인 모든 리뷰를 있는 그대로 게시하는 것을 기본 운영방침으로 삼고 있습니다.</p>
