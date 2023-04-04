@@ -18,4 +18,5 @@ public class StoreBoardVO {
 	@NonNull private String storeboard_content;
 	private String storeboard_date;
 	@NonNull private String storeboard_comment;
+	private String storeboard_pic;
 }

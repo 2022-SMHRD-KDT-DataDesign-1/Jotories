@@ -28,7 +28,7 @@
 
 			<section>
 				<h1>
-					<a class="" href="https://www.goodchoice.kr/" title="여기어때">여기어때</a>
+					<a class="" href="Main.jsp" title="여기어때">여기어때</a>
 				</h1>
 				<button type="button" class="btn_menu nav_open ">메뉴</button>
 				<button type="button" class="btn_srch srch_open "

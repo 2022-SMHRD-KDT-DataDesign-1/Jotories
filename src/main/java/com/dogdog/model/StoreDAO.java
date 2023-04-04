@@ -23,6 +23,17 @@ public class StoreDAO {
 		return cnt;
 	}
 	
+	public StoreVO selectOneList(int store_id) {
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		StoreVO resultVO = sqlSession.selectOne("selectOneList", store_id);
+		
+		sqlSession.close();
+		
+		return resultVO;
+	}
+	
 	public ArrayList<StoreVO> selectAllList(String store_type) {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -95,4 +106,5 @@ public class StoreDAO {
 		
 		return storeRate;
 	}
+	
 }

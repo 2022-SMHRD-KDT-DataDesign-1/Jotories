@@ -1,3 +1,8 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.dogdog.model.StoreVO"%>
+<%@page import="com.dogdog.model.StoreDAO"%>
+<%@page import="com.dogdog.model.StoreBoardVO"%>
+<%@page import="com.dogdog.model.StoreBoardDAO"%>
 <%@page import="com.dogdog.model.UserVO"%>
 <%@page import="com.dogdog.model.UserDAO"%>
 <%@page import="com.dogdog.model.StoreReviewVO"%>
@@ -20,7 +25,11 @@
 
 </head>
 <body >
-     <% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
+     <% 
+     UserVO resultVO = (UserVO)session.getAttribute("resultVO"); 
+     String[] store_id_list = request.getQueryString().split("=");
+     int store_id = Integer.parseInt(store_id_list[1]) ;
+     %>
     <div class="wrap show">
 
         <!-- Header -->
@@ -133,7 +142,7 @@
                                     <li><a href="https://www.goodchoice.kr/my/notiSetting">알림설정</a></li>
                                     <li>
                                         <a href="https://q.egiftcard.kr/couponstatus/" target="_blank">
-                                            여기어때 상품권 잔액 조회
+                                            똑똑 상품권 잔액 조회
                                         </a>
                                     </li>
                                     <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
@@ -141,7 +150,7 @@
                             </li>
                         </ul>
                         <div class="center">
-                            <p>여기어때 고객행복센터</p>
+                            <p>똑똑 고객행복센터</p>
                             <p><a href="tel:1670-6250">1670-6250</a></p>
                             <p>오전 9시 - 새벽 3시</p>
                         </div>
@@ -169,19 +178,29 @@
                 <div class="left">
 
 
-
+				<% 
+					StoreBoardDAO sbDAO = new StoreBoardDAO(); 
+					StoreBoardVO sbVO = sbDAO.selectBoard(store_id);
+					String[] storeboard_content = sbVO.getStoreboard_content().split(",");
+					/* System.out.println(storeboard_content.length); */
+					int[] translate3d = {0, -490, -980, -1470, -1960
+										  , -2450, -2940, -3430, -3920, -4410};
+					int cnt = 0;
+				%>
                     <!-- Gallery (PC) -->
                     <div class="gallery_pc">
                         <!-- Image Size : 490 x 348 -->
-
                         <!-- Swiper -->
                         <div class="swiper-container gallery-top swiper-container-horizontal swiper-container-fade">
                             <ul class="swiper-wrapper" style="transition-duration: 0ms;">
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="16"
-                                    style="width: 490px; transform: translate3d(0px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                                    <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/08/10/18/iNtJR52IfFwv.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17"
+                           	<% for(String sbc:storeboard_content) { %>
+                           	<li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="16"
+                                    style="width: 490px; transform: translate3d(<%= translate3d %>px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
+                                    <img src="<%= sbc %>" data-src="<%= sbc %>"
+                                        alt="<%= sbVO.getStore_name() %>" class="swiper-lazy"></li>
+                           	<% cnt++ ;} cnt=0; %>
+                                
+                                <!-- <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17"
                                     style="width: 490px; transform: translate3d(-490px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
                                     <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/11/01/10/lHYFaEX15oGL.jpg"
                                         alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
@@ -293,17 +312,20 @@
                                 <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3"
                                     style="width: 490px; transform: translate3d(-13230px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
                                     <img data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/QHxjoWTdve4z.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy"></li>
+                                        alt="포천 베어힐 카라반 펜션 | 카라반202호" class="swiper-lazy"></li> -->
                             </ul>
                         </div>
                         <div class="swiper-container gallery-thumbs swiper-container-horizontal">
                             <ul class="swiper-wrapper"
                                 style="transform: translate3d(-460px, 0px, 0px); transition-duration: 0ms;">
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="16"
+                                <% for(String sbc:storeboard_content) { %>
+                           	<li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="<%= cnt %>"
                                     style="width: 115px;"><img
-                                        data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/08/10/18/iNtJR52IfFwv.jpg"
+                                        src="<%= sbc %>" data-src="<%= sbc %>
                                         alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
-                                <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17"
+                           	<% cnt++ ;} cnt=0; %>
+                                
+                                <!-- <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="17"
                                     style="width: 115px;"><img
                                         data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/11/01/10/lHYFaEX15oGL.jpg"
                                         alt="포천 베어힐 카라반 펜션 | 부대시설" class="swiper-lazy"></li>
@@ -338,7 +360,7 @@
                                         alt="포천 베어힐 카라반 펜션 | 102호(단체룸)" class="swiper-lazy"></li>
                                 <li class="swiper-slide" data-swiper-slide-index="5" style="width: 115px;"><img
                                         data-src="//image.goodchoice.kr/resize_490x348/affiliate/2022/06/21/10/JhlekWCg3M8m.jpg"
-                                        alt="포천 베어힐 카라반 펜션 | 102호(단체룸)" class="swiper-lazy"></li>
+                                        alt="포천 베어힐 카라반 펜션 | 102호(단체룸)" class="swiper-lazy"></li> -->
 
                             </ul>
                         </div>
@@ -365,16 +387,19 @@
 
                 <!-- Right -->
                 <div class="right">
-
+					
                     <!-- Info -->
                     <div class="info">
                         <p class="badge">
                         </p>
 
 
-                        <h2>우리개는 쾈 깨물어용</h2>
-
-                        <p class="address">광주 북구 123123</p>
+                        <h2><%= sbVO.getStore_name() %></h2>
+						<% 
+						StoreDAO sDAO = new StoreDAO();
+						StoreVO store_info = sDAO.selectOneList(store_id);
+						%>
+                        <p class="address"><%= store_info.getStore_addr() %></p>
 
                     </div>
 
@@ -385,21 +410,21 @@
 
 
                     <!-- 장님 한마디 & 추천이유 -->
-                    <div class="comment">
+                    <div class="comment" style="margin-bottom: 160px;">
                         <strong>사장님 한마디</strong>
                         <button>더보기</button>
-                        <div>아름다운 전망과 다양한 즐길 거리가 가득한 캠핑장입니다<br>
-                            청결하고 깔끔한 펜션 객실과 카라반 객실을 운영하고 있습니다ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
+                        <div><%= sbVO.getStoreboard_comment() %></div>
                     </div>
-                    <div class="event_link">
-                        <section class="gra_mint_2 on"><!-- on클래스 추가시 오픈 -->
+                    <div id="reservationBtn" style="background-color:#eb1b47; font-size: 1rem; font-weight: bold; color: white; padding:1rem; cursor:pointer;"OnClick="location.href ='reservePage.jsp'">예약하기</div>
+                    <!-- <div class="event_link">
+                        <section class="gra_mint_2 on">on클래스 추가시 오픈
                             <ul>
                                 <a>
-                                    <li onclick="pop_evt();">예약하기</li>
+                                    <li>예약하기</li>
                                 </a>
                             </ul>
                         </section>
-                        <!-- div>
+                        div>
                                                                             <ul class="dot_txt">
                                     <li><span>★방역숙소★ 일 1회 방역 시행</span>ㆍ예약 기간 : 상시<br />
     ㆍ내용 : 일 1회 방역 시행<br />
@@ -407,8 +432,8 @@
     <b>** 현장상황에 따라 내용이 변경될 수 있으며,<br />
     자세한 내용은 펜션으로 문의바랍니다.</b></li>
                                 </ul>
-                                                                </div -->
-                    </div>
+                                                                </div
+                    </div> -->
                 </div>
                 <!-- //Right -->
 
@@ -450,17 +475,16 @@
                     <!-- 사장님 한마디 & 추천이유 -->
                     <div class="comment_mobile">
                         <h3>사장님 한마디</h3>
-                        아름다운 전망과 다양한 즐길 거리가 가득한 캠핑장입니다<br>
-                        청결하고 깔끔한 펜션 객실과 카라반 객실을 운영하고 있습니다
+                        <%= sbVO.getStoreboard_comment() %>
                     </div>
 
 
-                    <h3>주변정보</h3>
+                    <!-- <h3>주변정보</h3>
                     <ul>
                         <li>베어스타운 차량 9분</li>
                         <li>수원산정상전망대 차량 12분</li>
                         <li>가평수목원 차량 22분</li>
-                    </ul>
+                    </ul> -->
 
                     <h3>기본 정보</h3>
                     <ul>
@@ -468,24 +492,20 @@
                         <li>22시 이후 입실 시 사전문의 (필수)</li>
                         <li>체크인/체크아웃 시 카페에서 직접 키 수령 및 반납</li>
                         <li>무료 Wi-Fi</li>
-                        <li>전 객실 금연</li>
                         <li>주차 가능</li>
                     </ul>
 
                     <h3>객실 정보</h3>
                     <ul>
-                        <li>넷플릭스 (개인계정 필요)</li>
+                        <li>개인계정 필요</li>
                     </ul>
 
-                    <h3>인원 추가 정보</h3>
+                    <h3>추가 정보</h3>
                     <ul>
-                        <li>1박 기준 1인 20,000원 (영유아 포함)</li>
-                        <li>최대 인원이 2명인 커플 객실은 영, 유아 동반 입실 불가</li>
-                        <li>영유아 인원수 포함 / 최대인원 초과불가</li>
                         <li><b>현장 결제</b></li>
                     </ul>
 
-                    <h3>펜션 서비스</h3>
+                    <!-- <h3>펜션 서비스</h3>
                     <ul>
                         <li><b>시설 이용문의 및 비용 별도 펜션문의</b></li>
                         <li>카페 : 09:00~21:00 / 아메리카노, 카페라떼, 과일주스, 와인, 맥주, 천연발효빵, 유기농 통밀빵, 유기농 호미빵 등 (펜션 상황에 따라 변동될 수 있음)
@@ -504,7 +524,7 @@
                         <li>이용시간 : 입실 후~22:00</li>
                         <li>셀프 바비큐 세트 구매 후 개별 테라스 이용</li>
                         <li><b>현장 결제</b></li>
-                    </ul>
+                    </ul> -->
 
                     <h3>취소 및 환불 규정</h3>
                     <ul>
@@ -528,16 +548,16 @@
                                 <font color="#CA0101">당일예약, 당일이용 (21시 이후 입실)을 원하는 경우 꼭 업체에 이용가능여부 문의 후 예약바랍니다</font>
                             </b></li>
                         <li>최대 인원 초과시 입실이 불가 합니다 (방문객 불가)</li>
-                        <li>객실 내 육류, 튀김류, 생선류 조리를 할 수 없습니다</li>
+                        <!-- <li>객실 내 육류, 튀김류, 생선류 조리를 할 수 없습니다</li>
                         <li>전 객실 애완동물 출입이 불가합니다</li>
-                        <li>보호자 없는 미성년자 숙박이용 적발 시 강제 퇴실 및 취소 환불 절대 불가합니다</li>
+                        <li>보호자 없는 미성년자 숙박이용 적발 시 강제 퇴실 및 취소 환불 절대 불가합니다</li> -->
                         <li>해당 이미지는 실제와 상이 할 수 있습니다</li>
                         <li>이용시설의 분실 및 훼손의 책임은 이용자에게 있으니 주의부탁드립니다</li>
-                        <li>객실 내에서는 화재위험물질 (화약, 폭죽 등)은 사용 하실 수 없습니다 (화재로 인한 책임은 이용자에게 있습니다)</li>
-                        <li>쓰레기는 지정된 장소에 분리하여 주시기 바랍니다</li>
-                        <li>위의 정보는 펜션의 사정에 따라 변경될 수 있습니다</li>
+                        <!-- <li>객실 내에서는 화재위험물질 (화약, 폭죽 등)은 사용 하실 수 없습니다 (화재로 인한 책임은 이용자에게 있습니다)</li>
+                        <li>쓰레기는 지정된 장소에 분리하여 주시기 바랍니다</li> -->
+                        <li>위의 정보는 업소의 사정에 따라 변경될 수 있습니다</li>
                         <li>성수기 기간동안 일부 객실의 경우 요금변동이 있을 수 있습니다</li>
-                        <li>수영장 운영은 날씨 또는 펜션 상황에 따라 변동 될 수 있습니다</li>
+                        <li>수영장 운영은 날씨 또는 업소 상황에 따라 변동 될 수 있습니다</li>
                     </ul>
                     <div class="map" id="google_maps"></div>
                 </section>
@@ -547,17 +567,15 @@
                 <section class="service" style="display: none;">
                     <ul class="theme_wrap">
                         <li class="theme_60">와이파이</li>
-                        <li class="theme_143">전기밥솥</li>
-                        <li class="theme_148">BBQ</li>
+                        <!-- <li class="theme_143">전기밥솥</li>
+                        <li class="theme_148">BBQ</li> -->
                         <li class="theme_151">카페</li>
                         <li class="theme_221">주차장</li>
-                        <li class="theme_223">TV</li>
+                        <!-- <li class="theme_223">TV</li>
                         <li class="theme_227">에어컨</li>
                         <li class="theme_228">냉장고</li>
-                        <li class="theme_229">객실샤워실</li>
+                        <li class="theme_229">객실샤워실</li> -->
                         <li class="theme_231">드라이기</li>
-                        <li class="theme_235">금연</li>
-                        <li class="theme_237">객실내취사</li>
                     </ul>
                 </section>
 
@@ -566,24 +584,24 @@
                 <section class="seller_info" style="display: none;">
                     <h3>상호</h3>
                     <ul>
-                        <li>주식회사 트립일레븐</li>
+                        <li><%= store_info.getStore_name() %></li>
                     </ul>
                     <h3>대표자명</h3>
                     <ul>
-                        <li>손기훈, 한복경</li>
+                        <li><%= store_info.getStore_owner() %></li>
                     </ul>
                     <h3>주소</h3>
                     <ul>
-                        <li>경기 포천시 내촌면 금강로 2872-48</li>
+                        <li><%= store_info.getStore_addr() %></li>
                     </ul>
                     <h3>전화번호</h3>
                     <ul>
-                        <li>1833-9306</li>
+                        <li><%= store_info.getStore_tel() %></li>
                     </ul>
-                    <h3>사업자번호</h3>
+                    <!-- <h3>사업자번호</h3>
                     <ul>
                         <li>367-88-00819</li>
-                    </ul>
+                    </ul> -->
                 </section>
             </article>
             <!-- //숙소정보 -->
@@ -634,9 +652,6 @@
             </style>
             <!-- 리뷰 -->
             <% 
-            String[] store_id_list = request.getQueryString().split("=");
-            int store_id = Integer.parseInt(store_id_list[1]) ;
-            
             StoreReviewDAO srDAO = new StoreReviewDAO();
             UserDAO uDAO = new UserDAO();
             double storeRate = srDAO.selectStoreReviewRate(store_id);
@@ -668,6 +683,16 @@
                 	} else {
                 		comment += "추천하지 않을래요.";
                 	}
+                	
+            		String stars = "";
+            		String restStars = "";
+            		
+            		for(double i = 0; i < rate; i++) {
+            			stars += "★";
+            		}
+            		for(double i = 0; i < 5 - rate; i++) {
+                   		restStars += "★";
+                    }
                 %>
                 	<li>
                         <div class="guest">
@@ -675,8 +700,9 @@
                                 class="best_review">베스트 리뷰</span> --> 
                                 <strong><%= comment %> </strong>
                             <div class="score_wrap_sm">
-                                <div class="score_star star_50"></div>
-                                <div class="num">rate</div>
+                                <span class='star'><%= stars %><span>★★★★★</span></span><span class='star_rest'><%= restStars %>
+                                <%-- <span class='top5_rate'><%= rate %></span> --%>
+                                <div class="num"><%= rate %></div>
                             </div>
                             <div class="name"><!-- <b>104호(단체룸) 객실 이용 · </b> --><%= nick%>
                             </div>
@@ -867,7 +893,7 @@
 
                         <strong>
                             <span class="title_number">
-                                요것만큼은 지켜주셈
+                                이것만큼은 꼭 지켜주세요
                                 <span class="title">
 
                                 </span>
@@ -875,12 +901,14 @@
                             </span>
                             <p></p>
                         </strong>
+                        
+                        
 
-                        <div class="stage">
+                        <!-- <div class="stage">
                             <div class="default_html">
-                                ㆍ내가 한번
-                                <br>ㆍ예약을 해보꼐
-                                <br>ㆍ하나
+                                ㆍ강아지 정보를 정확히 입력해주세요
+                                <br>ㆍ약속된 시간을 지켜주세요 
+                                <br>ㆍ
                                 <br>ㆍ둘
                                 <br>ㆍ셋
                                 <br>ㆍ얍
@@ -888,7 +916,7 @@
                                 <br>
 
 
-                                <section class="re_btn"><!-- on클래스 추가시 오픈 -->
+                                <section class="re_btn">on클래스 추가시 오픈
                                     <ul>
                                         <a href="reservePage.jsp">
                                             <li>예약하기</li>
@@ -897,7 +925,7 @@
                                 </section>
                             </div>
 
-                        </div>
+                        </div> -->
                     </article>
                 </div>
             </div>
@@ -914,7 +942,7 @@
                     주소 : 광주광역시 북구 낭만대로 18, 18타워 18층 | 대표이사 : 조승재 | 사업자등록번호: 742-86-00224 | 전자우편주소 :
                     help@goodchoice.kr<br>
                     통신판매번호 : 2017-서울강남-01779 | 관광사업자 등록번호: 제1026-24호 | 전화번호 : 1670-6250 | 호스팅서비스제공자의 상호 표시:
-                    (주)여기어때컴퍼니<br>
+                    (주)조토리즈컴퍼니<br>
                     <span class="order">(주) 승재승재는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게
                         있습니다.</span><br>
                     Copyright GC COMPANY Corp. All rights reserved.
