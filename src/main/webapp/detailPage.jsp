@@ -6,8 +6,6 @@
 <%@page import="com.dogdog.model.StoreBoardDAO"%>
 <%@page import="com.dogdog.model.UserVO"%>
 <%@page import="com.dogdog.model.UserDAO"%>
-=======
->>>>>>> jsj
 <%@page import="com.dogdog.model.StoreReviewVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dogdog.model.StoreReviewDAO"%>
@@ -28,15 +26,11 @@
 
 </head>
 <body >
-<<<<<<< HEAD
      <% 
      UserVO resultVO = (UserVO)session.getAttribute("resultVO"); 
      String[] store_id_list = request.getQueryString().split("=");
      int store_id = Integer.parseInt(store_id_list[1]) ;
      %>
-=======
-      
->>>>>>> jsj
     <div class="wrap show">
 
         <!-- Header -->
