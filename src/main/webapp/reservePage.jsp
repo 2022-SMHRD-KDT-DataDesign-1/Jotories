@@ -231,26 +231,19 @@
                     data-default="privacy">개인정보처리방침</a><span>|</span></li>
             <li><button type="button" onclick="pop_licence();return false;">
                     사업자 정보확인</button><span>|</span></li>
-            <li><a href="https://ad.goodchoice.kr/" target="_blank">여기어때 마케팅센터</a><span>|</span>
-            </li>
-            <li><a href="https://host.goodchoice.kr/" target="_blank">액티비티 호스트센터</a><span>|</span>
-            </li>
-            <li><a href="https://hotel.goodchoice.kr/" target="_blank">HOTEL 여기어때</a><span>|</span>
-            </li>
-            <li><a href="https://www.goodchoice.kr/more/contentsInfo">콘텐츠산업진흥법에의한 표시</a></li>
+         
         </ul>
-        <p><b>고객행복센터 1670-6250</b>
-            오전 9시 - 새벽 3시
-        </p>
-        <address><span>(주) 여기어때컴퍼니</span>
-            주소 : 서울특별시 강남구 봉은사로 479, 479타워 11층 | 대표이사 :
-            정명훈 | 사업자등록번호: 742-86-00224<br>
-            통신판매번호 : 2017-서울강남-01779 | 관광사업자 등록번호:
-            제1026-24호 | 전화번호 : 1670-6250 | 전자우편주소 :
-            help@goodchoice.kr<br>
-            (주) 여기어때컴퍼니는 통신판매중개자로서 통신판매의 당사자가
-            아니며, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각
-            판매자에게 있습니다.<br> <span>Copyright GC COMPANY Corp. All rights reserved.</span></address>
+
+       <address><span>(주) 독독컴퍼니</span>
+                    주소 : 광주광역시 동구 예술길 31-15, 광주아트센터타워 4층 | 대표이사 :
+                    조승재 | 사업자등록번호: 000-111-22222<br>
+                    통신판매번호 : 2023-광주동구-01557 | 관광사업자 등록번호:
+                    제0406-01호 | 전화번호 : 1557-1577 | 전자우편주소 :
+                    help@dogdog.com<br>
+                    (주) 독독컴퍼니는 통신판매중개자로서 통신판매의 당사자가
+                    아니며, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각
+                    판매자에게 있습니다.<br> <span>Copyright GC COMPANY Corp. All rights reserved.</span>
+                </address>
 
     </div>
 </footer>
