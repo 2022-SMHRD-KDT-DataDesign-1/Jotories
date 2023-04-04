@@ -26,11 +26,19 @@ public class StoreMemberDAO {
 	
 	public ArrayList<StoreMemberVO> selectReservation(String user_id) {
 		
+		List<StoreMemberVO> resultList = null;
+		
 		SqlSession sqlSession =  sqlSessionFactory.openSession(true);
 		
-		List<StoreMemberVO> resultList = sqlSession.selectList("selectReservation", user_id);
+		resultList = sqlSession.selectList("selectReservation", user_id);
 		
 		sqlSession.close();
+		
+		if(resultList != null) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
 		
 		return (ArrayList<StoreMemberVO>)resultList;
 	}
