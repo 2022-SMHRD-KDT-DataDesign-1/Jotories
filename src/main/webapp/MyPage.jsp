@@ -1,3 +1,5 @@
+<%@page import="com.dogdog.model.StoreVO"%>
+<%@page import="com.dogdog.model.StoreDAO"%>
 <%@page import="com.dogdog.model.StoreMemberVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dogdog.model.StoreMemberDAO"%>
@@ -151,13 +153,18 @@
                 </nav>
             </div>
             <div class="align_rt">
-            <% if(resultListSM != null) { %>
+            <% 
+            StoreDAO sDAO = new StoreDAO();
+            if(resultListSM != null) { 
+            	for(StoreMemberVO smVO:resultListSM) {
+            		StoreVO sVO = sDAO.selectOneList(smVO.getStore_id());
+            %>
                 <!-- 예약 내역이 존재할 경우 이 부분을 jsp 이용해서 -->
                 <div class="list_none1" style="display: block">
                     숙소 예약내역<br>
                     <div>
                         <img src="assets/img/쿼카1.png" class="reser_img">
-                        <span class="img_name"><a href="">[유치원]더펫하우스 협동조합</a></span>
+                        <span class="img_name"><a href="">[<%= sVO.getStore_type() %>]<%= sVO.getStore_name()%></a></span>
                         <br>
                         <div class="check_in">
                             <span>예약날짜</span><br>
@@ -178,7 +185,7 @@
 
                     </div>
                 </div>
-			<% } else { %>
+			<%} } else { %>
                 <div class="list_none" style="display: block">
                     예약 내역이 없습니다.
                     <b>여러가지 종류의 예약 가능한<br>반려견 서비스들을 지금 만나세요!</b>

@@ -1,3 +1,5 @@
+<%@page import="com.dogdog.model.StoreReviewDAO"%>
+<%@page import="com.dogdog.model.StoreReviewVO"%>
 <%@page import="com.dogdog.model.UserVO"%>
 <%@page import="com.dogdog.model.StoreDAO"%>
 <%@page import="com.dogdog.model.StoreVO"%>
@@ -19,6 +21,7 @@
 	<% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
 	<%
 		StoreDAO sDAO = new StoreDAO();
+		StoreReviewDAO srDAO = new StoreReviewDAO();
 		ArrayList<StoreVO> resultList = (ArrayList<StoreVO>)session.getAttribute("resultStoreList");
 	%>
 
@@ -205,7 +208,7 @@
 				<div class="sub_top_wrap">
 					<!-- 페이백일때 클래스 추가 early_top -->
 					<div class="sub_top bg_kong_1">
-						<h2>강아지유치원</h2>
+						<h2>강아지<%= resultList.get(0).getStore_type() %></h2>
 						<span class="keyword"></span>
 					</div>
 				</div>
@@ -291,12 +294,14 @@
 							<div class="title"></div>
 							<%
 							for(StoreVO sVO:resultList){
+								double rate = srDAO.selectStoreReviewRate(sVO.getStore_id());
+								String rateS = String.format("%.1f", rate);
 								String recommend = "";
-								if(sVO.getStore_rate() >= 4.0) {
+								if(rate >= 4.0) {
 									recommend += "추천해요!";
-								} else if(sVO.getStore_rate() >= 3.0) {
+								} else if(rate >= 3.0) {
 									recommend += "평범해요.";
-								} else if(sVO.getStore_rate() >= 2.5) {
+								} else if(rate >= 2.5) {
 									recommend += "괜찮아요.";
 								} else {
 									recommend += "추천하지 않아요.";
@@ -318,7 +323,7 @@
 
 											<strong> <%= sVO.getStore_name()%> </strong>
 											<p class="score">
-												<span><em><%= sVO.getStore_rate() %>.0</em>&nbsp;<%= recommend%></span><!-- &nbsp;(223) -->
+												<span><em><%= rateS %></em>&nbsp;<%= recommend%></span><!-- &nbsp;(223) -->
 											</p>
 											<p><%= sVO.getStore_addr() %></p>
 										</div>
