@@ -1,3 +1,4 @@
+<%@page import="com.dogdog.model.DogDAO"%>
 <%@page import="com.dogdog.model.StoreMemberVO"%>
 <%@page import="com.dogdog.model.StoreVO"%>
 <%@page import="com.dogdog.model.StoreDAO"%>
@@ -123,29 +124,34 @@
     <div id="content">
         <div class="reserve" >
             <div class="right"  >
-        <%
-        	String[] store_id_list = request.getQueryString().split("=");
-        	int store_id = Integer.parseInt(store_id_list[1]);
-        	
-        	StoreDAO sDAO = new StoreDAO();
+        <%	int store_id;
+        	String store1 = request.getParameter("store");
+        	if(store1 != null){
+        		store_id = Integer.parseInt(store1);
+        	} else {
+        		store_id = Integer.parseInt(request.getParameter("store"));
+        	}
+        	StoreDAO sDAO = new StoreDAO(); 
         	StoreVO sVO = sDAO.selectOneList(store_id);
         if(smVO == null) {
         %>
+			<form action="dogiedogie.jsp">
                 <section class="info" >
                     <p class="name"  ><strong
                                >업소이름</strong><%= sVO.getStore_name() %>
                                
-                    <input type="hidden" name="store_idd" value="<%= store_id %>">
+                    <input type="hidden" name="user_id" value="<%= resultVO.getUser_id() %>">
+                    <input type="hidden" name="store" value="<%= store_id %>">
                     <input type="hidden" name="store_name" value="<%= sVO.getStore_name() %>">
                     </p>
                     <p    ><strong    >예약타입</strong><%= sVO.getStore_type() %>
                     <input type="hidden" name="store_type" value="<%= sVO.getStore_type() %>">
                     </p>
-                    <p    ><strong    >예약시작</strong><%= (String)session.getAttribute("sel_date") %>
-                    <input type="hidden" name="member_from" value="<%= (String)session.getAttribute("sel_date") %>">
+                    <p    ><strong    >예약시작</strong><%= request.getParameter("sel_date") %>
+                    <input type="hidden" name="member_from" value="<%= request.getParameter("sel_date") %>">
                     </p>
-                    <p    ><strong    >예약종료</strong><%= (String)session.getAttribute("sel_date") %>
-                    <input type="hidden" name="member_to" value="<%= (String)session.getAttribute("sel_date") %>">
+                    <p    ><strong    >예약종료</strong><%= request.getParameter("sel_date2") %>
+                    <input type="hidden" name="member_to" value="<%= request.getParameter("sel_date2") %>">
                     </p>
                 </section>
                 <section class="total_price_pc"    >
@@ -156,7 +162,6 @@
                 </button>
             </div>
 
-			<form action="dogiedogie.jsp">
             <div class="left" ><!---->
                 <div >
                     <section class="info_chkin"     >
@@ -193,6 +198,7 @@
                                                 maxlength="4" value=""
                                                 class="input validation-required-input"
                                                  >
+                                                 <input type="hidden" name="user_id" value="<%= resultVO.getUser_id() %>">
                                             </div> 
                                                 <button type="button"
                                             class="btn_ok btn_confirm phone-auth-btn"
@@ -204,7 +210,8 @@
                             </div>
                         </div> <!---->
                     </section>
-                    <input class="guest_login" type="submit" value="강아지 정보 등록하러 가기 >>" style="display: block; width: 564px; margin-top: 10px; border: 0px; color: white; font-weight: bold; border-radius:5px;">
+                    <input class="guest_login" type="submit" value="강아지 정보 등록하러 가기 >>" 
+                    style="display: block; width: 564px; margin-top: 10px; border: 0px; color: white; font-weight: bold; border-radius:5px;">
 	                        <a href="#" onclick = "gopopup()"   >
                             
                             <!-- <br     >
@@ -213,12 +220,15 @@
                             <!-- <span     >등록하러가기</span> -->
                         </a>
                     </div>
+                	</form>
                     <% } else { %>
+					<form action="ReservationService.do">
                     <section class="info" >
-                    <p class="name"  ><strong
-                               >업소이름</strong><%= sVO.getStore_name() %>
+                    <p class="name"  >
+                    <strong>업소이름</strong><%= sVO.getStore_name() %>
                                
-                    <input type="hidden" name="store_idd" value="<%= store_id %>">
+                    <input type="hidden" name="user_id" value="<%= resultVO.getUser_id() %>">
+                    <input type="hidden" name="store" value="<%= store_id %>">
                     <input type="hidden" name="store_name" value="<%= sVO.getStore_name() %>">
                     </p>
                     <p    ><strong    >예약타입</strong><%= sVO.getStore_type() %>
@@ -235,11 +245,11 @@
 
                  
                 </section> <!----> 
-                <input type="submit" class="btn_pay gra_left_right_red" style="border-radius: 4px; color: white; font-weight: bold;" value="예약하기">
+                <input type="submit" class="btn_pay gra_left_right_red" 
+                style="border-radius: 4px; color: white; font-weight: bold;" value="예약하기">
                    
             </div>
 
-			<form action="ReservationService.do">
             <div class="left" ><!---->
                 <div >
                     <section class="info_chkin"     >
@@ -287,32 +297,15 @@
                             </div>
                         </div> <!---->
                     </section>
+                     <div class="guest_login" 
+                     style="display: block; width: 564px; margin-top: 10px; border: 0px; color: white; font-weight: bold; border-radius: 5px;">
+                     <a href="#" onclick="gopopup()"
+                     > 강아지 정보 등록하러 가기 >>
+                     </a>
+                  </div>
+				    </form>
                     <% } %>
-                    <!-- <div class="guest_login" style="display: block; margin-top: 10px;"     > -->
-                            <!-- <input class="guest_login" type="submit" value="강아지 정보 등록하러 가기 >>" style="display: block; width: 564px; margin-top: 10px; border: 0px; color: white; font-weight: bold; border-radius:5px;">
-	                        <a href="#" onclick = "gopopup()"   >
-                            
-                            <br     >
-                            아가 ~ 가보자 ~
-                            <br     > 
-                            <span     >등록하러가기</span>
-                        </a> -->
-                    <!-- </div> -->
-                    <!---->
-                <!-- </div> --> <!---->
-
-
-
-
-
-
-
-
-
-
-
-
-
+                </div><!---->
 
         <div   class="business_pop">
             <div   class="list">
@@ -325,7 +318,6 @@
             </div>
         </div>
     </div> <!----> <!---->
-    </form>
 </div>
 <footer  >
     <div class="align">
@@ -383,16 +375,16 @@ style="display: none;">상단으로</button>
 						<br>
 							<p>
 							<br>
-								<h3>예약장소&nbsp&nbsp</h3>	
+								<h3>예약업소&nbsp&nbsp</h3>	
 								<br>						
-								앨리스카라반캠프
+								<%= sVO.getStore_name() %>
 								<br>
 							</p>
 							<p>
 							<br>
 								<h3>강아지이름&nbsp&nbsp</h3>	
 								<br>						
-								조멍멍
+								<%= request.getParameter("dog_name") %>
 								<br>
 							</p>
 							
@@ -400,7 +392,7 @@ style="display: none;">상단으로</button>
 							<br>
 								<h3>예약자&nbsp&nbsp</h3>	
 								<br>						
-								승재
+								<%= smVO.getMember_name() %>
 								<br>
 							</p>				
 							
@@ -408,7 +400,8 @@ style="display: none;">상단으로</button>
 							<br>
 								<h3>예약일자&nbsp&nbsp</h3>	
 								<br>						
-								2020
+								<%= smVO.getMember_from().split(" ")[0] %> ~
+								<%= smVO.getMember_to().split(" ")[0] %>
 								<br>
 							</p>
 														<br>
@@ -423,7 +416,7 @@ style="display: none;">상단으로</button>
                 <div class="center_star">
         
 
-        <a href="MyPage.jsp">            <button class="btn_sub" type="submit" style="text-align: center;">등록하기 </button>
+        <a href="SelectReservationService.do?user_id=<%=resultVO.getUser_id()%>">            <button class="btn_sub" type="submit" style="text-align: center;">확인 </button>
         </a>
         
         </div>

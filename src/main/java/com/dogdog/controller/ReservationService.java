@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dogdog.command.Service;
-import com.dogdog.model.StoreBoardDAO;
 import com.dogdog.model.StoreMemberDAO;
 import com.dogdog.model.StoreMemberVO;
 
@@ -20,7 +19,7 @@ public class ReservationService implements Service{
 		
 		HttpSession session = request.getSession();
 		
-		int store_id = Integer.parseInt(request.getParameter("store_id"));
+		int store_id = Integer.parseInt(request.getParameter("store"));
 		String user_id = (String)session.getAttribute("user_id");
 		int dog_no = Integer.parseInt(request.getParameter("dog_no"));
 		// 예약 시작일

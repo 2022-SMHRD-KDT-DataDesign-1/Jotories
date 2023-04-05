@@ -15,7 +15,9 @@ import com.dogdog.controller.JoinService;
 import com.dogdog.controller.LoginService;
 import com.dogdog.controller.LogoutService;
 import com.dogdog.controller.ReservationService;
+import com.dogdog.controller.SelectReservationService;
 import com.dogdog.controller.StoreListService;
+import com.dogdog.controller.StoreReviewService;
 import com.dogdog.controller.UpdateService;
 
 
@@ -83,12 +85,16 @@ public class Frontcontroller extends HttpServlet {
 			service = new InsertDogService();
 		//			
 		//			
-		//		} else if(result.equals("MessageService.do")) {
-		//			service = new MessageService();
-		//		}
+		} else if(result.equals("SelectReservationService.do")) {
+			service = new SelectReservationService();
+			
+		} else if(result.equals("StoreReviewService.do")) {
+			service = new StoreReviewService();
+			
+		}
 		//		else {
 		//			moveURL = "Main.jsp";
-		}
+//		}
 			
 		moveURL = service.execute(request, response);
 		response.sendRedirect(moveURL);

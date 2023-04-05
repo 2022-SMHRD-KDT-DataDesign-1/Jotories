@@ -24,11 +24,11 @@ public class DogDAO {
 	}
 	
 	
-	public DogVO selectDog(DogVO vo) {
+	public DogVO selectDog(String user_id) {
 		
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
-		DogVO resultVO = sqlSession.selectOne("selectDog", vo);
+		DogVO resultVO = sqlSession.selectOne("selectDog", user_id);
 		
 		sqlSession.close();
 		

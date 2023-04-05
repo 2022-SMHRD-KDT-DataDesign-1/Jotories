@@ -17,8 +17,8 @@ public class StoreReviewService implements Service{
 		
 		HttpSession session = request.getSession();
 		
-		String user_id = (String)session.getAttribute("user_id");		
-		int store_id = Integer.parseInt(request.getParameter("store_id"));
+		String user_id = request.getParameter("user_id");		
+		int store_id = 1;
 		String review_content = request.getParameter("review_content");
 		String review_date = request.getParameter("review_date");
 		double review_rate = Double.parseDouble(request.getParameter("review_rate"));
@@ -33,6 +33,8 @@ public class StoreReviewService implements Service{
 		} else {
 			System.out.println("등록 실패");
 		}
+		
+		moveURL = "#";
 		
 		return moveURL;
 	}

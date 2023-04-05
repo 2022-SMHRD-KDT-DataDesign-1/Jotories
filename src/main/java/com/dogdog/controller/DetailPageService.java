@@ -22,8 +22,10 @@ public class DetailPageService implements Service{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String[] store_int_list = request.getQueryString().split("=");
-		int store_id = Integer.parseInt(store_int_list[1]);
+		String store_ids = request.getParameter("store");
+		int store_id = Integer.parseInt(store_ids);
+		String sel_date = request.getParameter("sel_date");
+		String sel_date2 = request.getParameter("sel_date2");
 		System.out.println(store_id);
 		
 		StoreBoardDAO sbDAO = new StoreBoardDAO();
@@ -32,7 +34,7 @@ public class DetailPageService implements Service{
 //		HttpSession session = request.getSession();
 //		session.setAttribute("storeBoardVO", resultVO);
 		
-		String moveURL = "detailPage.jsp?store=" + store_id;
+		String moveURL = "detailPage.jsp?store=" + store_id + "&sel_date="+sel_date + "&sel_date2="+sel_date2;
 		
 		return moveURL;
 	}

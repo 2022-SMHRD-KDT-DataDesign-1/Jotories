@@ -70,7 +70,7 @@
                     updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='"+ resultVO.getUser_profile()+"' alt='"+resultVO.getUser_nick()+"'></a>"+
                             "<ul class='list_04' style='display:none'>" +
                                 "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
-                                "<li><a href='editontent.jsp'>내정보</a></li>" +
+                                "<li><a href='editcontent.jsp'>내정보</a></li>" +
                                 "<li><a href='MyPage.jsp'>예약내역<!-- span>0건</span --></a></li>" +
                                 "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
                                 <%= updateLogout %>
@@ -174,16 +174,29 @@
 									<span>더보기</span>
 								</button>
 								<ul>
-									<li><a href="https://www.goodchoice.kr/more/notice">공지사항</a></li>
-									<li><a href="https://www.goodchoice.kr/more/event">이벤트</a></li>
-									<!-- <li><a href="https://www.goodchoice.kr/more/project">혁신 프로젝트</a></li> -->
-									<li><a href="https://www.goodchoice.kr/more/faq">고객문의</a></li>
-									<li><a href="https://www.goodchoice.kr/my/notiSetting">알림설정</a></li>
-									<li><a href="https://q.egiftcard.kr/couponstatus/"
-										target="_blank"> 똑똑 상품권 잔액 조회 </a></li>
-									<li><a href="https://www.goodchoice.kr/more/terms">약관
-											및 정책</a></li>
-								</ul></li>
+							<li><a href="https://www.goodchoice.kr/more/notice">공지사항</a></li>
+							<li><a href="https://www.goodchoice.kr/more/event">이벤트</a></li>
+							<li><a href="https://www.goodchoice.kr/more/project">혁신
+									프로젝트</a></li>
+							<li><a href="https://www.goodchoice.kr/more/faq">자주 묻는
+									질문</a></li>
+							<li><a href="https://www.goodchoice.kr/more/inquiry">1:1
+									문의</a></li>
+							<li><a href="https://www.goodchoice.kr/more/terms">약관 및
+									정책</a></li>
+						</ul>
+					</li>
+					<% updateLogout = "";
+                    updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='"+ resultVO.getUser_profile()+"' alt='"+resultVO.getUser_nick()+"'></a>"+
+                            "<ul class='list_04' style='display:none'>" +
+                                "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
+                                "<li><a href='editcontent.jsp'>내정보</a></li>" +
+                                "<li><a href='MyPage.jsp'>예약내역<!-- span>0건</span --></a></li>" +
+                                "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
+                                <%= updateLogout %>
+
+
+				</ul>
 						</ul>
 						<div class="center">
 							<p>똑똑 고객행복센터</p>
@@ -319,11 +332,10 @@
 								}
 							%>
 								<li class="list_4 adcno6"><a
-								href="DetailPageService.do?store=<%=sVO.getStore_id()%>"
+								href="DetailPageService.do?store=<%=sVO.getStore_id()%>&sel_date=<%= request.getParameter("sel_date") %>&sel_date2=<%= request.getParameter("sel_date2") %>"
 								data-ano="48278" data-adcno="6" data-alat="37.549788234578"
 								data-alng="126.92179271704" data-distance="271.307"
 								data-affiliate="1">
-								<% session.setAttribute("sel_date", sel_date);%>
 									<p class="pic">
 										<img class="lazy"
 											data-original="<%= sVO.getStore_pic()%>"

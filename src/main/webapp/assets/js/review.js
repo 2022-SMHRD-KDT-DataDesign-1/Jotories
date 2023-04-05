@@ -18,6 +18,7 @@
 
 
   $( document ).ready(function() {
+	  console.log('document ready1')
     $('.m_header-banner-close').on('click', function() {
         $('.modal-wrapper').toggleClass('open');
         $('.wrap').toggleClass('blur-it');
@@ -30,6 +31,7 @@
 
   
   $( document ).ready(function() {
+	   console.log('document ready2')
     $('.btn_sub').on('click', function() {
         $('.modal-wrapper').toggleClass('open');
         $('.wrap').toggleClass('blur-it');
@@ -41,6 +43,7 @@
   
   
    $( document ).ready(function() {
+	    console.log('document ready3')
     $('.btn_pay').on('click', function() {
        $('.modal-wrapper').toggleClass('open');
       $('.wrap').toggleClass('blur-it');

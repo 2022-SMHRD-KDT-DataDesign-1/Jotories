@@ -8,22 +8,21 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class StoreMemberVO {
 	private int member_no;
-	private int store_id;
-	private String user_id;
-	private int dog_no;
-	private String member_from;
-	private String member_to;
+	@NonNull private int store_id;
+	@NonNull private String user_id;
+	@NonNull private int dog_no;
+	@NonNull private String member_from;
+	@NonNull private String member_to;
 	private String member_note;
 	private String member_enroll;
-	private String member_name;
-	private String user_phone;
-	
+	@NonNull private String member_name;
+	@NonNull private String user_phone;
 	
 	
 	public StoreMemberVO(int dog_no) {
-		super();
 		this.dog_no = dog_no;
 	}
 	

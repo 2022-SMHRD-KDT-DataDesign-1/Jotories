@@ -13,10 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 , #{dog_enroll}, #{dog_weight}, #{dog_memo}, #{user_id})
 	</insert>
 	<!-- 강아지 정보 조회 -->
-	<select id="selectDog" resultType="DogVO" parameterType="DogVO">
+	<select id="selectDog" resultType="DogVO" parameterType="String">
 		select *
 		  from doginfo
-		  where dog_name=#{dog_name} and user_id=#{user_id}
+		  where user_id=#{user_id}
 	</select>
 	<!-- 강아지 전부 조회 -->
 	<select id="selectALLDog" resultType="DogVO" parameterType="String">

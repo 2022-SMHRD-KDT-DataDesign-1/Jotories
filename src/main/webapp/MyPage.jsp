@@ -153,7 +153,8 @@
                     </ul>
                 </nav>
             </div>
-            <from action="StoreReviewService.do">
+            
+  
             <div class="align_rt">
             <% 
             StoreDAO sDAO = new StoreDAO();
@@ -162,17 +163,18 @@
             		StoreVO sVO = sDAO.selectOneList(smVO.getStore_id());
             %>
             <input type="hidden" name="store_id" value="<%= smVO.getStore_id()%>">
+            <input type="hidden" name="user_id" value="<%= resultVO.getUser_id()%>">
                 <!-- 예약 내역이 존재할 경우 이 부분을 jsp 이용해서 -->
                 <div class="list_none1" style="display: block">
                     숙소 예약내역<br>
-                    <div>
-                        <img src="assets/img/쿼카1.png" class="reser_img">
+                    <div style="border: 1px solid lightgrey;">
+                        <img src="<%= sVO.getStore_pic() %>" class="reser_img" style="border: 1px solid lightgrey;">
 
                         <span class="img_name"><a href="">[<%= sVO.getStore_type() %>]<%= sVO.getStore_name()%></a></span>
                         <br>
                         <div class="check_in">
                             <span>예약날짜</span><br>
-                            <p style="margin-top: 5px; font-size: 18px; font-weight: 600;"><%= smVO.getMember_from() %></p>
+                            <p style="margin-top: 5px; font-size: 18px; font-weight: 600;"><%= smVO.getMember_from().split(" ")[0] %></p>
                             
                         </div>
                         <div class="reser_but">
@@ -228,55 +230,63 @@
         </footer>
     </div>
 
-      <div class="modal-wrapper">
-    <div class="modal">
-      <div class="content" id="zz">
-        <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv5fJHV6t9CkXrhetBbkn-0H-OAmxnFig--Q&usqp=CAU" class="m_header-banner-close"></a>
-
-          <div class="good-job">
-            <h2>리뷰 작성하기</h2>
-          </div>
-          <div class="center_star">
-            <div class="star-rating space-x-4 mx-auto" text-aling = "center">
-                <input type="radio" id="5-stars" name="review_rate" value="5" v-model="ratings"/>
-                <label for="5-stars" class="star pr-4">★</label>
-                <input type="radio" id="4-stars" name="review_rate" value="4" v-model="ratings"/>
-                <label for="4-stars" class="star">★</label>
-                <input type="radio" id="3-stars" name="review_rate" value="3" v-model="ratings"/>
-                <label for="3-stars" class="star">★</label>
-                <input type="radio" id="2-stars" name="review_rate" value="2" v-model="ratings"/>
-                <label for="2-stars" class="star">★</label>
-                <input type="radio" id="1-star" name="review_rate" value="1" v-model="ratings" />
-                <label for="1-star" class="star">★</label>
-            </div>
-            <input type="hidden" name="review_date" value=<%=LocalDate.now().toString() %>>
 
 
-        
+	<form action="StoreReviewService.do">
+		<div class="modal-wrapper">
+			<div class="modal">
 
-        </div>
-        <div class="center_star">
-            <textarea cols="56" rows="7" placeholder="리뷰를 입력해주세요" name="review_content"></textarea>
+				<div class="content" id="zz">
+					<a href="#"><img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv5fJHV6t9CkXrhetBbkn-0H-OAmxnFig--Q&usqp=CAU"
+						class="m_header-banner-close"></a>
 
-        </div>
-             
-        <div class="center_star">
-    
-                     <input class="btn_sub" type="submit"> <h3>등록하기</h3> </input>
-        
-        </div>
+					<div class="good-job">
+						<h2>리뷰 작성하기</h2>
+					</div>
+					<div class="center_star">
+						<div class="star-rating space-x-4 mx-auto" text-aling="center">
+							<input type="radio" id="5-stars" name="review_rate" value="5"
+								v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
+							<input type="radio" id="4-stars" name="review_rate" value="4"
+								v-model="ratings" /> <label for="4-stars" class="star">★</label>
+							<input type="radio" id="3-stars" name="review_rate" value="3"
+								v-model="ratings" /> <label for="3-stars" class="star">★</label>
+							<input type="radio" id="2-stars" name="review_rate" value="2"
+								v-model="ratings" /> <label for="2-stars" class="star">★</label>
+							<input type="radio" id="1-star" name="review_rate" value="1"
+								v-model="ratings" /> <label for="1-star" class="star">★</label>
+						</div>
+						<input type="hidden" name="review_date"
+							value=<%=LocalDate.now().toString()%>>
+
+
+
+
+					</div>
+					<div class="center_star">
+						<textarea cols="56" rows="7" placeholder="리뷰를 입력해주세요"
+							name="review_content"></textarea>
+
+					</div>
+
+					<div class="center_star">
+						<input class="btn_sub" type="submit" value="등록하기">
+					</div>
+
+				</div>
+			</div>
+		</div>
+
 	</form>
 
 
 
 
 
-
-
-      </div>
-    </div>
-  </div>
-    <button onclick="moveTop();" class="btn_go_top">상단으로</button>
+	<button onclick="moveTop();" class="btn_go_top">상단으로</button>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script> -->
     
     <script type="text/javascript" src="assets/js/service/common.js"></script>
     <script type="text/javascript" src="assets/js/review.js"></script>

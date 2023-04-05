@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.dogdog.db.StoreReviewMapper">
 	<insert id="insertReview" parameterType="StoreReviewVO">
 		insert into storereview
-		values(review_num.nextval, #{user_id}, #{store_id}
-		   , #{review_content}, #{review_date}, #{review_rate})
+		values(review_number.nextval, #{user_id}, #{store_id}
+		   , #{review_content}, sysdate, #{review_rate})
 	</insert>
 	
 	<select id="selectStoreReview" resultType="StoreReviewVO" parameterType="int">

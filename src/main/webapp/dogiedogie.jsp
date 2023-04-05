@@ -1,3 +1,4 @@
+<%@page import="com.dogdog.model.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,15 +11,8 @@
 </head>
 <body>
 <div class="signup-container">
-        <!-- <div class="left-container">
-          <h1>
-            <i class="fas fa-paw"></i>
-            PUPASSURE
-          </h1>
-          <div class="puppy">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png"/>
-          </div>
-        </div> -->
+       
+        <% UserVO resultVO = (UserVO)session.getAttribute("resultVO"); %>
         <form action="InsertDogService.do">
         <div class="right-container">
           <header>
@@ -31,10 +25,7 @@
                 <input id="pets-name" placeholder="이름" type="text" name="dog_name"></input>
               </div>
               <div class="pets-id">
-                <!-- <button id="pets-upload">
-                  <i class="fas fa-camera-retro"></i>
-                </button>
-                <label for="pets-upload">Upload a photo</label> -->
+              
                 <label for="pets-id">ID Number</label>
                 <input id="pets-id" placeholder="등록번호" type="text" name="dog_enroll"></input>
               </div>
@@ -72,20 +63,20 @@
             <div class="pets-weight">
               <label for="pet-weight-0-25">몸무게</label>
               <div class="radio-container">
-                <input id="pet-weight-0-25" name="pet-weight" type="radio" value="0-7"></input>
+                <input id="pet-weight-0-25" name="dog_weight" type="radio" value="소형견"></input>
                 <label for="pet-weight-0-25">0-7 kg</label>
-                <input id="pet-weight-25-50" name="pet-weight" type="radio" value="7-15"></input>
+                <input id="pet-weight-25-50" name="dog_weight" type="radio" value="중형견"></input>
                 <label for="pet-weight-25-50">7-15 kg</label>
-                <input id="pet-weight-50-100" name="pet-weight" type="radio" value="15~"></input>
+                <input id="pet-weight-50-100" name="dog_weight" type="radio" value="대형견"></input>
                 <label for="pet-weight-50-100">15- kg</label>
+                <input type="hidden" name="user_id" value="<%= request.getParameter("user_id")%>">
                 <input type="hidden" name="member_name" value="<%= request.getParameter("member_name")%>">
                 <input type="hidden" name="user_phone" value="<%= request.getParameter("user_phone")%>">
-                <input type="hidden" name="store_idd" value="<%= request.getParameter("store_idd")%>">
+                <input type="hidden" name="store" value="<%= request.getParameter("store")%>">
                 <input type="hidden" name="store_name" value="<%= request.getParameter("store_name")%>">
                 <input type="hidden" name="store_type" value="<%= request.getParameter("store_type")%>">
                 <input type="hidden" name="member_from" value="<%= request.getParameter("member_from")%>">
                 <input type="hidden" name="member_to" value="<%= request.getParameter("member_to")%>">
-                
                 <!-- <input id="pet-weight-100-plus" name="pet-weight" type="radio" value="100+"></input>
                 <label for="pet-weight-100-plus">100+ lbs</label> -->
               </div>

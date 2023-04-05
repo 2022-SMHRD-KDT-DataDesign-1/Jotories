@@ -14,8 +14,7 @@ public class SelectReservationService implements Service{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String[] user_id_list = request.getQueryString().split("=");
-		String user_id = user_id_list[1];
+		String user_id = request.getParameter("user_id");
 		
 		return "MyPage.jsp?user="+user_id;
 	}

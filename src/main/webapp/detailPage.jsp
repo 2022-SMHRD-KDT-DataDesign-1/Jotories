@@ -27,8 +27,8 @@
 <body >
      <% 
      UserVO resultVO = (UserVO)session.getAttribute("resultVO"); 
-     String[] store_id_list = request.getQueryString().split("=");
-     int store_id = Integer.parseInt(store_id_list[1]) ;
+     String store_ids = request.getParameter("store");
+     int store_id = Integer.parseInt(store_ids) ;
      %>
     <div class="wrap show">
 
@@ -39,7 +39,7 @@
                 <h1><a href="Main.jsp" title="DogDog">DogDog</a></h1>
                 <button type="button" class="btn_menu nav_open ">메뉴</button>
                 <ul class="gnb_pc">
-                    <li><a href="reserveList.jsp">예약내역</a></li>
+                    <li><a href="MyPage.jsp">예약내역</a></li>
                     <li class="over">
                         <button type="button"><span>더보기</span></button>
                         <ul class="list_03">
@@ -51,7 +51,17 @@
                             <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
                         </ul>
                     </li>
-                    <li><a href="login.html"><span>로그인</span></a></li>
+					<% String updateLogout = "";
+                    updateLogout = resultVO != null ? "<li class='over pic'><a href='MyPage.jsp'><img src='"+ resultVO.getUser_profile()+"' alt='"+resultVO.getUser_nick()+"'></a>"+
+                            "<ul class='list_04' style='display:none'>" +
+                                "<li><b>"+ resultVO.getUser_nick()+"</b></li>"+     //로그인된 닉네임임
+                                "<li><a href='editcontent.jsp'>내정보</a></li>" +
+                                "<li><a href='MyPage.jsp'>예약내역<!-- span>0건</span --></a></li>" +
+                                "<li><button type='button' class='pop_logout_open'><a href='LogoutService.do'>로그아웃</a></button></li></ul></li>" : "<li><a href='login.html'><span>로그인</span></a></li>";%>
+                                <%= updateLogout %>
+
+
+				</ul>
                 </ul>
 
                 <!-- Search -->
@@ -259,7 +269,8 @@
                         <button>더보기</button>
                         <div><%= sbVO.getStoreboard_comment() %></div>
                     </div>
-                    <div id="reservationBtn" style="border-radius:5px; background-color:#eb1b47; font-size: 1rem; font-weight: bold; color: white; margin-left:1rem; padding:1.1rem; cursor:pointer;"OnClick="location.href ='reservePage.jsp?sotre=<%=sbVO.getStore_id()%>'">예약하기</div>
+                    <div id="reservationBtn" style="border-radius:5px; background-color:#eb1b47; font-size: 1rem; font-weight: bold; color: white; margin-left:1rem; padding:1.1rem; cursor:pointer;
+                    "OnClick="location.href ='reservePage.jsp?store=<%= store_id %>&sel_date=<%= request.getParameter("sel_date") %>&sel_date2=<%= request.getParameter("sel_date2") %>'">예약하기</div>
                     
                 </div>
                 <!-- //Right -->
@@ -276,12 +287,12 @@
             </div>
 
             <form id="product_filter_form" method="get" action="https://www.goodchoice.kr/product/detail"
-                data-sel_date="2023-03-31" data-sel_date2="2023-04-01">
+                data-sel_date="<%= request.getParameter("sel_date") %>" data-sel_date2="<%= request.getParameter("sel_date2") %>">
 
 
-                <input id="sel_date" type="hidden" name="sel_date" value="2023-03-31">
+                <input id="sel_date" type="hidden" name="sel_date" value="<%= request.getParameter("sel_date") %>">
 
-                <input id="sel_date2" type="hidden" name="sel_date2" value="2023-04-01">
+                <input id="sel_date2" type="hidden" name="sel_date2" value="<%= request.getParameter("sel_date2") %>">
 
                 <input id="ano" type="hidden" name="ano" value="71089">
 
@@ -330,17 +341,17 @@
 
                     <h3>취소 및 환불 규정</h3>
                     <ul>
-                        <li>숙박일 기준 10일 전 : 100% 환불</li>
-                        <li>숙박일 기준 9일 전 : 90% 환불</li>
-                        <li>숙박일 기준 8일 전 : 80% 환불</li>
-                        <li>숙박일 기준 7일 전 : 70% 환불</li>
-                        <li>숙박일 기준 6일 전 : 60% 환불</li>
-                        <li>숙박일 기준 5일 전 : 50% 환불</li>
-                        <li>숙박일 기준 4일 전 : 40% 환불</li>
-                        <li>숙박일 기준 3일 전 : 30% 환불</li>
-                        <li>숙박일 기준 2일 전 : 20% 환불</li>
-                        <li>숙박일 기준 1일 전 : 10% 환불</li>
-                        <li>숙박일 기준 당일 및 NO-SHOW : 환불불가</li>
+                        <li>예약일 기준 10일 전 : 100% 환불</li>
+                        <li>예약일 기준 9일 전 : 90% 환불</li>
+                        <li>예약일 기준 8일 전 : 80% 환불</li>
+                        <li>예약일 기준 7일 전 : 70% 환불</li>
+                        <li>예약일 기준 6일 전 : 60% 환불</li>
+                        <li>예약일 기준 5일 전 : 50% 환불</li>
+                        <li>예약일 기준 4일 전 : 40% 환불</li>
+                        <li>예약일 기준 3일 전 : 30% 환불</li>
+                        <li>예약일 기준 2일 전 : 20% 환불</li>
+                        <li>예약일 기준 1일 전 : 10% 환불</li>
+                        <li>예약일 기준 당일 및 NO-SHOW : 환불불가</li>
                         <li>취소 및 환불시 수수료가 발생할 수 있습니다</li>
                     </ul>
 
