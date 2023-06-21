@@ -155,17 +155,12 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
     		} else {
     			rate = (int)rate;
     		}
-    		//System.out.println(((num+5) / 10) * 10);
     		String stars = "";
     		String restStars = "";
     		String moveURL = "DetailPageService.do?store=" + s.getStore_id();
     		
-    		for(double i = 0; i < rate; i++) {
-    			stars += "★";
-    		}
-    		for(double i = 0; i < 5 - rate; i++) {
-           		restStars += "★";
-            }
+    		for(double i = 0; i < rate; i++) {stars += "★";}
+    		for(double i = 0; i < 5 - rate; i++) {restStars += "★";}
     		out.print("<li ><a href="+ moveURL +"><div class='top5_container'>"+
         "<div class='top5_img'>" +
             "<img src='"+ s.getStore_pic() +"' alt='"+ s.getStore_name() +"'></div>"+
@@ -173,20 +168,11 @@ ArrayList<StoreVO> salonTop5List = storeDao.selectTop5Salon();
         "<strong class='top5_storename'>"+s.getStore_name()+"</strong><br>"+
         "<span class='star'>"+ stars +"<span>★★★★★</span></span><span class='star_rest'>"+ restStars +
         
-        /*"<input type='range' oninput='drawStar(this)' value='1' step='1' min='0' max='10'> */
         "<span class='top5_rate'>"+ rateS +"</span>"+
-        /* "<span class='top5_rate'>(리뷰수)</span>"+ */
         "</div></div></a></li>");
     	} %>
-    	<!-- <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li>
-      <li><img src="assets/img/pic.jfif" alt=""></li>
-      <li><img src="assets/img/pic.jfif"  alt=""></li> -->
     </ul>  
     <p class="controller">
-      <!-- &lang: 왼쪽 방향 화살표
-      &rang: 오른쪽 방향 화살표 -->
       <span class="prev">&lang;</span>  
       <span class="next">&rang;</span>
     </p>
